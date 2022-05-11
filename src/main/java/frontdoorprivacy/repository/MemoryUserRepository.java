@@ -32,6 +32,7 @@ public class MemoryUserRepository implements UserRepository {
         return store.get(userId);
     }
 
+
     /**
      *     private long id; //
      *     private Role role; // 역할 변경 불가
