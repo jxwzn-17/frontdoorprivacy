@@ -2,16 +2,12 @@ package frontdoorprivacy.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 public class HomeController {
-
-    /**
-     * 완료! (쓸모가 있을까?)
-     */
-    @GetMapping
-    public String Home(){
-        return "/home";
+    @GetMapping("/home")
+    public String getHome(){
+        return "Hello World!";
     }
-
 }
