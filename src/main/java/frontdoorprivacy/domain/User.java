@@ -14,7 +14,7 @@ public class User {
     private String userId;
     private String password;
     private String email;
-    private UseYN userYN;
+    // private UseYN userYN; 회원 탈퇴등에 쓰이는 거 같은데 아직 몰라서 구현 안해놓은 값임. 회의나 데베쪽에서 결정할 것
 
     public User(Role role, String userName, String birth, String phoneNumber, String userId,
                 String password, String email) {

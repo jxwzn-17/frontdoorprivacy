@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class HomeController {
 
     /**
-     * 완료!
+     * 완료! (쓸모가 있을까?)
      */
     @GetMapping
     public String Home(){
