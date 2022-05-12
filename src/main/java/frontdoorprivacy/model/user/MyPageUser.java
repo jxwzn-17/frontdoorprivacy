@@ -1,4 +1,4 @@
-package frontdoorprivacy.domain.user;
+package frontdoorprivacy.model.user;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -10,8 +10,7 @@ import lombok.Setter;
 @Setter
 public class MyPageUser {
     private String email;
-    private String userName;
-    private String birth;
+    private String password;
     private String phoneNumber;
     private String userId;
 }
