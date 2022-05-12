@@ -1,9 +1,10 @@
 package frontdoorprivacy.repository;
 
-import frontdoorprivacy.domain.User;
+import frontdoorprivacy.domain.user.Role;
+import frontdoorprivacy.domain.user.UseYN;
+import frontdoorprivacy.domain.user.User;
 import org.springframework.stereotype.Component;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -17,7 +18,8 @@ public class MemoryUserRepository implements UserRepository {
     public void save(User user) {
         //sequence 는 기본 id값 (int 형)
         user.setId(++sequence);
-
+        user.setRole(Role.Basic);
+        user.setUserYN(UseYN.Yes);
         //해쉬맵에 정보를 저장해줌
         store.put(user.getUserId(), user);
     }
@@ -46,8 +48,6 @@ public class MemoryUserRepository implements UserRepository {
     @Override
     public void updateUser(String userId, User updateUser) {
         User foundUser = findById(userId);
-        foundUser.setPassword(updateUser.getPassword());
-        foundUser.setEmail(updateUser.getEmail());
     }
 
 

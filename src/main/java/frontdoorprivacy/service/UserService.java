@@ -1,6 +1,6 @@
 package frontdoorprivacy.service;
 
-import frontdoorprivacy.domain.User;
+import frontdoorprivacy.domain.user.User;
 
 public interface UserService {
 

@@ -1,5 +1,6 @@
-package frontdoorprivacy.domain;
+package frontdoorprivacy.domain.enterprise;
 
+import frontdoorprivacy.domain.user.UseYN;
 import lombok.Getter;
 import lombok.Setter;
 

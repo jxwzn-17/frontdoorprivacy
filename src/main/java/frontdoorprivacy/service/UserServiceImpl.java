@@ -1,6 +1,6 @@
 package frontdoorprivacy.service;
 
-import frontdoorprivacy.domain.User;
+import frontdoorprivacy.domain.user.User;
 import frontdoorprivacy.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -23,15 +23,10 @@ public class UserServiceImpl implements UserService{
 
         //user를 받아서 중복회원검사 등의 예외처리를 해주어야함 (5월 3일 아직 미구현)
 
-
         // 모든 예외를 통과하는 경우 가입을 할 수 있도록 해야함(구현 완)
         userRepository.save(user);
 
         //return 값 등이 필요하다면 메소드 타입을 바꾸어 주고 return 해줄 것 (미정상태)
-
-
-
-
     }
 
     @Override
@@ -39,9 +34,6 @@ public class UserServiceImpl implements UserService{
         return userRepository.findById(userId);
     }
 
-    /**
-     * 비밀번호와 이메일만을 바꿀 수 있는데 양식에 맞게 제출을 해야 함
-     */
 
     @Override
     public void update(String userId, User updateUser) {

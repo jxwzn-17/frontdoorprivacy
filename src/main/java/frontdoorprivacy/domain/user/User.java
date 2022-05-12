@@ -1,4 +1,4 @@
-package frontdoorprivacy.domain;
+package frontdoorprivacy.domain.user;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -7,14 +7,14 @@ import lombok.Setter;
 public class User {
 
     private long id;
-    private Role role;
+    private Role role; //회원가입에서 일반 사용자면 Basic, 기업사용자면 Enterprise 를 넣어줄것
     private String userName;
     private String birth;
     private String phoneNumber;
     private String userId;
     private String password;
     private String email;
-    // private UseYN userYN; 회원 탈퇴등에 쓰이는 거 같은데 아직 몰라서 구현 안해놓은 값임. 회의나 데베쪽에서 결정할 것
+    private UseYN userYN; //기본값으로 Y를 써줄것
 
     public User(Role role, String userName, String birth, String phoneNumber, String userId,
                 String password, String email) {
