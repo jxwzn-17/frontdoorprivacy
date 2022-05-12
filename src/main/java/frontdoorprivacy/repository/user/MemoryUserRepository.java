@@ -1,8 +1,8 @@
-package frontdoorprivacy.repository;
+package frontdoorprivacy.repository.user;
 
-import frontdoorprivacy.domain.user.Role;
-import frontdoorprivacy.domain.user.UseYN;
-import frontdoorprivacy.domain.user.User;
+import frontdoorprivacy.model.user.Role;
+import frontdoorprivacy.model.user.UseYN;
+import frontdoorprivacy.model.user.User;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;
@@ -11,17 +11,18 @@ import java.util.concurrent.ConcurrentHashMap;
 @Component
 public class MemoryUserRepository implements UserRepository {
 
-    private static Map<String, User> store = new ConcurrentHashMap<>();
+    private static Map<Long, User> store = new ConcurrentHashMap<>();
     private static long sequence = 0L;
 
     @Override
-    public void save(User user) {
+    public User save(User user) {
         //sequence 는 기본 id값 (int 형)
         user.setId(++sequence);
         user.setRole(Role.Basic);
         user.setUserYN(UseYN.Yes);
         //해쉬맵에 정보를 저장해줌
-        store.put(user.getUserId(), user);
+        store.put(user.getId(), user);
+        return store.get(user.getUserId());
     }
 
 
@@ -30,8 +31,8 @@ public class MemoryUserRepository implements UserRepository {
      * 예외처리 미완료
      */
     @Override
-    public User findById(String userId) {
-        return store.get(userId);
+    public User findById(long id) {
+        return store.get(id);
     }
 
 
@@ -46,8 +47,8 @@ public class MemoryUserRepository implements UserRepository {
      *     private String email; // 이메일 변경 가능
      */
     @Override
-    public void updateUser(String userId, User updateUser) {
-        User foundUser = findById(userId);
+    public void updateUser(long id, User updateUser) {
+        User foundUser = findById(id);
     }
 
 

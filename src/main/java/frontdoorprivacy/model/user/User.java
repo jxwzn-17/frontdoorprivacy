@@ -1,4 +1,4 @@
-package frontdoorprivacy.domain.user;
+package frontdoorprivacy.model.user;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -16,9 +16,8 @@ public class User {
     private String email;
     private UseYN userYN; //기본값으로 Y를 써줄것
 
-    public User(Role role, String userName, String birth, String phoneNumber, String userId,
+    public User(String userName, String birth, String phoneNumber, String userId,
                 String password, String email) {
-        this.role = role;
         this.userName = userName;
         this.birth = birth;
         this.phoneNumber = phoneNumber;

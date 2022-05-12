@@ -1,4 +1,4 @@
-package frontdoorprivacy.domain.user;
+package frontdoorprivacy.model.user;
 
 public enum UseYN {
     Yes,

@@ -1,4 +1,4 @@
-package frontdoorprivacy.domain.user;
+package frontdoorprivacy.model.user;
 
 public enum Role {
     Basic, //일반 사용자

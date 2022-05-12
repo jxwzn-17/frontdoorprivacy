@@ -1,9 +1,9 @@
 package frontdoorprivacy.controller;
 
-import frontdoorprivacy.domain.user.MyPageUser;
-import frontdoorprivacy.domain.user.Role;
-import frontdoorprivacy.domain.user.User;
-import frontdoorprivacy.service.UserService;
+import frontdoorprivacy.model.user.JoinUser;
+import frontdoorprivacy.model.user.MyPageUser;
+import frontdoorprivacy.model.user.User;
+import frontdoorprivacy.service.user.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -32,30 +32,69 @@ public class UserController {
     /**
      * 임시 데이터 넣어준것임
      */
-    //Role role, String userName, String birth, String phoneNumber, String userId,
-    //                String password, String email
     @PostConstruct
     public void init() {
-        userService.join(new User(Role.Basic,"양철진", "123","123","userA","123","gra"));
+        userService.join(new User("양철진", "123","123","userA","123","gra"));
+    }
 
+    /**
+     * 회원가입 메소드
+     */
+    @GetMapping("/join")
+    public void JoinForm() {
     }
 
 
-
+    /**
+     * 회원가입 정보를 받아서 다시 정보를 프론트에 넘겨주는 메소드
+     */
     @ResponseBody
-    @PostMapping("/mypage/user/edit")
-    public ResponseEntity<User> UserMyPage(@RequestBody MyPageUser user) {
+    @PostMapping("/join")
+    public ResponseEntity<User> Join(@RequestBody JoinUser joinUser) {
 
-        User founduser = userService.findOne(user.getUserId());
+        String userId = joinUser.getUserId();
+        String userBirth = joinUser.getBirth();
+        String password = joinUser.getPassword();
+        String email = joinUser.getEmail();
+        String phoneNumber = joinUser.getPhoneNumber();
+        String userName = joinUser.getUserName();
+        User JoinUser = userService.join(new User(userName, userBirth, phoneNumber, userId, password, email));
+
+        return new ResponseEntity<>(JoinUser, HttpStatus.OK);
+    }
+
+
+    /**
+     * 일반 사용자 마이페이지 수정폼 띄어주기
+     */
+    //ex> localhost:8080/mypage/zxc2346/edit@ResponseBody
+    @GetMapping("/mypage/{id}/edit")
+    public ResponseEntity<User> UserMyPage(@PathVariable long id){
+        User founduser = userService.findOne(id);
+        return new ResponseEntity<>(founduser, HttpStatus.OK);
+    }
+
+    /**
+     * 일반 사용자 마이페이지 수정 정보 받아서 다시 객체 반환해주는 메소드
+     * @return
+     */
+    @ResponseBody
+    @PostMapping("/mypage/{id}/edit")
+    public ResponseEntity<User> UserMyPageEdit(
+            @PathVariable long id
+            , @RequestBody MyPageUser user) {
+
+        User founduser = userService.findOne(id);
+        founduser.setUserId(user.getUserId());
         founduser.setEmail(user.getEmail());
         founduser.setBirth(user.getBirth());
-        founduser.setUserName(user.getUserName());
         founduser.setPhoneNumber(user.getPhoneNumber());
-
-        log.info("email={},birth={},phoneNumber={},userName={},userId={}",user.getEmail(),user.getBirth(),user.getPhoneNumber(),user.getUserName(),user.getUserId());
 
         return new ResponseEntity<>(founduser,HttpStatus.OK);
     }
+
+
+
 
 
 }
