@@ -10,7 +10,7 @@ import lombok.Setter;
 @Setter
 public class MyPageUser {
     private String email;
-    private String birth;
+    private String password;
     private String phoneNumber;
     private String userId;
 }

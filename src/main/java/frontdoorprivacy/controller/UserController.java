@@ -87,7 +87,7 @@ public class UserController {
         User founduser = userService.findOne(id);
         founduser.setUserId(user.getUserId());
         founduser.setEmail(user.getEmail());
-        founduser.setBirth(user.getBirth());
+        founduser.setBirth(user.getPassword());
         founduser.setPhoneNumber(user.getPhoneNumber());
 
         return new ResponseEntity<>(founduser,HttpStatus.OK);
