@@ -20,6 +20,7 @@ import org.springframework.stereotype.Service;
 //    void update(long id, User updateUser);
 //
 //}
+//철진이 코드  내꺼 주석처리 하고 돌리면됨 니꺼 테스트할때는 userServicelmpl도 다 주석 처리 했으니까 니 테스트할때 주석 풀고 드래그 컨트롤 / 하면됨
 @Service
 public class UserService{
     private static final Marker MESSAGE_MARKER = MarkerFactory.getMarker("USER");
