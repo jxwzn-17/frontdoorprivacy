@@ -9,7 +9,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class MyPageUser {
-    private String id; //USID
+    private int id; //USID
     private String username;
     private String birth;
     private String phoneNumber;
@@ -20,11 +20,11 @@ public class MyPageUser {
     private char Role;
 
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
     public String getUsername() {

@@ -16,6 +16,8 @@ public class User {
     private String email;
     private UseYN userYN; //기본값으로 Y를 써줄것
 
+
+
     public User(String userName, String birth, String phoneNumber, String userId,
                 String password, String email) {
         this.userName = userName;

@@ -10,3 +10,7 @@ spring:
     url: jdbc:mysql://localhost:3306/frontdoor?serverTimezone=Asia/Seoul
     username: root
     password: wldhks0107
+
+mybatis:
+  type-aliases-package: frontdoorprivacy.model
+  mapper-locations: mapper/*/*.xml
