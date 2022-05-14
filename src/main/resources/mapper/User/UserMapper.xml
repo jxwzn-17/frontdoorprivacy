@@ -13,7 +13,7 @@
         { CALL FND_ud_User_Info(
                 #{id},
                 #{P_PhoneNumber},
-                #{P_UserID},
+                #{P_UserId},
                 #{P_Password},
                 #{P_EmailAddress}
         )

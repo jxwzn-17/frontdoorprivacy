@@ -1,17 +1,17 @@
 package frontdoorprivacy.model.user;
 
 public class UpdateUser {
-        private String id;
+        private int id;
         private String P_PhoneNumber;
         private String P_UserId;
         private String P_Password;
         private String P_EmailAddress;
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

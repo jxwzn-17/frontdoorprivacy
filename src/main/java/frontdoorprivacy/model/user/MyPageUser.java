@@ -16,7 +16,7 @@ public class MyPageUser {
     private String userId;
     private String password;
     private String emailaddress;
-    private char UserYN;
+    private char UseYN;
     private char Role;
 
 
@@ -76,11 +76,11 @@ public class MyPageUser {
     }
 
     public char getUserYN() {
-        return UserYN;
+        return UseYN;
     }
 
     public void setUserYN(char userYN) {
-        UserYN = userYN;
+        UseYN = userYN;
     }
 
     public char getRole() {

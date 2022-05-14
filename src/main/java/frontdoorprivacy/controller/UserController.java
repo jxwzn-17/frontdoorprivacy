@@ -2,6 +2,7 @@ package frontdoorprivacy.controller;
 
 import frontdoorprivacy.model.user.JoinUser;
 import frontdoorprivacy.model.user.MyPageUser;
+import frontdoorprivacy.model.user.UpdateUser;
 import frontdoorprivacy.model.user.User;
 import frontdoorprivacy.service.user.UserService;
 import lombok.extern.slf4j.Slf4j;
@@ -113,7 +114,6 @@ import static java.lang.Integer.valueOf;
 public class UserController{
     private Logger logger = LoggerFactory.getLogger(UserController.class);
     private static UserService userService;
-    private static int id = 4;
     @Autowired
     public UserController(UserService userService){
         this.userService = userService;
@@ -124,10 +124,22 @@ public class UserController{
 
         MyPageUser userInfo = userService.getUserInfo(userID);
 
-
         return new ResponseEntity<>(userInfo,HttpStatus.OK);
     }
 
+    @PostMapping("/{userID}")
+    public void update(@PathVariable int userID, @RequestBody MyPageUser updateUser){
+
+        UpdateUser founduser = new UpdateUser();
+
+        founduser.setId(userID);
+        founduser.setP_UserId(updateUser.getUserId());
+        founduser.setP_EmailAddress(updateUser.getEmailaddress());
+        founduser.setP_Password(updateUser.getPassword());
+        founduser.setP_PhoneNumber(updateUser.getPhoneNumber());
+
+                userService.updateUserInfo(founduser);
+    }
 }
 
 
