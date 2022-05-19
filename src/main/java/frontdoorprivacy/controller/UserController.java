@@ -11,9 +11,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-//지완 코드
+
 @Controller
-@RequestMapping("/user")
+@RequestMapping
+        //("/user")
 public class UserController{
     private Logger logger = LoggerFactory.getLogger(UserController.class);
     private static UserService userService;
@@ -23,7 +24,7 @@ public class UserController{
 
     }
 
-    @GetMapping("/{userID}")
+    @GetMapping("/user/{userID}")
     public ResponseEntity<User> info(@PathVariable int userID) {
 
         User userInfo = userService.getUserInfo(userID);

@@ -1,4 +1,4 @@
-package frontdoorprivacy.mapper;
+package frontdoorprivacy.mapper.user;
 
 
 import frontdoorprivacy.model.user.User;

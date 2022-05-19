@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="frontdoorprivacy.mapper.enterprise.EnterpriseMapper">
+    <insert id="createEnterprise" parameterType="Enterprise" statementType="CALLABLE">
+        { CALL FND_in_Comp(
+        #{enterpriseName},
+        #{enterpriseNumber},
+        #{address},
+        #{enterpriseId},
+        #{password},
+        #{phoneNumber},
+        #{email},
+        #{bankName},
+        #{accountNumber}
+        )
+        }
+    </insert>
+
+    <select id="checkmultiple" parameterType="String" resultType="String" statementType="CALLABLE">
+        { CALL FND_ck_EnterpriseID(
+        #{CompanyName}
+        )
+        }
+    </select>
+
+</mapper>

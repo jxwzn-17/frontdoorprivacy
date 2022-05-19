@@ -1,6 +1,6 @@
 package frontdoorprivacy.service.user;
 
-import frontdoorprivacy.mapper.UserMapper;
+import frontdoorprivacy.mapper.user.UserMapper;
 import frontdoorprivacy.model.user.User;
 import frontdoorprivacy.model.user.UpdateUser;
 import org.slf4j.Logger;
