@@ -39,12 +39,13 @@ public class RegisterController {
     }
 
     @PostMapping("/register/company/check")
-    public String check(@RequestBody HashMap<String,String> enterpriseID){
+    public ResponseEntity<?> check(@RequestBody HashMap<String,String> enterpriseID){
         String output;
+        HashMap<String,String> returnvalue = new HashMap<>();
+        output = enterpriseService.checkmultiple(enterpriseID.get("enterpriseId"));
+//       logger.info(output);
+        returnvalue.put("returnvalue",output);
 
-       output = enterpriseService.checkmultiple(enterpriseID.get("enterpriseId"));
-       logger.info(output);
-
-       return output;
+       return ResponseEntity.ok(returnvalue);
     }
 }
