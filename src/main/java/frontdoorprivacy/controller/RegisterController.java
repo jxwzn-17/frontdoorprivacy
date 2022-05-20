@@ -2,9 +2,13 @@ package frontdoorprivacy.controller;
 
 
 import frontdoorprivacy.model.enterprise.Enterprise;
+import frontdoorprivacy.model.enterprise.LoginEnterprise;
+import frontdoorprivacy.model.user.LoginInfo;
+import frontdoorprivacy.model.user.LoginOutput;
 import frontdoorprivacy.service.enterprise.EnterpriseService;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -47,5 +51,25 @@ public class RegisterController {
         returnvalue.put("returnvalue",output);
 
        return ResponseEntity.ok(returnvalue);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<LoginOutput> login(@RequestBody LoginInfo loginInfo){
+        LoginOutput output = new LoginOutput();
+        logger.info(loginInfo.getRole());
+        logger.info(loginInfo.getUserId());
+        logger.info(loginInfo.getPassword());
+
+
+        if(loginInfo.getRole().equals("E")){
+            logger.info("if문 입장");
+            LoginEnterprise input = new LoginEnterprise();
+            input.setUserId(loginInfo.getUserId());
+            input.setPw(loginInfo.getPassword());
+            output = enterpriseService.enLogin(input);
+
+            logger.info(String.valueOf(output));
+        }
+        return new ResponseEntity<>(output, HttpStatus.OK);
     }
 }

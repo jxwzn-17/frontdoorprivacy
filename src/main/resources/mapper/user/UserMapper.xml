@@ -10,6 +10,7 @@
     </select>
 
 
+
     <update id="updateUserInfo" parameterType="UpdateUser" statementType="CALLABLE">
         { CALL FND_ud_User_Info(
                 #{id},
