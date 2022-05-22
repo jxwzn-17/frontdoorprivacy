@@ -4,6 +4,8 @@ import frontdoorprivacy.mapper.enterprise.EnterpriseMapper;
 import frontdoorprivacy.mapper.user.UserMapper;
 import frontdoorprivacy.model.enterprise.Enterprise;
 import frontdoorprivacy.model.enterprise.LoginEnterprise;
+import frontdoorprivacy.model.enterprise.MyEnterpriseInfo;
+import frontdoorprivacy.model.enterprise.UpdateEnterprise;
 import frontdoorprivacy.model.user.LoginOutput;
 import frontdoorprivacy.service.user.UserService;
 import org.slf4j.Logger;
@@ -29,4 +31,6 @@ public class EnterpriseService {
     public String checkmultiple(String enterpriseId){ return enterpriseMapper.checkmultiple(enterpriseId);}
     public LoginOutput enLogin(LoginEnterprise loginEnterprise){return enterpriseMapper.enLogin(loginEnterprise);}
 
+    public MyEnterpriseInfo getEnterpriseInfo(int id){ return enterpriseMapper.getEnterpriseInfo(id);}
+    public void updateEnterpriseInfo(UpdateEnterprise updateEnterprise){enterpriseMapper.updateEnterpriseInfo(updateEnterprise);}
 }

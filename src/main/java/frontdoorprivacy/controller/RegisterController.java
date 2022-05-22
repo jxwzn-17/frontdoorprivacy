@@ -33,12 +33,17 @@ public class RegisterController {
 
     //회원가입
     @PostMapping("/register/company")
-    public void create(@RequestBody Enterprise enterprise){
+    public ResponseEntity<?> create(@RequestBody Enterprise enterprise){
+
+        HashMap<String,String> msg = new HashMap<>();
+
         logger.info(enterprise.getEnterpriseName());
         logger.info(enterprise.getEnterpriseNumber());
         logger.info(enterprise.getEnterpriseId());
 
         enterpriseService.createEnterprise(enterprise);
+        msg.put("message","Success");
+        return ResponseEntity.ok(msg);
 
     }
 
@@ -56,22 +61,23 @@ public class RegisterController {
     @PostMapping("/login")
     public ResponseEntity<LoginOutput> login(@RequestBody LoginInfo loginInfo){
         LoginOutput output = new LoginOutput();
-        logger.info(loginInfo.getRole());
-        logger.info(loginInfo.getUserId());
-        logger.info(loginInfo.getPassword());
+//        logger.info(loginInfo.getRole());
+//        logger.info(loginInfo.getUserId());
+//        logger.info(loginInfo.getPassword());
 
 
         if(loginInfo.getRole().equals("E")){
-            logger.info("if문 입장");
+//            logger.info("if문 입장");
             LoginEnterprise input = new LoginEnterprise();
             input.setUserId(loginInfo.getUserId());
             input.setPw(loginInfo.getPassword());
             output = enterpriseService.enLogin(input);
 
-            logger.info(String.valueOf(output));
-        }else if(loginInfo.getRole().equals("E")){
-            //유저 로그인
+
         }
+//        else if(loginInfo.getRole().equals("E")){
+//            //유저 로그인
+//        }
         return new ResponseEntity<>(output, HttpStatus.OK);
     }
 }

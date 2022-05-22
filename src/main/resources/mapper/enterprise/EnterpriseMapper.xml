@@ -31,4 +31,22 @@
         )
         }
     </select>
+
+    <select id="getEnterpriseInfo" parameterType="Integer" resultType="MyEnterpriseInfo" statementType="CALLABLE">
+        { CALL FND_sd_Enterprise_Info(
+        #{id}
+        )
+        }
+    </select>
+
+    <update id="updateEnterpriseInfo" parameterType="UpdateEnterprise" statementType="CALLABLE">
+        { CALL FND_ud_Enterprise_Info(
+        #{id},
+        #{e_name},
+        #{e_email},
+        #{e_address},
+        #{e_phone}
+        )
+        }
+    </update>
 </mapper>
