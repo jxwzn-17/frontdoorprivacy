@@ -1,6 +1,7 @@
 package frontdoorprivacy.service.user;
 
 import frontdoorprivacy.mapper.user.UserMapper;
+import frontdoorprivacy.model.user.JoinUser;
 import frontdoorprivacy.model.user.User;
 import frontdoorprivacy.model.user.UpdateUser;
 import org.slf4j.Logger;
@@ -26,5 +27,9 @@ public class UserService{
 
     public void updateUserInfo(UpdateUser updateUser){
         userMapper.updateUserInfo(updateUser);
+    }
+
+    public void joinUserInfo(JoinUser joinUser){
+        userMapper.joinUserInfo(joinUser);
     }
 }

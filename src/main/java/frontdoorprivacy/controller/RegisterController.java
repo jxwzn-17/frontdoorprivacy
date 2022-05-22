@@ -69,6 +69,8 @@ public class RegisterController {
             output = enterpriseService.enLogin(input);
 
             logger.info(String.valueOf(output));
+        }else if(loginInfo.getRole().equals("E")){
+            //유저 로그인
         }
         return new ResponseEntity<>(output, HttpStatus.OK);
     }

@@ -3,37 +3,24 @@ package frontdoorprivacy.model.user;
 import lombok.Getter;
 import lombok.Setter;
 
-/**
- * 회원수정폼에서 받아올 값들을 입력하는 창
- */
-@Getter
-@Setter
+@Getter@Setter
+public class JoinUser {
 
-public class User {
-    private int id; //USID
     private String userName;
     private String birth;
     private String phoneNumber;
     private String userId;
     private String password;
     private String email;
-    private String UseYN;
-    private String Role;
 
-
-    public int getId() {
-        return id;
+    public JoinUser() {
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getUsername() {
+    public String getUserName() {
         return userName;
     }
 
-    public void setUsername(String userName) {
+    public void setUserName(String userName) {
         this.userName = userName;
     }
 
@@ -69,46 +56,11 @@ public class User {
         this.password = password;
     }
 
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
     public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getUseYN() {
-        return UseYN;
-    }
-
-    public void setUseYN(String useYN) {
-        UseYN = useYN;
-    }
-
-    public String getUserYN() {
-        return UseYN;
-    }
-
-    public void setUserYN(String userYN) {
-        UseYN = userYN;
-    }
-
-    public String getRole() {
-        return Role;
-    }
-
-    public void setRole(String role) {
-        Role = role;
-    }
-
-    public User() {
     }
 }

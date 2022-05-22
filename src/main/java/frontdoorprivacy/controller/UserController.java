@@ -1,5 +1,6 @@
 package frontdoorprivacy.controller;
 
+import frontdoorprivacy.model.user.JoinUser;
 import frontdoorprivacy.model.user.User;
 import frontdoorprivacy.model.user.UpdateUser;
 import frontdoorprivacy.service.user.UserService;
@@ -14,7 +15,6 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping
-        //("/user")
 public class UserController{
     private Logger logger = LoggerFactory.getLogger(UserController.class);
     private static UserService userService;
@@ -39,7 +39,7 @@ public class UserController{
 
         founduser.setId(userID);
         founduser.setP_UserId(user.getUserId());
-        founduser.setP_EmailAddress(user.getEmailaddress());
+        founduser.setP_Email(user.getEmail());
         founduser.setP_Password(user.getPassword());
         founduser.setP_PhoneNumber(user.getPhoneNumber());
 
@@ -47,7 +47,11 @@ public class UserController{
 
         return new ResponseEntity<>(founduser, HttpStatus.OK);
     }
+    @PostMapping("/register/user")
+    public void join(@RequestBody JoinUser joinUser){
 
+        userService.joinUserInfo(joinUser);
+    }
 
 }
 
