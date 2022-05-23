@@ -24,7 +24,7 @@
         }
     </select>
 
-    <select id="enLogin" parameterType="LoginEnterprise" resultType="LoginOutput" statementType="CALLABLE">
+    <select id="enLogin" parameterType="LoginEnterprise" resultType="EnterpriseLoginOutput" statementType="CALLABLE">
         { CALL FND_login_Enterprise(
         #{userId},
         #{pw}

@@ -2,9 +2,10 @@ package frontdoorprivacy.controller;
 
 
 import frontdoorprivacy.model.enterprise.Enterprise;
+import frontdoorprivacy.model.enterprise.EnterpriseLoginOutput;
 import frontdoorprivacy.model.enterprise.LoginEnterprise;
 import frontdoorprivacy.model.user.LoginInfo;
-import frontdoorprivacy.model.user.LoginOutput;
+
 import frontdoorprivacy.service.enterprise.EnterpriseService;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,8 +60,8 @@ public class RegisterController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<LoginOutput> login(@RequestBody LoginInfo loginInfo){
-        LoginOutput output = new LoginOutput();
+    public ResponseEntity<?> login(@RequestBody LoginInfo loginInfo){
+        EnterpriseLoginOutput output = new EnterpriseLoginOutput();
 //        logger.info(loginInfo.getRole());
 //        logger.info(loginInfo.getUserId());
 //        logger.info(loginInfo.getPassword());
@@ -75,9 +76,11 @@ public class RegisterController {
 
 
         }
-//        else if(loginInfo.getRole().equals("E")){
-//            //유저 로그인
-//        }
+
         return new ResponseEntity<>(output, HttpStatus.OK);
     }
+
+
+
+
 }

@@ -1,23 +1,16 @@
-package frontdoorprivacy.model.user;
+package frontdoorprivacy.model.enterprise;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter@Setter
-public class LoginOutput {
-    int enid;
-    String enterpriseId;
-    String role;
+public class EnterpriseLoginOutput {
 
-    public String getRole() {
-        return role;
-    }
+        int enid;
+        String enterpriseId;
+        String role;
 
-    public void setRole(String role) {
-        this.role = role;
-    }
-
-    public LoginOutput() {
+    public EnterpriseLoginOutput() {
     }
 
     public int getEnid() {
@@ -34,5 +27,13 @@ public class LoginOutput {
 
     public void setEnterpriseId(String enterpriseId) {
         this.enterpriseId = enterpriseId;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }
