@@ -12,6 +12,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+
 
 @Controller
 @RequestMapping
@@ -47,10 +49,30 @@ public class UserController{
 
         return new ResponseEntity<>(founduser, HttpStatus.OK);
     }
+
     @PostMapping("/register/user")
-    public void join(@RequestBody JoinUser joinUser){
+    public ResponseEntity<?> join(@RequestBody JoinUser joinUser){
 
         userService.joinUserInfo(joinUser);
+
+        HashMap<String,String> msg = new HashMap<>();
+        msg.put("message","Success");
+        return ResponseEntity.ok(msg);
+    }
+
+    /**
+     * 중복성 검사
+     */
+    @PostMapping("/register/check")
+    public ResponseEntity<?> check(@RequestBody HashMap<String,String> userID){
+        String output;
+        HashMap<String,String> returnvalue = new HashMap<>();
+        output = userService.checkmultiple(userID.get("inputId"));
+        logger.info(output);
+        logger.info(userID.get("inputId"));
+        returnvalue.put("returnvalue",output);
+
+        return ResponseEntity.ok(returnvalue);
     }
 
 }

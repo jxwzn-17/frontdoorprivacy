@@ -4,7 +4,7 @@
 <mapper namespace="frontdoorprivacy.mapper.user.UserMapper">
     <select id="getUserInfo" resultType="User" parameterType="Integer" statementType="CALLABLE">
         { CALL FND_sd_User_Info(
-                #{id}
+        #{id}
         )
         }
     </select>
@@ -23,13 +23,28 @@
 
     <update id="updateUserInfo" parameterType="UpdateUser" statementType="CALLABLE">
         { CALL FND_ud_User_Info(
-                #{id},
-                #{P_PhoneNumber},
-                #{P_UserId},
-                #{P_Password},
-                #{P_EmailAddress}
+        #{id},
+        #{P_PhoneNumber},
+        #{P_UserId},
+        #{P_Password},
+        #{P_EmailAddress}
         )
         }
     </update>
+
+    <select id="checkmultiple" parameterType="String" resultType="String" statementType="CALLABLE">
+        { CALL FND_ck_userID(
+        #{inputId}
+        )
+        }
+    </select>
+
+    <select id="enLogin" parameterType="LoginUser" resultType="UserLoginOutput" statementType="CALLABLE">
+        { CALL FND_login_User(
+        #{userId},
+        #{pw}
+        )
+        }
+    </select>
 
 </mapper>

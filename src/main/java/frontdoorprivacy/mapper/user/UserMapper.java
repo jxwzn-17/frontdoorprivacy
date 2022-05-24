@@ -1,9 +1,7 @@
 package frontdoorprivacy.mapper.user;
 
 
-import frontdoorprivacy.model.user.JoinUser;
-import frontdoorprivacy.model.user.User;
-import frontdoorprivacy.model.user.UpdateUser;
+import frontdoorprivacy.model.user.*;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -14,4 +12,6 @@ public interface UserMapper {
     User getUserInfo(int userid);
     void updateUserInfo(UpdateUser updateUser);
     void joinUserInfo(JoinUser joinUser);
+    UserLoginOutput enLogin(LoginUser loginUser);
+    String checkmultiple(String inputId);
 }

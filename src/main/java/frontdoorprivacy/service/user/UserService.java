@@ -1,9 +1,7 @@
 package frontdoorprivacy.service.user;
 
 import frontdoorprivacy.mapper.user.UserMapper;
-import frontdoorprivacy.model.user.JoinUser;
-import frontdoorprivacy.model.user.User;
-import frontdoorprivacy.model.user.UpdateUser;
+import frontdoorprivacy.model.user.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Marker;
@@ -21,9 +19,13 @@ public class UserService{
 
 
     @Autowired
-    public UserService(UserMapper userMapper){this.userMapper = userMapper;}
+    public UserService(UserMapper userMapper){
+        this.userMapper = userMapper;
+    }
 
-    public User getUserInfo(int userid){return userMapper.getUserInfo(userid);}
+    public User getUserInfo(int userid){
+        return userMapper.getUserInfo(userid);
+    }
 
     public void updateUserInfo(UpdateUser updateUser){
         userMapper.updateUserInfo(updateUser);
@@ -31,5 +33,13 @@ public class UserService{
 
     public void joinUserInfo(JoinUser joinUser){
         userMapper.joinUserInfo(joinUser);
+    }
+
+    public UserLoginOutput enLogin(LoginUser loginUser){
+        return userMapper.enLogin(loginUser);
+    }
+
+    public String checkmultiple(String inputId){
+        return userMapper.checkmultiple(inputId);
     }
 }

@@ -6,7 +6,10 @@ import frontdoorprivacy.model.enterprise.EnterpriseLoginOutput;
 import frontdoorprivacy.model.enterprise.LoginEnterprise;
 import frontdoorprivacy.model.user.LoginInfo;
 
+import frontdoorprivacy.model.user.LoginUser;
+import frontdoorprivacy.model.user.UserLoginOutput;
 import frontdoorprivacy.service.enterprise.EnterpriseService;
+import frontdoorprivacy.service.user.UserService;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,11 +28,12 @@ import java.util.HashMap;
 public class RegisterController {
     private Logger logger = LoggerFactory.getLogger(RegisterController.class);
     private static EnterpriseService enterpriseService;
-
+    private static UserService userService;
 
     @Autowired
-    public RegisterController(EnterpriseService enterpriseService) {
+    public RegisterController(EnterpriseService enterpriseService, UserService userService) {
         this.enterpriseService = enterpriseService;
+        this.userService = userService;
     }
 
     //회원가입
@@ -62,22 +66,32 @@ public class RegisterController {
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginInfo loginInfo){
         EnterpriseLoginOutput output = new EnterpriseLoginOutput();
+        UserLoginOutput userLoginOutput = new UserLoginOutput();
 //        logger.info(loginInfo.getRole());
 //        logger.info(loginInfo.getUserId());
 //        logger.info(loginInfo.getPassword());
 
 
         if(loginInfo.getRole().equals("E")){
-//            logger.info("if문 입장");
+//           logger.info("if문 입장");
             LoginEnterprise input = new LoginEnterprise();
             input.setUserId(loginInfo.getUserId());
             input.setPw(loginInfo.getPassword());
             output = enterpriseService.enLogin(input);
 
+            return new ResponseEntity<>(output, HttpStatus.OK);
+        }else{
+            //유저 로그인
+            LoginUser loginUser = new LoginUser();
+            logger.info("else 문 입장");
+            loginUser.setUserId(loginInfo.getUserId());
+            loginUser.setPw(loginInfo.getPassword());
+            userLoginOutput = userService.enLogin(loginUser);
 
+            return new ResponseEntity<>(userLoginOutput, HttpStatus.OK);
         }
 
-        return new ResponseEntity<>(output, HttpStatus.OK);
+
     }
 
 
