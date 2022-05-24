@@ -27,7 +27,7 @@ public class UserController{
     /**
      * 마이페이지 5월 24일 수정본
      */
-    @GetMapping("/mypage/user/profile")
+    @PostMapping("/mypage/user/profile")
     public ResponseEntity<User> info(@RequestBody UserLoginOutput userLoginOutput) {
 
         User userInfo = userService.getUserInfo(userLoginOutput.getEnid());
