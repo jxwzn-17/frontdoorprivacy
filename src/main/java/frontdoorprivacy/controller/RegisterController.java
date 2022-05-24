@@ -84,7 +84,7 @@ public class RegisterController {
             //유저 로그인
             LoginUser loginUser = new LoginUser();
             logger.info("else 문 입장");
-            loginUser.setUserId(loginInfo.getUserId());
+            loginUser.setInputId(loginInfo.getUserId());
             loginUser.setPw(loginInfo.getPassword());
             userLoginOutput = userService.enLogin(loginUser);
 

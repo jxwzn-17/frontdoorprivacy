@@ -1,8 +1,6 @@
 package frontdoorprivacy.controller;
 
-import frontdoorprivacy.model.user.JoinUser;
-import frontdoorprivacy.model.user.User;
-import frontdoorprivacy.model.user.UpdateUser;
+import frontdoorprivacy.model.user.*;
 import frontdoorprivacy.service.user.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,13 +24,27 @@ public class UserController{
 
     }
 
-    @GetMapping("/user/{userID}")
-    public ResponseEntity<User> info(@PathVariable int userID) {
+    /**
+     * 마이페이지 5월 24일 수정본
+     */
+    @GetMapping("/mypage/user/profile")
+    public ResponseEntity<User> info(@RequestBody UserLoginOutput userLoginOutput) {
 
-        User userInfo = userService.getUserInfo(userID);
+        User userInfo = userService.getUserInfo(userLoginOutput.getEnid());
 
-        return new ResponseEntity<>(userInfo,HttpStatus.OK);
+        return new ResponseEntity<>(userInfo, HttpStatus.OK);
     }
+
+//    /**
+//     * 마이페이지 5월 24일 수정전 원본
+//     */
+//    @GetMapping("/user/{userID}")
+//    public ResponseEntity<User> info(@PathVariable int userID) {
+//
+//        User userInfo = userService.getUserInfo(userID);
+//
+//        return new ResponseEntity<>(userInfo,HttpStatus.OK);
+//    }
 
     @PostMapping("/{userID}")
     public ResponseEntity<UpdateUser> update(@PathVariable int userID, @RequestBody User user){

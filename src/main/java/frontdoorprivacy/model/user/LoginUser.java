@@ -6,18 +6,18 @@ import lombok.Setter;
 @Getter @Setter
 public class LoginUser {
 
-    private String userId;
+    private String inputId;
     private String pw;
 
     public LoginUser() {
     }
 
-    public String getUserId() {
-        return userId;
+    public String getInputId() {
+        return inputId;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setInputId(String inputId) {
+        this.inputId = inputId;
     }
 
     public String getPw() {

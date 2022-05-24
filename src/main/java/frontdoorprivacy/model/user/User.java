@@ -19,7 +19,6 @@ public class User {
     private String UseYN;
     private String Role;
 
-
     public int getId() {
         return id;
     }
@@ -28,11 +27,11 @@ public class User {
         this.id = id;
     }
 
-    public String getUsername() {
+    public String getUserName() {
         return userName;
     }
 
-    public void setUsername(String userName) {
+    public void setUserName(String userName) {
         this.userName = userName;
     }
 
@@ -68,14 +67,6 @@ public class User {
         this.password = password;
     }
 
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -90,14 +81,6 @@ public class User {
 
     public void setUseYN(String useYN) {
         UseYN = useYN;
-    }
-
-    public String getUserYN() {
-        return UseYN;
-    }
-
-    public void setUserYN(String userYN) {
-        UseYN = userYN;
     }
 
     public String getRole() {

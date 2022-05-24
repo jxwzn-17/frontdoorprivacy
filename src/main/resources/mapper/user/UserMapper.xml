@@ -4,7 +4,7 @@
 <mapper namespace="frontdoorprivacy.mapper.user.UserMapper">
     <select id="getUserInfo" resultType="User" parameterType="Integer" statementType="CALLABLE">
         { CALL FND_sd_User_Info(
-        #{id}
+        #{enid}
         )
         }
     </select>
@@ -41,7 +41,7 @@
 
     <select id="enLogin" parameterType="LoginUser" resultType="UserLoginOutput" statementType="CALLABLE">
         { CALL FND_login_User(
-        #{userId},
+        #{inputId},
         #{pw}
         )
         }
