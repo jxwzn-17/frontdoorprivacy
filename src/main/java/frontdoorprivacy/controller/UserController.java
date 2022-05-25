@@ -25,7 +25,7 @@ public class UserController{
     }
 
     /**
-     * 마이페이지 5월 24일 수정본
+     * 마이페이지에 값 띄워주기 5월 24일 수정본
      */
     @PostMapping("/mypage/user/profile")
     public ResponseEntity<User> info(@RequestBody UserLoginOutput userLoginOutput) {
@@ -46,12 +46,16 @@ public class UserController{
 //        return new ResponseEntity<>(userInfo,HttpStatus.OK);
 //    }
 
-    @PostMapping("/{userID}")
-    public ResponseEntity<UpdateUser> update(@PathVariable int userID, @RequestBody User user){
+    /**
+     * 5월 24일 수정 - PathVariable 삭제
+     * 마이페이지에서 수정해준 값을 받아와서 다시 넘겨주기
+     */
+    @PostMapping("/mypage/user/edit")
+    public ResponseEntity<UpdateUser> update(@RequestBody User user){
 
         UpdateUser founduser = new UpdateUser();
 
-        founduser.setId(userID);
+        founduser.setId(user.getId());
         founduser.setP_UserId(user.getUserId());
         founduser.setP_Email(user.getEmail());
         founduser.setP_Password(user.getPassword());

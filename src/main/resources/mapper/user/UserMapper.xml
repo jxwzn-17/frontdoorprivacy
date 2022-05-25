@@ -27,7 +27,7 @@
         #{P_PhoneNumber},
         #{P_UserId},
         #{P_Password},
-        #{P_EmailAddress}
+        #{P_Email}
         )
         }
     </update>
