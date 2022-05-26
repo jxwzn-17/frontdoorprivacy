@@ -11,6 +11,33 @@ public class UpdateEnterprise {
     String e_email;
     String e_address;
     int e_phone;
+    int e_accountnumber;
+    String e_bankname;
+    String e_password;
+
+    public int getE_accountnumber() {
+        return e_accountnumber;
+    }
+
+    public void setE_accountnumber(int e_accountnumber) {
+        this.e_accountnumber = e_accountnumber;
+    }
+
+    public String getE_bankname() {
+        return e_bankname;
+    }
+
+    public void setE_bankname(String e_bankname) {
+        this.e_bankname = e_bankname;
+    }
+
+    public String getE_password() {
+        return e_password;
+    }
+
+    public void setE_password(String e_password) {
+        this.e_password = e_password;
+    }
 
     public UpdateEnterprise() {
     }

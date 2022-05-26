@@ -35,13 +35,28 @@ public class EnterpriseController {
          return new ResponseEntity<MyEnterpriseInfo>(myEnterpriseInfo,HttpStatus.OK);
     }
 
-    @PostMapping("/profile/edit")
+    @PostMapping("/edit/get")
+    public ResponseEntity<MyEnterpriseInfo> edit(@RequestBody HashMap<String,Integer> companyinfo) {
+
+        logger.info(String.valueOf(companyinfo.get("enid")));
+        MyEnterpriseInfo myEnterpriseInfo = enterpriseService.getEnterpriseInfo(companyinfo.get("enid"));
+
+        return new ResponseEntity<MyEnterpriseInfo>(myEnterpriseInfo,HttpStatus.OK);
+    }
+
+    @PostMapping("/edit")
     public ResponseEntity<?> update(@RequestBody UpdateEnterprise updateEnterprise){
 
         HashMap<String, String> msg = new HashMap<>();
+        logger.info(updateEnterprise.getE_bankname());
+        logger.info(updateEnterprise.getE_name());
+        logger.info(updateEnterprise.getE_password());
+
         enterpriseService.updateEnterpriseInfo(updateEnterprise);
 
         msg.put("message","Success");
         return ResponseEntity.ok(msg);
     }
+
+
 }

@@ -45,7 +45,10 @@
         #{e_name},
         #{e_email},
         #{e_address},
-        #{e_phone}
+        #{e_phone},
+        #{e_accountnumber},
+        #{e_bankname},
+        #{e_password}
         )
         }
     </update>
