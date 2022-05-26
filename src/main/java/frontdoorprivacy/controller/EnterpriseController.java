@@ -26,10 +26,11 @@ public class EnterpriseController {
     @Autowired
     public EnterpriseController(EnterpriseService enterpriseService){this.enterpriseService= enterpriseService;}
 
-    @GetMapping("/profile")
-    public ResponseEntity<MyEnterpriseInfo> info(@PathVariable int userID) {
+    @PostMapping("/profile")
+    public ResponseEntity<MyEnterpriseInfo> info(@RequestBody HashMap<String,Integer> companyinfo) {
 
-        MyEnterpriseInfo myEnterpriseInfo = enterpriseService.getEnterpriseInfo(userID);
+        logger.info(String.valueOf(companyinfo.get("enid")));
+        MyEnterpriseInfo myEnterpriseInfo = enterpriseService.getEnterpriseInfo(companyinfo.get("enid"));
 
          return new ResponseEntity<MyEnterpriseInfo>(myEnterpriseInfo,HttpStatus.OK);
     }

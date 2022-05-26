@@ -5,12 +5,33 @@ import lombok.Setter;
 
 @Getter@Setter
 public class MyEnterpriseInfo {
+    String EnterpriseID;
+    String password;
     String EnterpriseName;
+    String EnterpriseNumber;
     String EmailAddress;
-    String Address;
     int PhoneNumber;
+    String Address;
+    String BankName;
+    String AccountNumber;
 
     public MyEnterpriseInfo() {
+    }
+
+    public String getEnterpriseID() {
+        return EnterpriseID;
+    }
+
+    public void setEnterpriseID(String enterpriseID) {
+        EnterpriseID = enterpriseID;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getEnterpriseName() {
@@ -21,12 +42,28 @@ public class MyEnterpriseInfo {
         EnterpriseName = enterpriseName;
     }
 
+    public String getEnterpriseNumber() {
+        return EnterpriseNumber;
+    }
+
+    public void setEnterpriseNumber(String enterpriseNumber) {
+        EnterpriseNumber = enterpriseNumber;
+    }
+
     public String getEmailAddress() {
         return EmailAddress;
     }
 
     public void setEmailAddress(String emailAddress) {
         EmailAddress = emailAddress;
+    }
+
+    public int getPhoneNumber() {
+        return PhoneNumber;
+    }
+
+    public void setPhoneNumber(int phoneNumber) {
+        PhoneNumber = phoneNumber;
     }
 
     public String getAddress() {
@@ -37,11 +74,19 @@ public class MyEnterpriseInfo {
         Address = address;
     }
 
-    public int getPhoneNumber() {
-        return PhoneNumber;
+    public String getBankName() {
+        return BankName;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
-        PhoneNumber = phoneNumber;
+    public void setBankName(String bankName) {
+        BankName = bankName;
+    }
+
+    public String getAccountNumber() {
+        return AccountNumber;
+    }
+
+    public void setAccountNumber(String accountNumber) {
+        AccountNumber = accountNumber;
     }
 }
