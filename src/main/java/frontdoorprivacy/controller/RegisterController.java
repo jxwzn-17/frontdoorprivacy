@@ -15,7 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -52,6 +51,7 @@ public class RegisterController {
 
     }
 
+    // 아이디 중복성 검사
     @PostMapping("/register/company/check")
     public ResponseEntity<?> check(@RequestBody HashMap<String,String> enterpriseID){
         String output;

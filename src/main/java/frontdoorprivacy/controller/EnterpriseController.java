@@ -2,8 +2,6 @@ package frontdoorprivacy.controller;
 
 import frontdoorprivacy.model.enterprise.MyEnterpriseInfo;
 import frontdoorprivacy.model.enterprise.UpdateEnterprise;
-import frontdoorprivacy.model.user.UpdateUser;
-import frontdoorprivacy.model.user.User;
 import frontdoorprivacy.service.enterprise.EnterpriseService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,7 +11,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
 
