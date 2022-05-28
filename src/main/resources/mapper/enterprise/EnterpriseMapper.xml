@@ -52,4 +52,12 @@
         )
         }
     </update>
+
+    <update id="deleteEnterpriseInfo" parameterType="Integer" statementType="CALLABLE">
+        { CALL FND_de_Enterprise_Info(
+        #{id}
+        )
+        }
+
+    </update>
 </mapper>

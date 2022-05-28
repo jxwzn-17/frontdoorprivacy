@@ -56,5 +56,13 @@ public class EnterpriseController {
         return ResponseEntity.ok(msg);
     }
 
+    @PostMapping("/withdraw")
+    public ResponseEntity<?> delete(@RequestBody HashMap<String, Integer> id){
+//        logger.info();
+        HashMap<String, String> msg = new HashMap<>();
+        enterpriseService.deleteEnterpriseInfo(id.get("enid"));
 
+        msg.put("message","Success");
+        return ResponseEntity.ok(msg);
+    }
 }

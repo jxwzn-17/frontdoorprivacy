@@ -18,5 +18,5 @@ public interface EnterpriseMapper {
     //마이페이지
     MyEnterpriseInfo getEnterpriseInfo(int id);
     void updateEnterpriseInfo(UpdateEnterprise updateEnterprise);
-
+    void deleteEnterpriseInfo(int id);
 }
