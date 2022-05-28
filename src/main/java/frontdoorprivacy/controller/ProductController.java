@@ -21,7 +21,7 @@ public class ProductController {
     }
 
     @PostMapping("/mypage/company/product")
-    public ResponseEntity<ProductDB> enrollProduct(@RequestPart MultipartFile multipartFile,
+    public void enrollProduct(@RequestPart MultipartFile multipartFile,
                                                    @RequestPart ProductReq productReq) {
 
         //uuid 변경하고 저장한다음 파일명하고 파일경로 받아오기
