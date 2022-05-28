@@ -47,4 +47,11 @@
         }
     </select>
 
+    <delete id="deleteUser" parameterType="DeleteUser" statementType="CALLABLE">
+        { FND_Delete_User(
+        #{id}
+        )
+        }
+    </delete>
+
 </mapper>

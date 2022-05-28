@@ -18,6 +18,7 @@ import java.util.HashMap;
 public class UserController{
     private Logger logger = LoggerFactory.getLogger(UserController.class);
     private static UserService userService;
+
     @Autowired
     public UserController(UserService userService){
         this.userService = userService;
@@ -55,6 +56,7 @@ public class UserController{
 
         UpdateUser founduser = new UpdateUser();
 
+
         founduser.setId(user.getId());
         founduser.setP_UserId(user.getUserId());
         founduser.setP_Email(user.getEmail());
@@ -89,6 +91,17 @@ public class UserController{
         returnvalue.put("returnvalue",output);
 
         return ResponseEntity.ok(returnvalue);
+    }
+
+    /**
+     * 회원탈퇴
+     */
+    @PostMapping("")
+    public ResponseEntity<?> deleteUser(@RequestBody DeleteUser deleteUser) {
+        userService.deleteUser(deleteUser);
+        HashMap<String,String> msg = new HashMap<>();
+        msg.put("message","Success");
+        return ResponseEntity.ok(msg);
     }
 
 }

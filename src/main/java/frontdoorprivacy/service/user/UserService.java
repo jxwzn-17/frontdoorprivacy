@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserService{
+
     private static final Marker MESSAGE_MARKER = MarkerFactory.getMarker("USER");
     private static final Logger logger = LoggerFactory.getLogger(UserService.class);
     private static UserMapper userMapper;
@@ -41,5 +42,9 @@ public class UserService{
 
     public String checkmultiple(String inputId){
         return userMapper.checkmultiple(inputId);
+    }
+
+    public void deleteUser(DeleteUser deleteUser) {
+        userMapper.deleteUser(deleteUser);
     }
 }
