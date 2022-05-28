@@ -31,4 +31,5 @@ public class EnterpriseService {
     //마이페이지
     public MyEnterpriseInfo getEnterpriseInfo(int id){ return enterpriseMapper.getEnterpriseInfo(id);}
     public void updateEnterpriseInfo(UpdateEnterprise updateEnterprise){enterpriseMapper.updateEnterpriseInfo(updateEnterprise);}
+    public void deleteEnterpriseInfo(int id){enterpriseMapper.deleteEnterpriseInfo(id);}
 }
