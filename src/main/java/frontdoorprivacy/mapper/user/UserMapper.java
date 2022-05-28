@@ -13,5 +13,5 @@ public interface UserMapper {
     void joinUserInfo(JoinUser joinUser);
     UserLoginOutput enLogin(LoginUser loginUser);
     String checkmultiple(String inputId);
-    void deleteUser(DeleteUser deleteUser);
+    void WithdrawUser(Withdraw withdraw);
 }

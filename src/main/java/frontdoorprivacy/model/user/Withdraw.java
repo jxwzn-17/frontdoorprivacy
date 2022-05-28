@@ -1,6 +1,6 @@
 package frontdoorprivacy.model.user;
 
-public class DeleteUser {
+public class Withdraw {
 
     private int id;
 

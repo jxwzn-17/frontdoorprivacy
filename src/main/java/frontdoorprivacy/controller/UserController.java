@@ -97,8 +97,8 @@ public class UserController{
      * 회원탈퇴
      */
     @PostMapping("/mypage/user/withdraw")
-    public ResponseEntity<?> deleteUser(@RequestBody DeleteUser deleteUser) {
-        userService.deleteUser(deleteUser);
+    public ResponseEntity<?> deleteUser(@RequestBody Withdraw withdraw) {
+        userService.WithdrawUser(withdraw);
         HashMap<String,String> msg = new HashMap<>();
         msg.put("message","Success");
         return ResponseEntity.ok(msg);

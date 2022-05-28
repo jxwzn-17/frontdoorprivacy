@@ -47,8 +47,8 @@
         }
     </select>
 
-    <update id="deleteUser" parameterType="DeleteUser" statementType="CALLABLE">
-        { FND_Delete_User(
+    <update id="WithdrawUser" parameterType="Withdraw" statementType="CALLABLE">
+        { CALL FND_de_User(
         #{id}
         )
         }

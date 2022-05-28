@@ -44,7 +44,7 @@ public class UserService{
         return userMapper.checkmultiple(inputId);
     }
 
-    public void deleteUser(DeleteUser deleteUser) {
-        userMapper.deleteUser(deleteUser);
+    public void WithdrawUser(Withdraw withdraw) {
+        userMapper.WithdrawUser(withdraw);
     }
 }

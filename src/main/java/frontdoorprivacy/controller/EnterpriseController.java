@@ -17,6 +17,7 @@ import java.util.HashMap;
 @Controller
 @RequestMapping("/mypage/company")
 public class EnterpriseController {
+
     private Logger logger = LoggerFactory.getLogger(EnterpriseController.class);
     private static EnterpriseService enterpriseService;
 
@@ -29,7 +30,7 @@ public class EnterpriseController {
         logger.info(String.valueOf(companyinfo.get("enid")));
         MyEnterpriseInfo myEnterpriseInfo = enterpriseService.getEnterpriseInfo(companyinfo.get("enid"));
 
-         return new ResponseEntity<MyEnterpriseInfo>(myEnterpriseInfo,HttpStatus.OK);
+        return new ResponseEntity<MyEnterpriseInfo>(myEnterpriseInfo,HttpStatus.OK);
     }
 
     @PostMapping("/edit/get")
