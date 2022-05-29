@@ -60,7 +60,7 @@ public class EnterpriseController {
     public ResponseEntity<?> delete(@RequestBody HashMap<String, Integer> id){
 //        logger.info();
         HashMap<String, String> msg = new HashMap<>();
-        enterpriseService.deleteEnterpriseInfo(id.get("enid"));
+        enterpriseService.deleteEnterpriseInfo(id.get("id"));
 
         msg.put("message","Success");
         return ResponseEntity.ok(msg);
