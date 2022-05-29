@@ -3,6 +3,18 @@
 
 <mapper namespace="frontdoorprivacy.mapper.product.ProductMapper">
 
-
+    <insert id="enrollProduct" parameterType="ProductDB" statementType="CALLABLE">
+        { CALL FND_en_Product(
+        #{P_ENID},
+        #{P_ProductName},
+        #{P_Price},
+        #{P_Category},
+        #{P_Detail},
+        #{P_ImageFileName},
+        #{P_ImageFilePath},
+        #{P_DetailFileName}
+        )
+        }
+    </insert>
 
 </mapper>
