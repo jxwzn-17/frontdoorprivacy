@@ -3,6 +3,8 @@ package frontdoorprivacy.controller;
 import frontdoorprivacy.model.product.ProductDB;
 import frontdoorprivacy.model.product.ProductReq;
 import frontdoorprivacy.service.product.ProductService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -17,7 +19,7 @@ import java.util.UUID;
 
 @Controller
 public class ProductController {
-
+    private Logger logger = LoggerFactory.getLogger(RegisterController.class);
     private static ProductService productService;
 
     //각자 작업 컴퓨터 C드라이브 아래에 frontdoor 경로 추가해놓을것
@@ -32,6 +34,9 @@ public class ProductController {
     public ResponseEntity<?> enrollProduct(@RequestPart(value = "multipartFile", required = false) MultipartFile multipartFile,
                               @RequestPart(value = "productReq") ProductReq productReq,
                               @RequestPart(value = "detailFile", required = false) MultipartFile detailFile) throws IOException {
+
+
+        logger.info("multipartFile = {}",multipartFile);
 
         //여기는 썸네일에 쓸 이미지 파일을 uuid 로 바꿔주고 저장
         //uuid 변경하고 저장한다음 파일명하고 파일경로 받아오기
@@ -68,7 +73,7 @@ public class ProductController {
         return ResponseEntity.ok(msg);
     }
 
-    //" "여기안에 로컬저장소를 입력하면됨
+
     public String getFullPath(String filename) {
         return Path + filename;
     }
