@@ -9,6 +9,15 @@ public class ProductDB {
     private String P_Detail;
     private String P_ImageFileName;
     private String P_ImageFilePath;
+    private String P_DetailFileName;
+
+    public String getP_DetailFileName() {
+        return P_DetailFileName;
+    }
+
+    public void setP_DetailFileName(String p_DetailFileName) {
+        P_DetailFileName = p_DetailFileName;
+    }
 
     public int getP_ENID() {
         return P_ENID;
