@@ -20,8 +20,8 @@ public class ProductController {
 
     private static ProductService productService;
 
-    //Pull 해올때마다 항상 자기 로컬저장소 경로로 바꿀것
-    private static String Path = "C:/Users/82105/image/";
+    //각자 작업 컴퓨터 C드라이브 아래에 frontdoor 경로 추가해놓을것
+    private static String Path = "C:/frontdoor/";
 
     @Autowired
     public ProductController(ProductService productService) {
