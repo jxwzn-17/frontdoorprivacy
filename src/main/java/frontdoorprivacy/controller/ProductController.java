@@ -26,9 +26,9 @@ public class ProductController {
     }
 
     @PostMapping("/mypage/company/product")
-    public ResponseEntity<?> enrollProduct(@RequestPart MultipartFile multipartFile,
-                              @RequestPart ProductReq productReq,
-                              @RequestPart MultipartFile detailFile) throws IOException {
+    public ResponseEntity<?> enrollProduct(@RequestPart(value = "multipartFile", required = false) MultipartFile multipartFile,
+                              @RequestPart(value = "productReq") ProductReq productReq,
+                              @RequestPart(value = "detailFile", required = false) MultipartFile detailFile) throws IOException {
 
         //여기는 썸네일에 쓸 이미지 파일을 uuid 로 바꿔주고 저장
         //uuid 변경하고 저장한다음 파일명하고 파일경로 받아오기
