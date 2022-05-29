@@ -3,6 +3,7 @@ package frontdoorprivacy.controller;
 import frontdoorprivacy.model.product.ProductDB;
 import frontdoorprivacy.model.product.ProductReq;
 import frontdoorprivacy.service.product.ProductService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 
 @Controller
+@Slf4j
 public class ProductController {
 
     private static ProductService productService;
@@ -29,8 +31,9 @@ public class ProductController {
         //productDB 에 set으로 설정해주기
 
         //프로시저 호출해서 데베에 insert 해주기
-
+ 
         //return 은 ProductDB 해주기 or ok 메세지만 보내주면됨
 
     }
+
 }

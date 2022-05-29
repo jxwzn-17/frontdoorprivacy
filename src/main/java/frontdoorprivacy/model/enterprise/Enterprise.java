@@ -6,6 +6,7 @@ import lombok.Setter;
 @Getter @Setter
 public class Enterprise {
 
+
     private int eNID;
     private String enterpriseName;
     private String enterpriseNumber;
