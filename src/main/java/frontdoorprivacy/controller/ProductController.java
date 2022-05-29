@@ -20,6 +20,9 @@ public class ProductController {
 
     private static ProductService productService;
 
+    //Pull 해올때마다 항상 자기 로컬저장소 경로로 바꿀것
+    private static String Path = "C:/Users/82105/image/";
+
     @Autowired
     public ProductController(ProductService productService) {
         this.productService = productService;
@@ -33,8 +36,10 @@ public class ProductController {
         //여기는 썸네일에 쓸 이미지 파일을 uuid 로 바꿔주고 저장
         //uuid 변경하고 저장한다음 파일명하고 파일경로 받아오기
         String originalFilename = multipartFile.getOriginalFilename();
+
         //uuid를 이용 파일명 변경
         String storeFileName = createStoreFileName(originalFilename);
+
         //로컬에 파일을 저장
         multipartFile.transferTo(new File(getFullPath(storeFileName)));
 
@@ -51,7 +56,7 @@ public class ProductController {
         productDB.setP_Category(productReq.getP_Category());
         productDB.setP_Detail(productReq.getP_Detail());
         productDB.setP_ImageFileName(storeFileName);
-        productDB.setP_ImageFilePath("C:/Users/82105/image/");
+        productDB.setP_ImageFilePath(Path);
         productDB.setP_DetailFileName(detailStoreFileName);
 
         //프로시저 호출해서 데베에 insert 해주기
@@ -63,9 +68,9 @@ public class ProductController {
         return ResponseEntity.ok(msg);
     }
 
-    //" "여기안에 로컬저장소를 입력하면됨됨
+    //" "여기안에 로컬저장소를 입력하면됨
     public String getFullPath(String filename) {
-        return "C:/Users/82105/image/" + filename;
+        return Path + filename;
     }
 
     private String createStoreFileName(String originalFilename) {

@@ -10,7 +10,6 @@ public class ProductReq {
     private String P_Category;
     private String P_Detail;
 
-
     public int getP_ENID() {
         return P_ENID;
     }
