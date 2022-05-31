@@ -47,4 +47,8 @@ public class UserService{
     public void WithdrawUser(Withdraw withdraw) {
         userMapper.WithdrawUser(withdraw);
     }
+
+    public Basket showBasket(int B_PDID){
+        return userMapper.showBasket(B_PDID);
+    }
 }

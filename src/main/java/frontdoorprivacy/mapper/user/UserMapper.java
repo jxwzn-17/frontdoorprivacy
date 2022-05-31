@@ -14,4 +14,5 @@ public interface UserMapper {
     UserLoginOutput enLogin(LoginUser loginUser);
     String checkmultiple(String inputId);
     void WithdrawUser(Withdraw withdraw);
+    Basket showBasket(int B_PDID);
 }

@@ -104,6 +104,25 @@ public class UserController{
         return ResponseEntity.ok(msg);
     }
 
+    /**
+     * 장바구니 값 받아서 띄워주기
+     */
+
+    //확인 한번 해봐 프로시저랑 테이블 매칭은 아직이야... 철진아 이따가 포스트맨 사용해서 값넘어가는지 같이 확인하자
+    //시간 될때 코드 한번 봐줘, 개인 로그인 한담에 상품을 장바구니에 넣었을 때, Basket 클래스로 넘어가서 값을 뿌려준다.
+    // 마이페이지 장바구니 클릭시 확인
+
+    @PostMapping("/mypage/user/basket")
+    public ResponseEntity<Basket> basketUser(@RequestBody Basket basket) {
+        Basket basketInfo = userService.showBasket(basket.getB_PDID());
+        HashMap<String,String> msg = new HashMap<>();
+        msg.put("message","Success");
+        return new ResponseEntity<>(basketInfo, HttpStatus.OK);
+    }
+
+
+
+
 }
 
 
