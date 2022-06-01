@@ -111,7 +111,7 @@ public class UserController{
      *
      * 로직 - 유저의 usid 받아와서 sql문을 이용하여 내가 구독한 상품의 리스트를 받아올것임.
      */
-    @PostMapping("/mypage/user/manage/list")
+    @PostMapping("/mypage/user/manage")
     public ResponseEntity<List<MySubscribeListRes>> mySubscribeProduct(@RequestBody MySubscribeListReq mySubscribeListReq){
         List<MySubscribeListRes> mySubscribeListRes = userService.mySubscribeList(mySubscribeListReq);
         System.out.println(mySubscribeListReq.getP_USID());
@@ -119,5 +119,3 @@ public class UserController{
     }
 
 }
-
-
