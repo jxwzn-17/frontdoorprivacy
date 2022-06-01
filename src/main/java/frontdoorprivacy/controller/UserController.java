@@ -1,7 +1,9 @@
 package frontdoorprivacy.controller;
 
+
 import frontdoorprivacy.model.user.*;
 import frontdoorprivacy.service.user.UserService;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -102,6 +104,18 @@ public class UserController{
         HashMap<String,String> msg = new HashMap<>();
         msg.put("message","Success");
         return ResponseEntity.ok(msg);
+    }
+
+    /**
+     * 내가 구독한 상품 띄워주기
+     *
+     * 로직 - 유저의 usid 받아와서 sql문을 이용하여 내가 구독한 상품의 리스트를 받아올것임.
+     */
+    @PostMapping("/mypage/user/manage")
+    public ResponseEntity<MySubscribeListRes> mySubscribeProduct(@RequestBody MySubscribeListReq mySubscribeListReq){
+        MySubscribeListRes mySubscribeListRes = userService.mySubscribeListRes(mySubscribeListReq);
+        System.out.println(mySubscribeListRes);
+        return new ResponseEntity<>(mySubscribeListRes, HttpStatus.OK);
     }
 
 }

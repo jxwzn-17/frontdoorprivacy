@@ -2,21 +2,24 @@ package frontdoorprivacy.service.user;
 
 import frontdoorprivacy.mapper.user.UserMapper;
 import frontdoorprivacy.model.user.*;
+
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Marker;
 import org.slf4j.MarkerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 
+@Repository
 @Service
 public class UserService{
 
     private static final Marker MESSAGE_MARKER = MarkerFactory.getMarker("USER");
     private static final Logger logger = LoggerFactory.getLogger(UserService.class);
     private static UserMapper userMapper;
-
 
 
     @Autowired
@@ -46,5 +49,9 @@ public class UserService{
 
     public void WithdrawUser(Withdraw withdraw) {
         userMapper.WithdrawUser(withdraw);
+    }
+
+    public MySubscribeListRes mySubscribeListRes(MySubscribeListReq mySubscribeListReq) {
+        return userMapper.mySubscribeListRes(mySubscribeListReq);
     }
 }

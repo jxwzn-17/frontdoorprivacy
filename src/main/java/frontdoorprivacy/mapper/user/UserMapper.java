@@ -5,7 +5,8 @@ import frontdoorprivacy.model.user.*;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
-@Repository
+import java.util.List;
+
 @Mapper
 public interface UserMapper {
     User getUserInfo(int userid);
@@ -14,4 +15,6 @@ public interface UserMapper {
     UserLoginOutput enLogin(LoginUser loginUser);
     String checkmultiple(String inputId);
     void WithdrawUser(Withdraw withdraw);
+    MySubscribeListRes mySubscribeListRes(MySubscribeListReq mySubscribeListReq);
+
 }
