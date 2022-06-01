@@ -5,14 +5,14 @@
 
     <insert id="enrollProduct" parameterType="ProductDB" statementType="CALLABLE">
         { CALL FND_en_Product(
-        #{P_ENID},
-        #{P_ProductName},
-        #{P_Price},
-        #{P_Category},
-        #{P_Detail},
-        #{P_ImageFileName},
-        #{P_ImageFilePath},
-        #{P_DetailFileName}
+        #{p_ENID},
+        #{p_ProductName},
+        #{p_Price},
+        #{p_Category},
+        #{p_Detail},
+        #{p_ImageFileName},
+        #{p_ImageFilePath},
+        #{p_DetailFileName}
         )
         }
     </insert>
