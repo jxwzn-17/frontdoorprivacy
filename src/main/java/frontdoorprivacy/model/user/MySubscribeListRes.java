@@ -67,4 +67,8 @@ public class MySubscribeListRes {
     public void setP_Detail(String p_Detail) {
         P_Detail = p_Detail;
     }
+
+    public MySubscribeListRes(){
+
+    }
 }

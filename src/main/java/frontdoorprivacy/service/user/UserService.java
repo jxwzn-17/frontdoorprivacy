@@ -4,6 +4,7 @@ import frontdoorprivacy.mapper.user.UserMapper;
 import frontdoorprivacy.model.user.*;
 
 
+import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Marker;
@@ -12,14 +13,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 
-@Repository
+
+
 @Service
 public class UserService{
 
     private static final Marker MESSAGE_MARKER = MarkerFactory.getMarker("USER");
     private static final Logger logger = LoggerFactory.getLogger(UserService.class);
     private static UserMapper userMapper;
+
+    @Autowired
+    private SqlSession sqlSession;
 
 
     @Autowired
@@ -51,7 +57,7 @@ public class UserService{
         userMapper.WithdrawUser(withdraw);
     }
 
-    public MySubscribeListRes mySubscribeListRes(MySubscribeListReq mySubscribeListReq) {
-        return userMapper.mySubscribeListRes(mySubscribeListReq);
+    public MySubscribeListRes mySubscribeList(MySubscribeListReq mySubscribeListReq) {
+        return userMapper.mySubscribeList(mySubscribeListReq);
     }
 }
