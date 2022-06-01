@@ -10,6 +10,7 @@ import java.util.List;
 @Repository
 @Mapper
 public interface UserMapper {
+
     User getUserInfo(int userid);
     void updateUserInfo(UpdateUser updateUser);
     void joinUserInfo(JoinUser joinUser);

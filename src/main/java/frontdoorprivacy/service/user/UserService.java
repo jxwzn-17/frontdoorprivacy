@@ -25,10 +25,6 @@ public class UserService{
     private static UserMapper userMapper;
 
     @Autowired
-    private SqlSession sqlSession;
-
-
-    @Autowired
     public UserService(UserMapper userMapper){
         this.userMapper = userMapper;
     }
@@ -60,4 +56,5 @@ public class UserService{
     public List<MySubscribeListRes> mySubscribeList(MySubscribeListReq mySubscribeListReq) {
         return userMapper.mySubscribeList(mySubscribeListReq);
     }
+
 }
