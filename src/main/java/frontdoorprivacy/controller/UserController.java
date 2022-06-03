@@ -110,6 +110,8 @@ public class UserController{
      * 내가 구독한 상품 띄워주기
      *
      * 로직 - 유저의 usid 받아와서 sql문을 이용하여 내가 구독한 상품의 리스트를 받아올것임.
+     *
+     * 받는건 p_USID 로 받고, 보내는건 MySubscribeListRes 객체를 리스트에 담아서 보내줌
      */
     @PostMapping("/mypage/user/manage")
     public ResponseEntity<List<MySubscribeListRes>> mySubscribeProduct(@RequestBody MySubscribeListReq mySubscribeListReq){
