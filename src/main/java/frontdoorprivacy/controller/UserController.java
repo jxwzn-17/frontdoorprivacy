@@ -120,4 +120,16 @@ public class UserController{
         return new ResponseEntity<>(mySubscribeListRes, HttpStatus.OK);
     }
 
+    /**
+     * 구독 해지하기
+     */
+    @PostMapping("/mypage/user/manage/withdraw")
+    public ResponseEntity<?> subscribeWithdraw(@RequestBody SubscribeWithdrawReq subscribeWithdrawReq){
+        userService.SubscribeWithdraw(subscribeWithdrawReq);
+        HashMap<String,String> msg = new HashMap<>();
+        msg.put("message","Success");
+        return ResponseEntity.ok(msg);
+    }
+
+
 }

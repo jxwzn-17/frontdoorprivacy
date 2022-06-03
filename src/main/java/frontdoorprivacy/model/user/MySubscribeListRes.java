@@ -3,7 +3,7 @@ package frontdoorprivacy.model.user;
 public class MySubscribeListRes {
 
     //넘겨줄값은 파일을 꺼내오는데 필요한 이미지파일명과 이미지파일경로, 구독주기/가격, 설명과 상품이름, 상품PDID
-    //총 7개임
+    //총 8개임
     private int P_PDID;
     private String P_ProductName;
     private String P_ImageFilePath;
@@ -11,6 +11,7 @@ public class MySubscribeListRes {
     private int P_Price;
     private String P_SubscribeCycle;
     private String P_Detail;
+    private String P_SSID;
 
     public int getP_PDID() {
         return P_PDID;
@@ -66,6 +67,14 @@ public class MySubscribeListRes {
 
     public void setP_Detail(String p_Detail) {
         P_Detail = p_Detail;
+    }
+
+    public String getP_SSID() {
+        return P_SSID;
+    }
+
+    public void setP_SSID(String p_SSID) {
+        P_SSID = p_SSID;
     }
 
     public MySubscribeListRes(){

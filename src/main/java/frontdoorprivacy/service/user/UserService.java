@@ -56,4 +56,8 @@ public class UserService{
         return userMapper.mySubscribeList(mySubscribeListReq);
     }
 
+    public void SubscribeWithdraw(SubscribeWithdrawReq subscribeWithdrawReq) {
+        userMapper.SubscribeWithdraw(subscribeWithdrawReq);
+    }
+
 }

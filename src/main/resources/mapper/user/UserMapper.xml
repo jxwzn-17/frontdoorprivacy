@@ -61,4 +61,11 @@
         }
     </select>
 
+    <update id="SubscribeWithdraw" parameterType="SubscribeWithdrawReq" statementType="CALLABLE">
+        { CALL FND_SubscribeDe_User(
+        #{p_SSID}
+        )
+        }
+    </update>
+
 </mapper>

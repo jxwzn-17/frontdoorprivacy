@@ -18,5 +18,5 @@ public interface UserMapper {
     String checkmultiple(String inputId);
     void WithdrawUser(Withdraw withdraw);
     List<MySubscribeListRes> mySubscribeList(MySubscribeListReq mySubscribeListReq);
-
+    void SubscribeWithdraw(SubscribeWithdrawReq subscribeWithdrawReq);
 }
