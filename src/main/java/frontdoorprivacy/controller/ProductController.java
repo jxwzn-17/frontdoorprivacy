@@ -1,5 +1,6 @@
 package frontdoorprivacy.controller;
 
+import frontdoorprivacy.model.product.CategoryProduct;
 import frontdoorprivacy.model.product.ProductDB;
 import frontdoorprivacy.model.product.ProductReq;
 import frontdoorprivacy.service.product.ProductService;
@@ -15,10 +16,11 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.UUID;
 
 @Controller
-@RequestMapping("/mypage/company/")
+@RequestMapping
 public class ProductController {
     private Logger logger = LoggerFactory.getLogger(ProductController.class);
     private static ProductService productService;
@@ -32,7 +34,7 @@ public class ProductController {
         this.productService = productService;
     }
 
-    @PostMapping("product")
+    @PostMapping("/mypage/company/product")
     public ResponseEntity<?> enrollProduct(@RequestPart(value = "multipartFile", required = false) MultipartFile multipartFile,
                                            @RequestPart(value = "productReq") ProductReq ProductReq,
                                            @RequestPart(value = "detailFile", required = false) MultipartFile detailFile
@@ -73,6 +75,13 @@ public class ProductController {
         msg.put("message","Success");
         return ResponseEntity.ok(msg);
     }
+    @GetMapping("/category/main")
+    public List<CategoryProduct> getAllProduct(){
+        List<CategoryProduct> categoryProducts = productService.getAllProduct();
+
+        return categoryProducts;
+    }
+
 
 
 
