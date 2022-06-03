@@ -2,76 +2,107 @@ package frontdoorprivacy.model.product;
 
 public class ProductDB {
 
-    private int P_ENID;
-    private String P_ProductName;
-    private int P_Price;
-    private String P_Category;
-    private String P_Detail;
-    private String P_ImageFileName;
-    private String P_ImageFilePath;
-    private String P_DetailFileName;
+    private int p_ENID;
+    private String p_ProductName;
+    private int p_Price;
+    private int p_Sale;
+    private String p_Category;
+    private String p_DetailCategory;
+    private String p_Detail;
+    private String p_ImageFileName;
+    private String p_ImageFilePath;
+    private String p_DetailFileName;
+    private String p_SaleYN;
 
-    public String getP_DetailFileName() {
-        return P_DetailFileName;
-    }
 
-    public void setP_DetailFileName(String p_DetailFileName) {
-        P_DetailFileName = p_DetailFileName;
+    public ProductDB() {
     }
 
     public int getP_ENID() {
-        return P_ENID;
+        return p_ENID;
     }
 
     public void setP_ENID(int p_ENID) {
-        P_ENID = p_ENID;
+        this.p_ENID = p_ENID;
     }
 
     public String getP_ProductName() {
-        return P_ProductName;
+        return p_ProductName;
     }
 
     public void setP_ProductName(String p_ProductName) {
-        P_ProductName = p_ProductName;
+        this.p_ProductName = p_ProductName;
     }
 
     public int getP_Price() {
-        return P_Price;
+        return p_Price;
     }
 
     public void setP_Price(int p_Price) {
-        P_Price = p_Price;
+        this.p_Price = p_Price;
+    }
+
+    public int getP_Sale() {
+        return p_Sale;
+    }
+
+    public void setP_Sale(int p_Sale) {
+        this.p_Sale = p_Sale;
     }
 
     public String getP_Category() {
-        return P_Category;
+        return p_Category;
     }
 
     public void setP_Category(String p_Category) {
-        P_Category = p_Category;
+        this.p_Category = p_Category;
+    }
+
+    public String getP_DetailCategory() {
+        return p_DetailCategory;
+    }
+
+    public void setP_DetailCategory(String p_DetailCategory) {
+        this.p_DetailCategory = p_DetailCategory;
     }
 
     public String getP_Detail() {
-        return P_Detail;
+        return p_Detail;
     }
 
     public void setP_Detail(String p_Detail) {
-        P_Detail = p_Detail;
+        this.p_Detail = p_Detail;
     }
 
     public String getP_ImageFileName() {
-        return P_ImageFileName;
+        return p_ImageFileName;
     }
 
     public void setP_ImageFileName(String p_ImageFileName) {
-        P_ImageFileName = p_ImageFileName;
+        this.p_ImageFileName = p_ImageFileName;
     }
 
     public String getP_ImageFilePath() {
-        return P_ImageFilePath;
+        return p_ImageFilePath;
     }
 
     public void setP_ImageFilePath(String p_ImageFilePath) {
-        P_ImageFilePath = p_ImageFilePath;
+        this.p_ImageFilePath = p_ImageFilePath;
+    }
+
+    public String getP_DetailFileName() {
+        return p_DetailFileName;
+    }
+
+    public void setP_DetailFileName(String p_DetailFileName) {
+        this.p_DetailFileName = p_DetailFileName;
+    }
+
+    public String getP_SaleYN() {
+        return p_SaleYN;
+    }
+
+    public void setP_SaleYN(String p_SaleYN) {
+        this.p_SaleYN = p_SaleYN;
     }
 }
