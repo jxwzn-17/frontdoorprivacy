@@ -15,5 +15,7 @@ public interface ProductMapper {
 
     List<CategoryProduct> getAllProduct();
     List<CategoryProduct> getCategoryProduct(String p_category);
+    List<CategoryProduct> getDetailCategory(String p_detailcategory);
+    List<CategoryProduct> getSaleProduct();
 
 }

@@ -11,12 +11,22 @@ public class CategoryProduct {
     String ImageFileName;
     String ImageFilePath;
     int Price;
-    float Sale;
+    int Sale;
     String Category;
+    String DetailCategory;
+
+
     String Detail;
     String DetailFileName;
 
     public CategoryProduct() {
+    }
+    public String getDetailCategory() {
+        return DetailCategory;
+    }
+
+    public void setDetailCategory(String detailCategory) {
+        DetailCategory = detailCategory;
     }
 
     public int getPDID() {
@@ -67,11 +77,11 @@ public class CategoryProduct {
         Price = price;
     }
 
-    public float getSale() {
+    public int getSale() {
         return Sale;
     }
 
-    public void setSale(float sale) {
+    public void setSale(int sale) {
         Sale = sale;
     }
 
