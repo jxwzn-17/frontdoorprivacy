@@ -19,8 +19,7 @@
 
     <select id="getCategoryProduct" parameterType="String" resultType="CategoryProduct" statementType="CALLABLE">
         {CALL FND_sd_Category(
-            #{p_category},
-            #{p_saleYN}
+            #{p_category}
             )
             }
 

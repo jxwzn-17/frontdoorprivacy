@@ -30,8 +30,8 @@ public class ProductService {
 
     public List<CategoryProduct> getAllProduct(){
         return productMapper.getAllProduct();}
-    public List<CategoryProduct> getCategoryProduct(String p_category, String p_saleYN){
-        return productMapper.getCategoryProduct(p_category, p_saleYN);
+    public List<CategoryProduct> getCategoryProduct(String p_category){
+        return productMapper.getCategoryProduct(p_category);
     }
 
 

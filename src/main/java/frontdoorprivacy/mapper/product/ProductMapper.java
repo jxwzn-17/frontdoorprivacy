@@ -14,6 +14,6 @@ public interface ProductMapper {
     void enrollProduct(ProductDB productDB);
 
     List<CategoryProduct> getAllProduct();
-    List<CategoryProduct> getCategoryProduct(String p_category, String p_saleYN);
+    List<CategoryProduct> getCategoryProduct(String p_category);
 
 }
