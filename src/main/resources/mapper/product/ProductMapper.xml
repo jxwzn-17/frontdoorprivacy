@@ -33,4 +33,16 @@
         }
 
     </select>
+
+    <select id="getDetailCategory" parameterType="String" resultType="CategoryProduct" statementType="CALLABLE">
+        {CALL FND_sd_DetailCategory(
+            #{p_detailcategory}
+            )}
+    </select>
+
+    <select id="getSaleProduct" resultType="CategoryProduct" statementType="CALLABLE">
+        {CALL FND_sd_SaleProduct()
+        }
+
+    </select>
 </mapper>

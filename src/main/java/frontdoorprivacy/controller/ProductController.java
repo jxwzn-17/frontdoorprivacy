@@ -71,9 +71,7 @@ public class ProductController {
         productDB.setP_DetailFileName(detailStoreFileName);
         productDB.setP_SaleYN(ProductReq.getP_SaleYN());
 
-        logger.info(productDB.getP_SaleYN());
-        logger.info("{}", ProductReq.getP_Sale());
-        logger.info("{}", productDB.getP_Sale());
+
         //프로시저 호출해서 데베에 insert 해주기
         productService.enrollProduct(productDB);
 
@@ -91,13 +89,26 @@ public class ProductController {
         return new ResponseEntity<>(categoryProducts , HttpStatus.OK);
     }
 
+    //큰 카테고리
     @PostMapping("/category/select")
     public ResponseEntity<List<CategoryProduct>> getCategoryProduct(@RequestParam String p_category){
         List<CategoryProduct> categoryProducts = productService.getCategoryProduct(p_category);
         return new ResponseEntity<>(categoryProducts, HttpStatus.OK);
     }
+    //작은 카테고리
+    @PostMapping("/category/detail")
+    public ResponseEntity<List<CategoryProduct>> getDetailCategory(@RequestParam String p_detailcategory){
+        List<CategoryProduct> categoryProducts = productService.getDetailCategory(p_detailcategory);
 
+        return new ResponseEntity<>(categoryProducts, HttpStatus.OK);
+    }
+    //세일 상품 select
+    @GetMapping("/category/sale")
+    public ResponseEntity<List<CategoryProduct>> getSaleProduct(){
+        List<CategoryProduct> categoryProducts = productService.getSaleProduct();
 
+        return new ResponseEntity<>(categoryProducts , HttpStatus.OK);
+    }
     //" "여기안에 로컬저장소를 입력하면됨
     public String getFullPath(String filename) {
         return Path + filename;

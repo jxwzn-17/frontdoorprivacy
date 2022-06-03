@@ -34,5 +34,11 @@ public class ProductService {
         return productMapper.getCategoryProduct(p_category);
     }
 
+    public List<CategoryProduct> getDetailCategory(String p_detailcategory){
+        return productMapper.getDetailCategory(p_detailcategory);
+    }
+    public List<CategoryProduct>  getSaleProduct(){
+        return productMapper.getSaleProduct();
+    }
 
 }
