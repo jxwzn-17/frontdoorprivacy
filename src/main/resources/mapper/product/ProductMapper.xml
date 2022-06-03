@@ -17,4 +17,18 @@
         }
     </insert>
 
+    <select id="getCategoryProduct" parameterType="String" resultType="CategoryProduct" statementType="CALLABLE">
+        {CALL FND_sd_Category(
+            #{p_category},
+            #{p_saleYN}
+            )
+            }
+
+    </select>
+
+    <select id="getAllProduct" resultType="CategoryProduct" statementType="CALLABLE">
+        {CALL FND_sd_AllProduct()
+        }
+
+    </select>
 </mapper>

@@ -34,8 +34,9 @@ public class ProductController {
 
     @PostMapping("product")
     public ResponseEntity<?> enrollProduct(@RequestPart(value = "multipartFile", required = false) MultipartFile multipartFile,
-                                           @RequestPart(value = "detailFile", required = false) MultipartFile detailFile,
-                                           @RequestPart ProductReq ProductReq
+                                           @RequestPart(value = "productReq") ProductReq ProductReq,
+                                           @RequestPart(value = "detailFile", required = false) MultipartFile detailFile
+
     ) throws IOException {
 
         //여기는 썸네일에 쓸 이미지 파일을 uuid 로 바꿔주고 저장
