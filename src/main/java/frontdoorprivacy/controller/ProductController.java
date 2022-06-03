@@ -85,7 +85,11 @@ public class ProductController {
         return new ResponseEntity<>(categoryProducts , HttpStatus.OK);
     }
 
-
+    @PostMapping("/category/select")
+    public ResponseEntity<List<CategoryProduct>> getCategoryProduct(@RequestParam String p_category){
+        List<CategoryProduct> categoryProducts = productService.getCategoryProduct(p_category);
+        return new ResponseEntity<>(categoryProducts, HttpStatus.OK);
+    }
 
 
     //" "여기안에 로컬저장소를 입력하면됨
