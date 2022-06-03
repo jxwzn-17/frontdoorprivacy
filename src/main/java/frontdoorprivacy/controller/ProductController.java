@@ -64,10 +64,13 @@ public class ProductController {
         productDB.setP_Price(ProductReq.getP_Price());
         productDB.setP_Category(ProductReq.getP_Category());
         productDB.setP_Detail(ProductReq.getP_Detail());
+        productDB.setP_DetailCategory(ProductReq.getP_DetailCategory());
         productDB.setP_ImageFileName(storeFileName);
         productDB.setP_ImageFilePath(Path);
         productDB.setP_DetailFileName(detailStoreFileName);
+        productDB.setP_SaleYN(ProductReq.getP_SaleYN());
 
+        logger.info(productDB.getP_SaleYN());
         //프로시저 호출해서 데베에 insert 해주기
         productService.enrollProduct(productDB);
 
@@ -85,7 +88,11 @@ public class ProductController {
         return new ResponseEntity<>(categoryProducts , HttpStatus.OK);
     }
 
-
+    @PostMapping("/category/select")
+    public ResponseEntity<List<CategoryProduct>> getCategoryProduct(@RequestParam String p_category){
+        List<CategoryProduct> categoryProducts = productService.getCategoryProduct(p_category);
+        return new ResponseEntity<>(categoryProducts, HttpStatus.OK);
+    }
 
 
     //" "여기안에 로컬저장소를 입력하면됨

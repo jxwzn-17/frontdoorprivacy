@@ -6,9 +6,42 @@ public class ProductReq {
     //이미지 파일을 제외한 나머지 값들을 받아오는 객체
     private int p_ENID;
     private String p_ProductName;
+    private String p_DetailCategory;
+    private String p_SaleYN;
     private int p_Price;
     private String p_Category;
     private String p_Detail;
+
+    private int p_Sale;
+
+
+
+
+    public int getP_Sale() {
+        return p_Sale;
+    }
+
+    public void setP_Sale(int p_Sale) {
+        this.p_Sale = p_Sale;
+    }
+
+    public String getP_DetailCategory() {
+        return p_DetailCategory;
+    }
+
+    public void setP_DetailCategory(String p_DetailCategory) {
+        this.p_DetailCategory = p_DetailCategory;
+    }
+
+    public String getP_SaleYN() {
+        return p_SaleYN;
+    }
+
+    public void setP_SaleYN(String p_SaleYN) {
+        this.p_SaleYN = p_SaleYN;
+    }
+
+
 
     public ProductReq() {
     }

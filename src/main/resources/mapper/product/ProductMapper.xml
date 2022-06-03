@@ -8,11 +8,14 @@
         #{p_ENID},
         #{p_ProductName},
         #{p_Price},
+        #{p_Sale},
         #{p_Category},
+        #{p_DetailCategory},
         #{p_Detail},
         #{p_ImageFileName},
         #{p_ImageFilePath},
-        #{p_DetailFileName}
+        #{p_DetailFileName},
+        #{p_SaleYN}
         )
         }
     </insert>
