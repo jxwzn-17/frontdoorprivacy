@@ -1,5 +1,6 @@
 package frontdoorprivacy.controller;
 
+import frontdoorprivacy.model.product.CategoryProduct;
 import frontdoorprivacy.model.product.ProductDB;
 import frontdoorprivacy.model.product.ProductReq;
 import frontdoorprivacy.service.product.ProductService;
@@ -15,10 +16,11 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.UUID;
 
 @Controller
-@RequestMapping("/mypage/company/")
+@RequestMapping
 public class ProductController {
     private Logger logger = LoggerFactory.getLogger(ProductController.class);
     private static ProductService productService;
@@ -32,10 +34,11 @@ public class ProductController {
         this.productService = productService;
     }
 
-    @PostMapping("product")
+    @PostMapping("/mypage/company/product")
     public ResponseEntity<?> enrollProduct(@RequestPart(value = "multipartFile", required = false) MultipartFile multipartFile,
-                                           @RequestPart(value = "detailFile", required = false) MultipartFile detailFile,
-                                           @RequestPart ProductReq ProductReq
+                                           @RequestPart(value = "productReq") ProductReq ProductReq,
+                                           @RequestPart(value = "detailFile", required = false) MultipartFile detailFile
+
     ) throws IOException {
 
         //여기는 썸네일에 쓸 이미지 파일을 uuid 로 바꿔주고 저장
@@ -72,37 +75,14 @@ public class ProductController {
         msg.put("message","Success");
         return ResponseEntity.ok(msg);
     }
+    @GetMapping("/category/main")
+    public List<CategoryProduct> getAllProduct(){
+        List<CategoryProduct> categoryProducts = productService.getAllProduct();
+
+        return categoryProducts;
+    }
 
 
-//    @PostMapping("/product/json")
-//    public ResponseEntity<?> detailProduct(@RequestBody ProductReq ProductReq){
-//
-//        logger.info(ProductReq.getP_ProductName());
-//        logger.info(ProductReq.getP_Detail());
-//        logger.info(ProductReq.getP_Category());
-//        logger.info(String.valueOf(ProductReq.getP_ENID()));
-//        logger.info(storeFileName);
-//        logger.info(detailStoreFileName);
-//
-//        //productDB 에 set으로 설정해주기
-//        ProductDB productDB = new ProductDB();
-//        productDB.setP_ENID(ProductReq.getP_ENID());
-//        productDB.setP_ProductName(ProductReq.getP_ProductName());
-//        productDB.setP_Price(ProductReq.getP_Price());
-//        productDB.setP_Category(ProductReq.getP_Category());
-//        productDB.setP_Detail(ProductReq.getP_Detail());
-//        productDB.setP_ImageFileName(storeFileName);
-//        productDB.setP_ImageFilePath(Path);
-//        productDB.setP_DetailFileName(detailStoreFileName);
-//
-//        //프로시저 호출해서 데베에 insert 해주기
-//        productService.enrollProduct(productDB);
-//
-//        //return 은 ProductDB 해주기 or ok 메세지만 보내주면됨
-//        HashMap<String,String> msg = new HashMap<>();
-//        msg.put("message","Success");
-//        return ResponseEntity.ok(msg);
-//    }
 
 
     //" "여기안에 로컬저장소를 입력하면됨
