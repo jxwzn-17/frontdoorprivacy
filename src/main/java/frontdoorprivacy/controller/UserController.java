@@ -122,6 +122,7 @@ public class UserController{
 
     /**
      * 구독 해지하기
+     * Request -> p_SSID 받아서 UseYN = 'N' 으로 바꿔줌
      */
     @PostMapping("/mypage/user/manage/withdraw")
     public ResponseEntity<?> subscribeWithdraw(@RequestBody SubscribeWithdrawReq subscribeWithdrawReq){
