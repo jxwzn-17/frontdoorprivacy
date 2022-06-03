@@ -62,6 +62,7 @@ public class ProductController {
         productDB.setP_ENID(ProductReq.getP_ENID());
         productDB.setP_ProductName(ProductReq.getP_ProductName());
         productDB.setP_Price(ProductReq.getP_Price());
+        productDB.setP_Sale(ProductReq.getP_Sale());
         productDB.setP_Category(ProductReq.getP_Category());
         productDB.setP_Detail(ProductReq.getP_Detail());
         productDB.setP_DetailCategory(ProductReq.getP_DetailCategory());
@@ -71,6 +72,8 @@ public class ProductController {
         productDB.setP_SaleYN(ProductReq.getP_SaleYN());
 
         logger.info(productDB.getP_SaleYN());
+        logger.info("{}", ProductReq.getP_Sale());
+        logger.info("{}", productDB.getP_Sale());
         //프로시저 호출해서 데베에 insert 해주기
         productService.enrollProduct(productDB);
 
