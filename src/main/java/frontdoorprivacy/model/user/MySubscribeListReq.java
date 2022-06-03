@@ -2,13 +2,13 @@ package frontdoorprivacy.model.user;
 
 public class MySubscribeListReq {
 
-    private int P_USID;
+    private int p_USID;
 
     public int getP_USID() {
-        return P_USID;
+        return p_USID;
     }
 
     public void setP_USID(int p_USID) {
-        P_USID = p_USID;
+        this.p_USID = p_USID;
     }
 }

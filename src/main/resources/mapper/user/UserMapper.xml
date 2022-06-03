@@ -56,7 +56,7 @@
 
     <select id="mySubscribeList" parameterType="MySubscribeListReq" resultType="MySubscribeListRes" statementType="CALLABLE">
         { CALL FND_myProductList_User(
-        #{P_USID}
+        #{p_USID}
         )
         }
     </select>

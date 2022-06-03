@@ -75,6 +75,8 @@ public class ProductController {
         msg.put("message","Success");
         return ResponseEntity.ok(msg);
     }
+
+
     @GetMapping("/category/main")
     public List<CategoryProduct> getAllProduct(){
         List<CategoryProduct> categoryProducts = productService.getAllProduct();
