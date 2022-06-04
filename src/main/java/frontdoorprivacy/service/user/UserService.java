@@ -69,12 +69,4 @@ public class UserService{
         return userMapper.SubscribeCheck(subscribeEnrollReq);
     }
 
-    public List<BasketListRes> showBasketList(BasketListReq basketListReq){
-        return userMapper.showBasketList(basketListReq);
-    }
-
-    public void BasketInsert(BasketReq basketReq) {
-        userMapper.BasketInsert(basketReq);
-    }
-
 }
