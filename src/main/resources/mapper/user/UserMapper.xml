@@ -54,4 +54,21 @@
         }
     </update>
 
+    <insert id = "BasketInsert" parameterType="BasketReq" statementType="CALLABLE">
+        { CALL FND_Basket_in(
+        #{p_PDID},
+        #{p_USID}
+        )
+        }
+
+    </insert>
+
+    <select id="showBasketList" parameterType="BasketListReq" resultType="BasketListRes" statementType="CALLABLE">
+        { CALL FND_Basket_List
+        (
+        #{p_USID}
+        )
+        }
+    </select>
+
 </mapper>

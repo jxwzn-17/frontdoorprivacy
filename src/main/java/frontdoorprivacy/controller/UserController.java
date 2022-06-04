@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 
 
 @Controller
@@ -112,14 +113,22 @@ public class UserController{
     //시간 될때 코드 한번 봐줘, 개인 로그인 한담에 상품을 장바구니에 넣었을 때, Basket 클래스로 넘어가서 값을 뿌려준다.
     // 마이페이지 장바구니 클릭시 확인
 
-    @PostMapping("/mypage/user/basket")
-    public ResponseEntity<Basket> basketUser(@RequestBody Basket basket) {
-        Basket basketInfo = userService.showBasket(basket.getB_PDID());
+
+    @PostMapping("/mypage/user/basket/insert")
+    public ResponseEntity<?> basketinsert(@RequestBody BasketReq basketReq){
+        userService.BasketInsert(basketReq);
         HashMap<String,String> msg = new HashMap<>();
         msg.put("message","Success");
-        return new ResponseEntity<>(basketInfo, HttpStatus.OK);
+        return ResponseEntity.ok(msg);
+
     }
 
+    @PostMapping("/mypage/user/basket")
+    public ResponseEntity<List<BasketListRes>> basketList(@RequestBody BasketListReq basketListReq){
+        List<BasketListRes> basketListRes = userService.showBasketList(basketListReq);
+        return new ResponseEntity<>(basketListRes, HttpStatus.OK);
+
+    }
 
 
 

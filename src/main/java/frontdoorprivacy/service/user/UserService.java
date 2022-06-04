@@ -9,6 +9,8 @@ import org.slf4j.MarkerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Service
 public class UserService{
@@ -48,7 +50,12 @@ public class UserService{
         userMapper.WithdrawUser(withdraw);
     }
 
-    public Basket showBasket(int B_PDID){
-        return userMapper.showBasket(B_PDID);
+    public List<BasketListRes> showBasketList(BasketListReq basketListReq){
+        return userMapper.showBasketList(basketListReq);
     }
+
+    public void BasketInsert(BasketReq basketReq) {
+        userMapper.BasketInsert(basketReq);
+    }
+
 }
