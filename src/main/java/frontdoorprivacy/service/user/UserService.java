@@ -61,6 +61,12 @@ public class UserService{
         userMapper.SubscribeWithdraw(subscribeWithdrawReq);
     }
 
+    public void SubscribeEnroll(SubscribeEnrollReq subscribeEnrollReq){
+        userMapper.SubscribeEnroll(subscribeEnrollReq);
+    }
 
+    public String SubscribeCheck(SubscribeEnrollReq subscribeEnrollReq) {
+        return userMapper.SubscribeCheck(subscribeEnrollReq);
+    }
 
 }

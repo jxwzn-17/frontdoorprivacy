@@ -68,4 +68,22 @@
         }
     </update>
 
+    <insert id="SubscribeEnroll" parameterType="SubscribeEnrollReq" statementType="CALLABLE">
+        { CALL FND_SubscribeEN_User(
+        #{p_USID},
+        #{p_PDID},
+        #{p_SubscribeCycle}
+        )
+        }
+    </insert>
+
+    <select id="SubscribeCheck" parameterType="SubscribeEnrollReq" resultType="String" statementType="CALLABLE">
+        { CALL FND_SubscribeCK_User(
+        #{p_USID},
+        #{p_PDID},
+        #{p_SubscribeCycle}
+        )
+        }
+    </select>
+
 </mapper>

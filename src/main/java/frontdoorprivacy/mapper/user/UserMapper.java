@@ -21,6 +21,9 @@ public interface UserMapper {
     void WithdrawUser(Withdraw withdraw);
     List<MySubscribeListRes> mySubscribeList(MySubscribeListReq mySubscribeListReq);
     void SubscribeWithdraw(SubscribeWithdrawReq subscribeWithdrawReq);
+    void SubscribeEnroll(SubscribeEnrollReq subscribeEnrollReq);
+
+    String SubscribeCheck(SubscribeEnrollReq subscribeEnrollReq);
 
 
 }
