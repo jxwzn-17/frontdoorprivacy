@@ -26,4 +26,5 @@ public interface UserMapper {
     String SubscribeCheck(SubscribeEnrollReq subscribeEnrollReq);
 
 
+
 }
