@@ -1,10 +1,11 @@
 package frontdoorprivacy.service.user;
 
 import frontdoorprivacy.mapper.user.UserMapper;
+import frontdoorprivacy.model.product.DetailedProductReq;
+import frontdoorprivacy.model.product.DetailedProductRes;
 import frontdoorprivacy.model.user.*;
 
 
-import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Marker;
@@ -59,5 +60,7 @@ public class UserService{
     public void SubscribeWithdraw(SubscribeWithdrawReq subscribeWithdrawReq) {
         userMapper.SubscribeWithdraw(subscribeWithdrawReq);
     }
+
+
 
 }

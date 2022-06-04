@@ -45,4 +45,12 @@
         }
 
     </select>
+
+    <select id="detailedProduct" parameterType="DetailedProductReq" resultType="DetailedProductRes" statementType="CALLABLE">
+        {CALL FND_sd_DetailedProduct(
+        #{p_PDID}
+        )
+        }
+    </select>
+
 </mapper>
