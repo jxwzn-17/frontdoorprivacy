@@ -132,5 +132,19 @@ public class UserController{
         return ResponseEntity.ok(msg);
     }
 
+    @PostMapping("/product/detail/subscribe")
+    public ResponseEntity<?> insertSubscribe(@RequestBody SubscribeEnrollReq subscribeEnrollReq) {
+        if(userService.SubscribeCheck(subscribeEnrollReq).equals("0")){
+            userService.SubscribeEnroll(subscribeEnrollReq);
+            HashMap<String,String> msg = new HashMap<>();
+            msg.put("message","Success");
+            return ResponseEntity.ok(msg);
+        }else{
+            HashMap<String,String> msg = new HashMap<>();
+            msg.put("message","Failed");
+            return ResponseEntity.ok(msg);
+        }
+    }
+
 
 }
