@@ -134,6 +134,9 @@ public class UserController{
 
     @PostMapping("/product/detail/subscribe")
     public ResponseEntity<?> insertSubscribe(@RequestBody SubscribeEnrollReq subscribeEnrollReq) {
+        logger.info("usid={}",subscribeEnrollReq.getP_USID());
+        logger.info("pdid={}",subscribeEnrollReq.getP_PDID());
+        logger.info("sub={}",subscribeEnrollReq.getP_SubscribeCycle());
         if(userService.SubscribeCheck(subscribeEnrollReq).equals("0")){
             userService.SubscribeEnroll(subscribeEnrollReq);
             HashMap<String,String> msg = new HashMap<>();
