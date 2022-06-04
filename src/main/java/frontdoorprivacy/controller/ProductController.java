@@ -1,8 +1,6 @@
 package frontdoorprivacy.controller;
 
-import frontdoorprivacy.model.product.CategoryProduct;
-import frontdoorprivacy.model.product.ProductDB;
-import frontdoorprivacy.model.product.ProductReq;
+import frontdoorprivacy.model.product.*;
 import frontdoorprivacy.service.product.ProductService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -109,6 +107,14 @@ public class ProductController {
 
         return new ResponseEntity<>(categoryProducts , HttpStatus.OK);
     }
+
+    @PostMapping("product/detail")
+    public ResponseEntity<DetailedProductRes> getDetailedProduct(@RequestBody DetailedProductReq detailedProductReq){
+        DetailedProductRes detailedProductRes = productService.detailedProduct(detailedProductReq);
+        return new ResponseEntity<>(detailedProductRes, HttpStatus.OK);
+    }
+
+
     //" "여기안에 로컬저장소를 입력하면됨
     public String getFullPath(String filename) {
         return Path + filename;

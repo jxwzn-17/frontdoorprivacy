@@ -2,6 +2,8 @@ package frontdoorprivacy.service.product;
 
 import frontdoorprivacy.mapper.product.ProductMapper;
 import frontdoorprivacy.model.product.CategoryProduct;
+import frontdoorprivacy.model.product.DetailedProductReq;
+import frontdoorprivacy.model.product.DetailedProductRes;
 import frontdoorprivacy.model.product.ProductDB;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,6 +41,10 @@ public class ProductService {
     }
     public List<CategoryProduct>  getSaleProduct(){
         return productMapper.getSaleProduct();
+    }
+
+    public DetailedProductRes detailedProduct(DetailedProductReq enrollSubscribeReq){
+        return productMapper.detailedProduct(enrollSubscribeReq);
     }
 
 }
