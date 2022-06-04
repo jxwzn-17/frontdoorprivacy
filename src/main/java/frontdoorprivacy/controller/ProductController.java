@@ -89,13 +89,14 @@ public class ProductController {
 
     //큰 카테고리
     @PostMapping("/category/select")
-    public ResponseEntity<List<CategoryProduct>> getCategoryProduct(@RequestParam HashMap<String,String> p_category){
+    public ResponseEntity<List<CategoryProduct>> getCategoryProduct(@RequestBody HashMap<String,String> p_category){
         List<CategoryProduct> categoryProducts = productService.getCategoryProduct(p_category.get("category"));
+       logger.info(p_category.get("category"));
         return new ResponseEntity<>(categoryProducts, HttpStatus.OK);
     }
     //작은 카테고리
     @PostMapping("/category/detail")
-    public ResponseEntity<List<CategoryProduct>> getDetailCategory(@RequestParam HashMap<String,String> p_detailcategory){
+    public ResponseEntity<List<CategoryProduct>> getDetailCategory(@RequestBody HashMap<String,String> p_detailcategory){
         List<CategoryProduct> categoryProducts = productService.getDetailCategory(p_detailcategory.get("detailcategory"));
 
         return new ResponseEntity<>(categoryProducts, HttpStatus.OK);
