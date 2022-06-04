@@ -25,5 +25,8 @@ public interface UserMapper {
 
     String SubscribeCheck(SubscribeEnrollReq subscribeEnrollReq);
 
+    List<BasketListRes> showBasketList(BasketListReq basketListReq);
+
+    void BasketInsert(BasketReq basketReq);
 
 }
