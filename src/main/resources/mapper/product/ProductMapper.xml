@@ -53,4 +53,10 @@
         }
     </select>
 
+    <select id="getpersonalProduct" parameterType="Integer" resultType="CategoryProduct" statementType="CALLABLE">
+        {Call FND_sd_personalProduct(
+            #{p_enid}
+            )}
+
+    </select>
 </mapper>

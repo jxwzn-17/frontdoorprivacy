@@ -22,5 +22,6 @@ public interface ProductMapper {
 
     //제품 상세페이지
     DetailedProductRes detailedProduct(DetailedProductReq detailedProductReq);
+    List<CategoryProduct> getpersonalProduct(int p_enid);
 
 }

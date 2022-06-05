@@ -47,4 +47,7 @@ public class ProductService {
         return productMapper.detailedProduct(enrollSubscribeReq);
     }
 
+    public List<CategoryProduct> getpersonalProduct(int p_enid){
+        return productMapper.getpersonalProduct(p_enid);
+    }
 }
