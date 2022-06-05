@@ -59,4 +59,36 @@
             )}
 
     </select>
+
+    <select id="getmypageProduct" parameterType="Integer" resultType="NypageProduct" statementType="CALLABLE">
+        {CALL FND_sd_MypageProduct(
+            #{p_pdid}
+            )}
+
+
+    </select>
+    <select id="getfileInfo" parameterType="Integer" resultType="FileInfo" statementType="CALLABLE">
+        {CALL FND_sd_FileInfo(
+            #{p_pdid}
+            )}
+
+
+    </select>
+    <update id="updatemypageProduct" parameterType="UpdateMypageProduct" statementType="CALLABLE">
+        {CALL FND_up_MypageProduct(
+            #{p_PDID},
+            #{p_ENID},
+            #{p_ProductName},
+            #{p_Price},
+            #{p_Sale},
+            #{p_Category},
+            #{p_DetailCategory},
+            #{p_Detail},
+            #{p_ImageFileName},
+            #{p_ImageFilePath},
+            #{p_DetailFileName},
+            #{p_SaleYN}
+
+            )}
+    </update>
 </mapper>

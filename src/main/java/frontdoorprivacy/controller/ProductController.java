@@ -123,9 +123,29 @@ public class ProductController {
         return new ResponseEntity<>(categoryProducts, HttpStatus.OK);
     }
 
+    @PostMapping("/product/update")
+    public ResponseEntity<?> getmyprouductInfo(@RequestBody HashMap<String, Integer> p_pdid){
+        MypageProduct mypageProduct = productService.getmypageProduct(p_pdid.get("pdid"));
+
+        return new ResponseEntity<>(mypageProduct , HttpStatus.OK);
+
+    }
 
 
-
+//    @PostMapping("/mypage/company/edid")
+//    public ResponseEntity<?> upadateMyProduct(@RequestPart(value = "multipartFile", required = false) MultipartFile multipartFile,
+//                                           @RequestPart(value = "productReq") UpdateMypageProduct updateMypageProduct,
+//                                           @RequestPart(value = "detailFile", required = false) MultipartFile detailFile
+//
+//    ) throws IOException {
+//        int pdid = updateMypageProduct.getP_PDID();
+//        FileInfo fileInfo = productService.getfileInfo(pdid);
+//        if(!fileInfo.getImageFileName().equals(updateMypageProduct.getP_ImageFileName())){
+//
+//        }
+//
+//
+//    }
 
 
     //" "여기안에 로컬저장소를 입력하면됨
