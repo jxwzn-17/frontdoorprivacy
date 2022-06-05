@@ -60,7 +60,7 @@
 
     </select>
 
-    <select id="getmypageProduct" parameterType="Integer" resultType="NypageProduct" statementType="CALLABLE">
+    <select id="getmypageProduct" parameterType="Integer" resultType="MypageProduct" statementType="CALLABLE">
         {CALL FND_sd_MypageProduct(
             #{p_pdid}
             )}
