@@ -116,6 +116,24 @@ public class ProductController {
     }
 
 
+    @PostMapping("/mypage/company/manage")
+    public ResponseEntity<List<CategoryProduct>> getpersonalProuduct(@RequestBody HashMap<String,Integer> p_enid){
+        List<CategoryProduct> categoryProducts = productService.getpersonalProduct(p_enid.get("enid"));
+
+        return new ResponseEntity<>(categoryProducts, HttpStatus.OK);
+    }
+
+    @PostMapping("/product/update")
+    public ResponseEntity<?> getmyprouductInfo(@RequestBody HashMap<String, Integer> p_pdid){
+        MypageProduct mypageProduct = productService.getmypageProduct(p_pdid.get("pdid"));
+
+        return new ResponseEntity<>(mypageProduct , HttpStatus.OK);
+
+    }
+
+
+
+
     //" "여기안에 로컬저장소를 입력하면됨
     public String getFullPath(String filename) {
         return Path + filename;
@@ -131,5 +149,7 @@ public class ProductController {
         int pos = originalFilename.lastIndexOf(".");
         return originalFilename.substring(pos + 1);
     }
+
+
 }
 

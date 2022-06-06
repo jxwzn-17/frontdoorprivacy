@@ -1,10 +1,7 @@
 package frontdoorprivacy.service.product;
 
 import frontdoorprivacy.mapper.product.ProductMapper;
-import frontdoorprivacy.model.product.CategoryProduct;
-import frontdoorprivacy.model.product.DetailedProductReq;
-import frontdoorprivacy.model.product.DetailedProductRes;
-import frontdoorprivacy.model.product.ProductDB;
+import frontdoorprivacy.model.product.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Marker;
@@ -47,4 +44,18 @@ public class ProductService {
         return productMapper.detailedProduct(enrollSubscribeReq);
     }
 
+    public List<CategoryProduct> getpersonalProduct(int p_enid){
+        return productMapper.getpersonalProduct(p_enid);
+    }
+
+    public MypageProduct getmypageProduct(int p_pdid){
+        return productMapper.getmypageProduct(p_pdid);
+    }
+
+    public FileInfo getfileInfo(int p_pdid){
+        return productMapper.getfileInfo(p_pdid);
+    }
+    public void updatemypageProduct(UpdateMypageProduct updateMypageProduct){
+        productMapper.updatemypageProduct(updateMypageProduct);
+    ;}
 }
