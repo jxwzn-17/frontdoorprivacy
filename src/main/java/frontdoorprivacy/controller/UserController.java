@@ -165,6 +165,14 @@ public class UserController{
 
     }
 
+    @PostMapping("/mypage/user/basket/withdraw")
+    public ResponseEntity<?> basketWithdraw(@RequestBody BasketWithdrawReq basketWithdrawReq){
+        userService.BasketWithdraw(basketWithdrawReq);
+        HashMap<String,String> msg = new HashMap<>();
+        msg.put("message","Success");
+        return ResponseEntity.ok(msg);
+    }
+
 
 
 }

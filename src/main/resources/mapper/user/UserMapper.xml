@@ -103,5 +103,13 @@
         }
     </select>
 
+    <update id="BasketWithdraw" parameterType="BasketWithdrawReq" statementType="CALLABLE">
+        { CALL FND_BasketDe_User
+        (
+        #{p_BSID}
+        )
+        }
+    </update>
+
 
 </mapper>
