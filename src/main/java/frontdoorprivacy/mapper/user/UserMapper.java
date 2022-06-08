@@ -29,5 +29,6 @@ public interface UserMapper {
 
     void BasketInsert(BasketReq basketReq);
 
+    void BasketWithdraw(BasketWithdrawReq basketWithdrawReq);
 
 }

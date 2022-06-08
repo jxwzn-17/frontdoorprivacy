@@ -76,4 +76,8 @@ public class UserService{
         userMapper.BasketInsert(basketReq);
     }
 
+    public void BasketWithdraw(BasketWithdrawReq basketWithdrawReq){
+        userMapper.BasketWithdraw(basketWithdrawReq);
+    }
+
 }
