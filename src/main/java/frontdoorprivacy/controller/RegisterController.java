@@ -72,6 +72,8 @@ public class RegisterController {
 //        logger.info(loginInfo.getPassword());
 
 
+
+
         if(loginInfo.getRole().equals("E")){
 //           logger.info("if문 입장");
             LoginEnterprise input = new LoginEnterprise();
