@@ -130,7 +130,21 @@ public class ProductController {
         return new ResponseEntity<>(mypageProduct , HttpStatus.OK);
 
     }
-
+//    @PostMapping("/mypage/company/edid")
+//    public ResponseEntity<?> upadateMyProduct(@RequestPart(value = "multipartFile", required = false) MultipartFile multipartFile,
+//                                           @RequestPart(value = "productReq") UpdateMypageProduct updateMypageProduct,
+//                                           @RequestPart(value = "detailFile", required = false) MultipartFile detailFile
+//
+//    ) throws IOException {
+//        int pdid = updateMypageProduct.getP_PDID();
+//        FileInfo fileInfo = productService.getfileInfo(pdid);
+//        if(!fileInfo.getImageFileName().equals(updateMypageProduct.getP_ImageFileName())){
+//
+//        }
+//
+//
+//    }
+//
 
 
 
