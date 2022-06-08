@@ -149,6 +149,30 @@ public class UserController{
         }
     }
 
+    @PostMapping("/mypage/user/basket/insert")
+    public ResponseEntity<?> basketinsert(@RequestBody BasketReq basketReq){
+        userService.BasketInsert(basketReq);
+        HashMap<String,String> msg = new HashMap<>();
+        msg.put("message","Success");
+        return ResponseEntity.ok(msg);
+
+    }
+
+    @PostMapping("/mypage/user/basket")
+    public ResponseEntity<List<BasketListRes>> basketList(@RequestBody BasketListReq basketListReq){
+        List<BasketListRes> basketListRes = userService.showBasketList(basketListReq);
+        return new ResponseEntity<>(basketListRes, HttpStatus.OK);
+
+    }
+
+    @PostMapping("/mypage/user/basket/withdraw")
+    public ResponseEntity<?> basketWithdraw(@RequestBody BasketWithdrawReq basketWithdrawReq){
+        userService.BasketWithdraw(basketWithdrawReq);
+        HashMap<String,String> msg = new HashMap<>();
+        msg.put("message","Success");
+        return ResponseEntity.ok(msg);
+    }
+
 
 
 }

@@ -68,6 +68,16 @@ public class UserService{
     public String SubscribeCheck(SubscribeEnrollReq subscribeEnrollReq) {
         return userMapper.SubscribeCheck(subscribeEnrollReq);
     }
+    public List<BasketListRes> showBasketList(BasketListReq basketListReq){
+        return userMapper.showBasketList(basketListReq);
+    }
 
+    public void BasketInsert(BasketReq basketReq) {
+        userMapper.BasketInsert(basketReq);
+    }
+
+    public void BasketWithdraw(BasketWithdrawReq basketWithdrawReq){
+        userMapper.BasketWithdraw(basketWithdrawReq);
+    }
 
 }
