@@ -11,15 +11,13 @@ spring:
     username: root
     password: didcjf12
   mail:
-    mail:
-      host: smtp.gmail.com
+    host: smtp.gmail.com
       port: 587
       username: zxc234635@gmail.com
       password: didcjf12
       properties:
         mail.smtp.auth: true
         mail.smtp.starttls.enable: true
-
 
 mybatis:
   type-aliases-package: frontdoorprivacy.model
