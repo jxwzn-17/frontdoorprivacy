@@ -19,7 +19,7 @@ public class EmailService {
 
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(email);
-        //message.setFrom("ohohgeunhy@gamil.com");
+        message.setFrom("gra1259@naver.com");
 
         for(int i = 0;i<3;i++){
             int index = random.nextInt(25)+65;
