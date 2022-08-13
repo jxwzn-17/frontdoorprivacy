@@ -1,7 +1,9 @@
 package frontdoorprivacy.controller;
 
 
+import frontdoorprivacy.model.email.EmailRequest;
 import frontdoorprivacy.model.user.*;
+import frontdoorprivacy.service.email.EmailService;
 import frontdoorprivacy.service.user.UserService;
 
 import org.slf4j.Logger;
@@ -20,11 +22,11 @@ import java.util.List;
 public class UserController{
     private Logger logger = LoggerFactory.getLogger(UserController.class);
     private static UserService userService;
-
+    private static EmailService emailService;
     @Autowired
-    public UserController(UserService userService){
+    public UserController(UserService userService, EmailService emailService){
         this.userService = userService;
-
+        this.emailService = emailService;
     }
 
     /**
@@ -91,7 +93,9 @@ public class UserController{
         logger.info(output);
         logger.info(userID.get("inputId"));
         returnvalue.put("returnvalue",output);
-
+        for (String s : userID.keySet()) {
+            System.out.println(s +" " + userID.get(s));
+        }
         return ResponseEntity.ok(returnvalue);
     }
 
@@ -172,6 +176,21 @@ public class UserController{
         msg.put("message","Success");
         return ResponseEntity.ok(msg);
     }
+
+    @PostMapping("/email/cert")
+    public ResponseEntity<?> authEmail(@RequestBody EmailRequest emailRequest) {
+        String mailCheck = emailService.mailCheck(emailRequest.getEmail());
+        HashMap<String, String> answer = new HashMap<>();
+        answer.put("response",mailCheck);
+        return ResponseEntity.ok(answer);
+    }
+
+//    @PostMapping("email/check")
+//    public ResponseEntity<?> checkAuth(@RequestBody) {
+//
+//
+//
+//    }
 
 
 

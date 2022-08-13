@@ -9,8 +9,25 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3307/frontdoor?serverTimezone=Asia/Seoul
     username: root
-    password: 11yhchoa04
+    password: didcjf12
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: zxc234635@gmail.com
+    password: didcjf12
+    properties:
+      mail:
+        smtp:
+          starttls:
+            enable: true
+            required: true
+          auth: true
+          connectiontimeout: 5000
+          timeout: 5000
+          writetimeout: 5000
+
 
 mybatis:
   type-aliases-package: frontdoorprivacy.model
   mapper-locations: mapper/*/*.xml
+
