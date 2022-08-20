@@ -196,14 +196,20 @@ public class UserController{
     public ResponseEntity<?> findid(@RequestBody FindIdReq findIdReq){
         String message ;
         String Id;
+        logger.info(findIdReq.getEmail());
         HashMap<String, String> map = new HashMap<>();
+
         userService.FindId(findIdReq);
+        logger.info(findIdReq.getExitYN());
+        logger.info(findIdReq.getId());
         if(findIdReq.getExitYN().equals("Y")){
-            logger.info("찾은아이디: {}", findIdReq.getId());
+            logger.info("if문 입장");
+            logger.info(findIdReq.getId());
             Id = findIdReq.getId();
             map.put("output",Id);
 
         }else if(findIdReq.getExitYN().equals("N")){
+            logger.info("ifelse문 입장");
             message = "가입된적이 없는 정보입니다";
             map.put("output",message);
         }
