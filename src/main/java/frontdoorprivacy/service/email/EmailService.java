@@ -50,6 +50,8 @@ public class EmailService {
         javaMailSender.send(message);
         return newpasswd;
     }
+
+    //임시 비번 생성 함수
     public String getRamdomPassword(int size) {
         char[] charSet = new char[] {
                 '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
