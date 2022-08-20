@@ -21,7 +21,7 @@ public class EmailService {
 
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(email);
-        message.setFrom("@naver.com");
+        message.setFrom("g1990107@naver.com");
 
         for(int i = 0;i<3;i++){
             int index = random.nextInt(25)+65;
@@ -42,7 +42,7 @@ public class EmailService {
         
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(email);
-        message.setFrom("@naver.com");
+        message.setFrom("g1990107@naver.com");
         
         message.setSubject("문앞에: 임시 비밀번호 전송");
         message.setText("임시 비밀번호 : " + newpasswd);
