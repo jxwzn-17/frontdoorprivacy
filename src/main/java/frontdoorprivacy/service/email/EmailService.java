@@ -14,6 +14,7 @@ import java.util.Random;
 public class EmailService {
 
     private final JavaMailSender javaMailSender;
+    private final String emailaddress = "@naver.com"; //본인 이메일 입력
 
     public String mailCheck(String email){
         Random random = new Random(); //난수 생성
@@ -21,7 +22,7 @@ public class EmailService {
 
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(email);
-        message.setFrom("g1990107@naver.com");
+        message.setFrom(emailaddress);
 
         for(int i = 0;i<3;i++){
             int index = random.nextInt(25)+65;
@@ -42,7 +43,7 @@ public class EmailService {
         
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(email);
-        message.setFrom("g1990107@naver.com");
+        message.setFrom(emailaddress);
         
         message.setSubject("문앞에: 임시 비밀번호 전송");
         message.setText("임시 비밀번호 : " + newpasswd);
