@@ -21,7 +21,7 @@ public class EmailService {
 
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(email);
-        message.setFrom("gra1259@naver.com");
+        message.setFrom("@naver.com");
 
         for(int i = 0;i<3;i++){
             int index = random.nextInt(25)+65;
@@ -39,14 +39,14 @@ public class EmailService {
     }
     public String newPasswd(String email){
         String newpasswd= getRamdomPassword(12);
-
+        
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(email);
-        message.setFrom("gra1259@naver.com");
-
+        message.setFrom("@naver.com");
+        
         message.setSubject("문앞에: 임시 비밀번호 전송");
         message.setText("임시 비밀번호 : " + newpasswd);
-
+        javaMailSender.send(message);
         return newpasswd;
     }
     public String getRamdomPassword(int size) {
