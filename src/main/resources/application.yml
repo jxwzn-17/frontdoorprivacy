@@ -7,9 +7,9 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3307/frontdoor?serverTimezone=Asia/Seoul
+    url: jdbc:mysql://localhost:3306/frontdoor?serverTimezone=Asia/Seoul
     username: root
-    password: didcjf12
+    password: wldhks0107
   mail:
     host: smtp.naver.com
     port: 465
@@ -20,7 +20,7 @@ spring:
       mail.smtp.ssl.enable: true
       mail.smtp.ssl.trust: smtp.naver.com
 
+
 mybatis:
   type-aliases-package: frontdoorprivacy.model
   mapper-locations: mapper/*/*.xml
-

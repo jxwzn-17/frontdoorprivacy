@@ -1,6 +1,7 @@
 package frontdoorprivacy.service.user;
 
 import frontdoorprivacy.mapper.user.UserMapper;
+import frontdoorprivacy.model.find.FindIdReq;
 import frontdoorprivacy.model.product.DetailedProductReq;
 import frontdoorprivacy.model.product.DetailedProductRes;
 import frontdoorprivacy.model.user.*;
@@ -80,4 +81,5 @@ public class UserService{
         userMapper.BasketWithdraw(basketWithdrawReq);
     }
 
+    public void FindId(FindIdReq findIdReq){ userMapper.FindId(findIdReq);}
 }

@@ -1,6 +1,7 @@
 package frontdoorprivacy.mapper.user;
 
 
+import frontdoorprivacy.model.find.FindIdReq;
 import frontdoorprivacy.model.product.DetailedProductReq;
 import frontdoorprivacy.model.product.DetailedProductRes;
 import frontdoorprivacy.model.user.*;
@@ -31,4 +32,6 @@ public interface UserMapper {
 
     void BasketWithdraw(BasketWithdrawReq basketWithdrawReq);
 
+
+    void FindId(FindIdReq findIdReq);
 }

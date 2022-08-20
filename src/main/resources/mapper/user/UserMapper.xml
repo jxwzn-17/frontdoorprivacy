@@ -111,5 +111,20 @@
         }
     </update>
 
+    <select id="FindId" parameterType="FindIdReq" statementType="CALLABLE">
+        { CALL FND_find_Id
+            (
+            #{role},
+            #{name},
+            #{email},
+
+
+            #{exitYN, mode=OUT, jdbcType=VARCHAR, javaType=String},
+            #{id, mode=OUT, jdbcType=VARCHAR, javaType=String}
+
+            )
+            }
+
+    </select>
 
 </mapper>

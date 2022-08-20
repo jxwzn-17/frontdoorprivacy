@@ -2,6 +2,7 @@ package frontdoorprivacy.controller;
 
 
 import frontdoorprivacy.model.email.EmailRequest;
+import frontdoorprivacy.model.find.FindIdReq;
 import frontdoorprivacy.model.user.*;
 import frontdoorprivacy.service.email.EmailService;
 import frontdoorprivacy.service.user.UserService;
@@ -191,7 +192,23 @@ public class UserController{
 //
 //
 //    }
+    @PostMapping("/findid")
+    public ResponseEntity<?> findid(@RequestBody FindIdReq findIdReq){
+        String message ;
+        String Id;
+        HashMap<String, String> map = new HashMap<>();
+        userService.FindId(findIdReq);
+        if(findIdReq.getExitYN().equals("Y")){
+            logger.info("찾은아이디: {}", findIdReq.getId());
+            Id = findIdReq.getId();
+            map.put("output",Id);
 
+        }else if(findIdReq.getExitYN().equals("N")){
+            message = "가입된적이 없는 정보입니다";
+            map.put("output",message);
+        }
+        return ResponseEntity.ok(map);
+    }
 
 
 }
