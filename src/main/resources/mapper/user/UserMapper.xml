@@ -127,4 +127,28 @@
 
     </select>
 
+    <select id="FindPw" parameterType="FindPwReq" statementType="CALLABLE">
+        {CALL FND_find_pw
+            (
+            #{role},
+            #{id},
+            #{name},
+            #{email},
+
+            #{exitYN, mode=OUT, jdbcType=VARCHAR, javaType=String}
+
+            )
+            }
+
+    </select>
+
+    <update id="UpdatePw" parameterType="UpdatePwReq" statementType="CALLABLE">
+        {CALL FND_ud_passwd(
+            #{newpasswd},
+            #{role},
+            #{id}
+
+            )}
+
+    </update>
 </mapper>

@@ -3,6 +3,8 @@ package frontdoorprivacy.controller;
 
 import frontdoorprivacy.model.email.EmailRequest;
 import frontdoorprivacy.model.find.FindIdReq;
+import frontdoorprivacy.model.find.FindPwReq;
+import frontdoorprivacy.model.find.UpdatePwReq;
 import frontdoorprivacy.model.user.*;
 import frontdoorprivacy.service.email.EmailService;
 import frontdoorprivacy.service.user.UserService;
@@ -186,12 +188,6 @@ public class UserController{
         return ResponseEntity.ok(answer);
     }
 
-//    @PostMapping("email/check")
-//    public ResponseEntity<?> checkAuth(@RequestBody) {
-//
-//
-//
-//    }
     @PostMapping("/findid")
     public ResponseEntity<?> findid(@RequestBody FindIdReq findIdReq){
         String message ;
@@ -210,11 +206,33 @@ public class UserController{
 
         }else if(findIdReq.getExitYN().equals("N")){
             logger.info("ifelse문 입장");
-            message = "가입된적이 없는 정보입니다";
+            message = "error";
             map.put("output",message);
         }
         return ResponseEntity.ok(map);
     }
 
+    @PostMapping("/findpw")
+    public ResponseEntity<?> findpw(@RequestBody FindPwReq findPwReq){
+        HashMap<String,String> map = new HashMap<>();
+        userService.FindPw(findPwReq);
+        if(findPwReq.getExitYN().equals("Y")){
+            String newpasswd = emailService.newPasswd(findPwReq.getEmail());
+            UpdatePwReq tmp = new UpdatePwReq();
+            tmp.setNewpasswd(newpasswd);
+            tmp.setRole(findPwReq.getRole());
+            tmp.setId(findPwReq.getId());
+            userService.UpdatePw(tmp);
+            logger.info("비번 교체 성공");
+
+            map.put("output", "Y");
+
+        }else if(findPwReq.getExitYN().equals("N")){
+
+            map.put("output", "N");
+        }
+
+        return ResponseEntity.ok(map);
+    }
 
 }

@@ -2,6 +2,8 @@ package frontdoorprivacy.service.user;
 
 import frontdoorprivacy.mapper.user.UserMapper;
 import frontdoorprivacy.model.find.FindIdReq;
+import frontdoorprivacy.model.find.FindPwReq;
+import frontdoorprivacy.model.find.UpdatePwReq;
 import frontdoorprivacy.model.product.DetailedProductReq;
 import frontdoorprivacy.model.product.DetailedProductRes;
 import frontdoorprivacy.model.user.*;
@@ -82,4 +84,8 @@ public class UserService{
     }
 
     public void FindId(FindIdReq findIdReq){ userMapper.FindId(findIdReq);}
+
+    public void FindPw(FindPwReq findPwReq){userMapper.FindPw(findPwReq);}
+
+    public void UpdatePw(UpdatePwReq updatePwReq){userMapper.UpdatePw(updatePwReq);}
 }

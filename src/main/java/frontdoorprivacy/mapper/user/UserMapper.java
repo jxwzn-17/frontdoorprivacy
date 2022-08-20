@@ -2,6 +2,8 @@ package frontdoorprivacy.mapper.user;
 
 
 import frontdoorprivacy.model.find.FindIdReq;
+import frontdoorprivacy.model.find.FindPwReq;
+import frontdoorprivacy.model.find.UpdatePwReq;
 import frontdoorprivacy.model.product.DetailedProductReq;
 import frontdoorprivacy.model.product.DetailedProductRes;
 import frontdoorprivacy.model.user.*;
@@ -34,4 +36,6 @@ public interface UserMapper {
 
 
     void FindId(FindIdReq findIdReq);
+    void FindPw(FindPwReq findPwReq);
+    void UpdatePw(UpdatePwReq updatePwReq);
 }
