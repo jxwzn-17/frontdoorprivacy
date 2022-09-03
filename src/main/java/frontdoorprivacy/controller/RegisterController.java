@@ -1,6 +1,7 @@
 package frontdoorprivacy.controller;
 
 
+import frontdoorprivacy.model.enterprise.Checkcompany;
 import frontdoorprivacy.model.enterprise.Enterprise;
 import frontdoorprivacy.model.enterprise.EnterpriseLoginOutput;
 import frontdoorprivacy.model.enterprise.LoginEnterprise;
@@ -10,6 +11,8 @@ import frontdoorprivacy.model.user.LoginUser;
 import frontdoorprivacy.model.user.UserLoginOutput;
 import frontdoorprivacy.service.enterprise.EnterpriseService;
 import frontdoorprivacy.service.user.UserService;
+import okhttp3.*;
+import org.json.simple.JSONObject;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,7 +23,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.slf4j.Logger;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 @Controller
 @RequestMapping
@@ -28,7 +33,7 @@ public class RegisterController {
     private Logger logger = LoggerFactory.getLogger(RegisterController.class);
     private static EnterpriseService enterpriseService;
     private static UserService userService;
-
+    final String api = "cKqwuJwD4dWpxAOJgZb4NX1o4sv1SfX4OI2nsejYBiHT%2BJLkNYjTx2BB2vhnkiotIWw34cusHY186hxqAIpqjg%3D%3D";
     @Autowired
     public RegisterController(EnterpriseService enterpriseService, UserService userService) {
         this.enterpriseService = enterpriseService;
@@ -96,7 +101,52 @@ public class RegisterController {
 
     }
 
+    @PostMapping("/register/company/auth")
+    public ResponseEntity<?> check(@RequestBody Checkcompany checkcompany){
+
+        HashMap<String,String> returnvalue = new HashMap<>();
+        //진위여부 확인 코드
+        String a = getCompanyNum(checkcompany,api);
+        //성공이면 보내줄 것
+
+        String[] ang =  a.split("data");
+        if((ang[1].split(",")[1]).equals("\"b_stt\":\"계속사업자\"")){
+            returnvalue.put("message","Success");
+        }else{
+            returnvalue.put("message","Error");
+        }
 
 
+        return ResponseEntity.ok(returnvalue);
+    }
+    public static String getCompanyNum(Checkcompany checkcompany, String apiKey) {
+        //resttemplate통신이 안되서 okhttp3으로 통신
+        OkHttpClient client = new OkHttpClient();
+        MediaType mediaType = MediaType.get("application/json; charset=utf-8");
+        //요청형식이 json 배열임
+        List<String> companynum = new ArrayList<>();
+        companynum.add(checkcompany.getEnterpriseNumber());
+
+
+
+        JSONObject requestBody=new JSONObject();
+        requestBody.put("b_no",companynum);
+
+        okhttp3.RequestBody body = okhttp3.RequestBody.create(requestBody.toString(),mediaType);
+
+        Request request = new Request.Builder()
+                .url("http://api.odcloud.kr/api/nts-businessman/v1/status?serviceKey="+apiKey)
+                .method("POST", body)
+                .addHeader("Content-Type", "application/json")
+                .build();
+        //결과 탐색
+        try {
+            Response response = client.newCall(request).execute();
+            return response.body().string();
+        } catch (Exception e) {
+
+            return e.getMessage();
+        }
+    }
 
 }

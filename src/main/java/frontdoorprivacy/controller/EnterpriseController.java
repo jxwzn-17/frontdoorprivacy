@@ -1,5 +1,6 @@
 package frontdoorprivacy.controller;
 
+import frontdoorprivacy.model.enterprise.Checkcompany;
 import frontdoorprivacy.model.enterprise.MyEnterpriseInfo;
 import frontdoorprivacy.model.enterprise.UpdateEnterprise;
 import frontdoorprivacy.service.enterprise.EnterpriseService;
@@ -65,4 +66,6 @@ public class EnterpriseController {
         msg.put("message","Success");
         return ResponseEntity.ok(msg);
     }
+
+
 }
