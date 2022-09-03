@@ -39,6 +39,14 @@
         }
     </select>
 
+    <select id="cntEnterpriseNumber" parameterType="String" resultType="Integer" statementType="CALLABLE">
+        { CALL FND_sd_EnterpriseNumber(
+        #{number}
+            )
+        }
+
+    </select>
+
     <update id="updateEnterpriseInfo" parameterType="UpdateEnterprise" statementType="CALLABLE">
         { CALL FND_ud_Enterprise_Info(
         #{id},

@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.slf4j.Logger;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -108,14 +109,20 @@ public class RegisterController {
         //진위여부 확인 코드
         String a = getCompanyNum(checkcompany,api);
         //성공이면 보내줄 것
-
-        String[] ang =  a.split("data");
-        if((ang[1].split(",")[1]).equals("\"b_stt\":\"계속사업자\"")){
-            returnvalue.put("message","Success");
-        }else{
-            returnvalue.put("message","Error");
+        logger.info("msg: "+ a);
+        if(enterpriseService.cntEnterpriseNumber(checkcompany.getEnterpriseNumber())>0){
+            logger.info("중복");
+            returnvalue.put("message","Duplicate");
+        }else if(enterpriseService.cntEnterpriseNumber(checkcompany.getEnterpriseNumber())==0) {
+            String[] ang = a.split("data");
+            if ((ang[1].split(",")[1]).equals("\"b_stt\":\"계속사업자\"")) {
+                returnvalue.put("message", "Success");
+                logger.info("두번째 if문 입장");
+            } else {
+                returnvalue.put("message", "Error");
+                logger.info("두번째 else문 입장");
+            }
         }
-
 
         return ResponseEntity.ok(returnvalue);
     }

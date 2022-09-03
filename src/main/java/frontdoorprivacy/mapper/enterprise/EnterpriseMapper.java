@@ -19,4 +19,5 @@ public interface EnterpriseMapper {
     MyEnterpriseInfo getEnterpriseInfo(int id);
     void updateEnterpriseInfo(UpdateEnterprise updateEnterprise);
     void deleteEnterpriseInfo(int id);
+    int cntEnterpriseNumber(String number);
 }
