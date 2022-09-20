@@ -22,6 +22,8 @@ public interface ProductMapper {
     List<CategoryProduct> getpersonalProduct(int p_enid);
     MypageProduct getmypageProduct(int p_pdid);
 
+    List<CategoryProduct> searchProduct(String target);
+
     void updatemypageProduct(UpdateMypageProduct updateMypageProduct);
     FileInfo getfileInfo(int p_pdid);
 

@@ -74,6 +74,15 @@
 
 
     </select>
+    <select id="searchProduct" parameterType="String" resultType="CategoryProduct" statementType="CALLABLE">
+        {CALL FND_sd_searchProduct(
+            #{target}
+            )
+
+        }
+
+    </select>
+
     <update id="updatemypageProduct" parameterType="UpdateMypageProduct" statementType="CALLABLE">
         {CALL FND_up_MypageProduct(
             #{p_PDID},

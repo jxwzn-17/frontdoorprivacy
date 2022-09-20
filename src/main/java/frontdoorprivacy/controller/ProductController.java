@@ -86,6 +86,13 @@ public class ProductController {
 
         return new ResponseEntity<>(categoryProducts , HttpStatus.OK);
     }
+    //검색
+    @PostMapping("/category/search")
+    public ResponseEntity<List<CategoryProduct>> searchProduct(@RequestBody HashMap<String,String> p_target){
+        List<CategoryProduct> searchProduct = productService.searchProduct(p_target.get("target"));
+        logger.info(p_target.get("target"));
+        return new ResponseEntity<>(searchProduct, HttpStatus.OK);
+    }
 
     //큰 카테고리
     @PostMapping("/category/select")

@@ -48,6 +48,8 @@ public class ProductService {
         return productMapper.getpersonalProduct(p_enid);
     }
 
+    public List<CategoryProduct> searchProduct(String target){return productMapper.searchProduct(target);}
+
     public MypageProduct getmypageProduct(int p_pdid){
         return productMapper.getmypageProduct(p_pdid);
     }
