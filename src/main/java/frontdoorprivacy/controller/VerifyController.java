@@ -43,7 +43,7 @@ public class VerifyController {
         IamportResponse<Payment> paymentIamportResponse = iamportClient.paymentByImpUid(imp_uid);
         Payment payment = paymentIamportResponse.getResponse();
 
-        HttpSession session = request.getSession(false);
+        HttpSession session = request.getSession();
         session.setAttribute("payment",payment);
         session.setMaxInactiveInterval(60);
         return paymentIamportResponse;
