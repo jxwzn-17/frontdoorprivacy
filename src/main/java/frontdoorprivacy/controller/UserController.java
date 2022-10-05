@@ -26,6 +26,7 @@ public class UserController{
     private Logger logger = LoggerFactory.getLogger(UserController.class);
     private static UserService userService;
     private static EmailService emailService;
+
     @Autowired
     public UserController(UserService userService, EmailService emailService){
         this.userService = userService;

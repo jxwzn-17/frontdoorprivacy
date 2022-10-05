@@ -20,6 +20,15 @@
         }
     </insert>
 
+    <insert id="insertPayment" parameterType="PaymentDTO" statementType="CALLABLE">
+        { CALL FND_insert_payment(
+        #{p_imp_uid},
+        #{p_price},
+        #{subscribe_id}
+        )
+        }
+    </insert>
+
     <select id="getCategoryProduct" parameterType="String" resultType="CategoryProduct" statementType="CALLABLE">
         {CALL FND_sd_Category(
             #{p_category}
@@ -82,6 +91,7 @@
         }
 
     </select>
+
 
     <update id="updatemypageProduct" parameterType="UpdateMypageProduct" statementType="CALLABLE">
         {CALL FND_up_MypageProduct(

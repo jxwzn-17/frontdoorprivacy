@@ -2,6 +2,7 @@ package frontdoorprivacy.service.product;
 
 import frontdoorprivacy.mapper.product.ProductMapper;
 import frontdoorprivacy.model.product.*;
+import frontdoorprivacy.model.user.PaymentDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Marker;
@@ -59,5 +60,10 @@ public class ProductService {
     }
     public void updatemypageProduct(UpdateMypageProduct updateMypageProduct){
         productMapper.updatemypageProduct(updateMypageProduct);
-    ;}
+    }
+
+    public void insertPayment(PaymentDTO paymentDTO) {
+        productMapper.insertPayment(paymentDTO);
+    }
+
 }

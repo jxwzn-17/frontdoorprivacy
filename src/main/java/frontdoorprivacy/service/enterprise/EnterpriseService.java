@@ -19,19 +19,36 @@ public class EnterpriseService {
     private static EnterpriseMapper enterpriseMapper;
 
     @Autowired
-    public EnterpriseService(EnterpriseMapper enterpriseMapper){ this.enterpriseMapper = enterpriseMapper;}
+    public EnterpriseService(EnterpriseMapper enterpriseMapper){
+        this.enterpriseMapper = enterpriseMapper;
+    }
 
     public void createEnterprise(Enterprise enterprise){
         enterpriseMapper.createEnterprise(enterprise);
     }
 
-    public String checkmultiple(String enterpriseId){ return enterpriseMapper.checkmultiple(enterpriseId);}
-    public EnterpriseLoginOutput enLogin(LoginEnterprise loginEnterprise){return enterpriseMapper.enLogin(loginEnterprise);}
+    public String checkmultiple(String enterpriseId){
+        return enterpriseMapper.checkmultiple(enterpriseId);
+    }
+
+    public EnterpriseLoginOutput enLogin(LoginEnterprise loginEnterprise){
+        return enterpriseMapper.enLogin(loginEnterprise);
+    }
 
     //마이페이지
-    public MyEnterpriseInfo getEnterpriseInfo(int id){ return enterpriseMapper.getEnterpriseInfo(id);}
-    public void updateEnterpriseInfo(UpdateEnterprise updateEnterprise){enterpriseMapper.updateEnterpriseInfo(updateEnterprise);}
-    public void deleteEnterpriseInfo(int id){enterpriseMapper.deleteEnterpriseInfo(id);}
-    public int cntEnterpriseNumber(String number){return enterpriseMapper.cntEnterpriseNumber(number);}
+    public MyEnterpriseInfo getEnterpriseInfo(int id){
+        return enterpriseMapper.getEnterpriseInfo(id);
+    }
+
+    public void updateEnterpriseInfo(UpdateEnterprise updateEnterprise){
+        enterpriseMapper.updateEnterpriseInfo(updateEnterprise);
+    }
+
+    public void deleteEnterpriseInfo(int id){
+        enterpriseMapper.deleteEnterpriseInfo(id);
+    }
+    public int cntEnterpriseNumber(String number){
+        return enterpriseMapper.cntEnterpriseNumber(number);
+    }
 
 }

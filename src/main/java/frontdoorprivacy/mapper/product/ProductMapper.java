@@ -1,6 +1,7 @@
 package frontdoorprivacy.mapper.product;
 
 import frontdoorprivacy.model.product.*;
+import frontdoorprivacy.model.user.PaymentDTO;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -27,4 +28,5 @@ public interface ProductMapper {
     void updatemypageProduct(UpdateMypageProduct updateMypageProduct);
     FileInfo getfileInfo(int p_pdid);
 
+    void insertPayment(PaymentDTO paymentDTO);
 }
