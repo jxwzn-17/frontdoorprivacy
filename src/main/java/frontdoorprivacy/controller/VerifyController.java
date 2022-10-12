@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.HashMap;
 
 @Controller
@@ -30,15 +31,15 @@ public class VerifyController {
 
     @Autowired
     public VerifyController(ProductService productService) {
-        this.iamportClient = new IamportClient("...", "...");
+//        this.iamportClient = new IamportClient("...", "...");
+        this.iamportClient = new IamportClient("2652795188665450", "f3b763cccef4f2a152895d396dda79ffd3aaea8702885b58911ba227c305f03155dabfe7abea83b1");
+
         this.productService = productService;
     }
 
-    /**
-     *
-     */
+
     @PostMapping("/verifyIamport/{imp_uid}")
-    public IamportResponse<Payment> paymentByImpUid(@PathVariable String imp_uid, HttpServletRequest request) throws IamportResponseException, IOException {
+    public ResponseEntity<?> paymentByImpUid(@PathVariable String imp_uid, HttpServletRequest request) throws IamportResponseException, IOException {
         log.info("paymentByImpUid 진입");
         IamportResponse<Payment> paymentIamportResponse = iamportClient.paymentByImpUid(imp_uid);
         Payment payment = paymentIamportResponse.getResponse();
@@ -46,11 +47,17 @@ public class VerifyController {
         HttpSession session = request.getSession();
         session.setAttribute("payment",payment);
         session.setMaxInactiveInterval(60);
-        return paymentIamportResponse;
+
+        BigDecimal amount = payment.getAmount();
+        String str = String.valueOf(amount);
+        HashMap<String,String> map = new HashMap<>();
+        map.put("amount",str);
+
+        return ResponseEntity.ok(map);
     }
 
-    //여기서 id 값은 Subscribe 의 id 를 넘겨줄것 --> SSID
-    @PostMapping("/subscribe/{id}/payment")
+    //상품 id, 사용자 id, 구독cycle, 가격, imp_uid 받아서 넘겨주면 됨됨
+    @PostMapping("/subscribe/payment")
     public ResponseEntity<?> savePayment(@PathVariable int id, HttpServletRequest request, @RequestBody PaymentReqDTO paymentReqDTO) throws IamportResponseException, IOException {
 
         HashMap<String, String> response = new HashMap<>();
@@ -69,11 +76,13 @@ public class VerifyController {
         }
 
         try {
-            //여기에다가 Payment 를 저장하는 로직을 작성할것 - 가격, 저기 위에서 찾아온 subscribe 의 id, imp_uid 넘겨주고 저장하는 로직 작성
+            //여기에다가 Payment 를 저장하는 로직을 작성할것 - 가격, 저기 위에서 찾아온, imp_uid 넘겨주고 저장하는 로직 작성
             PaymentDTO paymentDTO = new PaymentDTO();
-            paymentDTO.setSubscribe_id(id);
             paymentDTO.setP_imp_uid(paymentReqDTO.getImp_uid());
             paymentDTO.setP_price(paymentReqDTO.getP_price());
+            paymentDTO.setP_PDID(paymentReqDTO.getP_PDID());
+            paymentDTO.setP_USID(paymentReqDTO.getP_USID());
+            paymentDTO.setP_SubscribeCycle(paymentReqDTO.getP_SubscribeCycle());
             productService.insertPayment(paymentDTO);
 
             response.put("response","1");

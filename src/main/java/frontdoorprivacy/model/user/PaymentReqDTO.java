@@ -10,4 +10,10 @@ public class PaymentReqDTO {
 
         private int p_price;
 
+        private int p_USID;
+
+        private int p_PDID;
+
+        private String p_SubscribeCycle;
+
 }

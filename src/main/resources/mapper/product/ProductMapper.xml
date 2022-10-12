@@ -21,10 +21,12 @@
     </insert>
 
     <insert id="insertPayment" parameterType="PaymentDTO" statementType="CALLABLE">
-        { CALL FND_insert_payment(
+        { CALL FND_in_payment(
         #{p_imp_uid},
         #{p_price},
-        #{subscribe_id}
+        #{p_USID},
+        #{p_PDID},
+        #{p_SubscribeCycle}
         )
         }
     </insert>

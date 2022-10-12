@@ -7,5 +7,7 @@ import lombok.Setter;
 public class PaymentDTO {
     private String p_imp_uid;
     private int p_price;
-    private int subscribe_id;
+    private int p_USID;
+    private int p_PDID;
+    private String p_SubscribeCycle;
 }
