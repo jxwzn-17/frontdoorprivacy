@@ -35,9 +35,7 @@ public class VerifyController {
         this.productService = productService;
     }
 
-    /**
-     *
-     */
+
     @PostMapping("/verifyIamport/{imp_uid}")
     public ResponseEntity<?> paymentByImpUid(@PathVariable String imp_uid, HttpServletRequest request) throws IamportResponseException, IOException {
         log.info("paymentByImpUid 진입");
