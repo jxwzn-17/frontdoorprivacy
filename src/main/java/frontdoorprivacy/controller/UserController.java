@@ -128,34 +128,34 @@ public class UserController{
         return new ResponseEntity<>(mySubscribeListRes, HttpStatus.OK);
     }
 
-    /**
-     * 구독 해지하기
-     * Request -> p_SSID 받아서 UseYN = 'N' 으로 바꿔줌
-     */
-    @PostMapping("/mypage/user/manage/withdraw")
-    public ResponseEntity<?> subscribeWithdraw(@RequestBody SubscribeWithdrawReq subscribeWithdrawReq){
-        userService.SubscribeWithdraw(subscribeWithdrawReq);
-        HashMap<String,String> msg = new HashMap<>();
-        msg.put("message","Success");
-        return ResponseEntity.ok(msg);
-    }
+//    /**
+//     * 구독 해지하기
+//     * Request -> p_SSID 받아서 UseYN = 'N' 으로 바꿔줌
+//     */
+//    @PostMapping("/mypage/user/manage/withdraw")
+//    public ResponseEntity<?> subscribeWithdraw(@RequestBody SubscribeWithdrawReq subscribeWithdrawReq){
+//        userService.SubscribeWithdraw(subscribeWithdrawReq);
+//        HashMap<String,String> msg = new HashMap<>();
+//        msg.put("message","Success");
+//        return ResponseEntity.ok(msg);
+//    }
 
-    @PostMapping("/product/detail/subscribe")
-    public ResponseEntity<?> insertSubscribe(@RequestBody SubscribeEnrollReq subscribeEnrollReq) {
-        logger.info("usid={}",subscribeEnrollReq.getP_USID());
-        logger.info("pdid={}",subscribeEnrollReq.getP_PDID());
-        logger.info("sub={}",subscribeEnrollReq.getP_SubscribeCycle());
-        if(userService.SubscribeCheck(subscribeEnrollReq).equals("0")){
-            userService.SubscribeEnroll(subscribeEnrollReq);
-            HashMap<String,String> msg = new HashMap<>();
-            msg.put("message","Success");
-            return ResponseEntity.ok(msg);
-        }else{
-            HashMap<String,String> msg = new HashMap<>();
-            msg.put("message","Failed");
-            return ResponseEntity.ok(msg);
-        }
-    }
+//    @PostMapping("/product/detail/subscribe")
+//    public ResponseEntity<?> insertSubscribe(@RequestBody SubscribeEnrollReq subscribeEnrollReq) {
+//        logger.info("usid={}",subscribeEnrollReq.getP_USID());
+//        logger.info("pdid={}",subscribeEnrollReq.getP_PDID());
+//        logger.info("sub={}",subscribeEnrollReq.getP_SubscribeCycle());
+//        if(userService.SubscribeCheck(subscribeEnrollReq).equals("0")){
+//            userService.SubscribeEnroll(subscribeEnrollReq);
+//            HashMap<String,String> msg = new HashMap<>();
+//            msg.put("message","Success");
+//            return ResponseEntity.ok(msg);
+//        }else{
+//            HashMap<String,String> msg = new HashMap<>();
+//            msg.put("message","Failed");
+//            return ResponseEntity.ok(msg);
+//        }
+//    }
 
     @PostMapping("/mypage/user/basket/insert")
     public ResponseEntity<?> basketinsert(@RequestBody BasketReq basketReq){
