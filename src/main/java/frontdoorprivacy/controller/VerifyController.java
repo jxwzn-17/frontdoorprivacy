@@ -51,7 +51,7 @@ public class VerifyController {
         BigDecimal amount = payment.getAmount();
         String str = String.valueOf(amount);
         HashMap<String,String> map = new HashMap<>();
-
+        map.put("amount",str);
 
         return ResponseEntity.ok(map);
     }
