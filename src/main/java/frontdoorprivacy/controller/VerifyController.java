@@ -31,7 +31,9 @@ public class VerifyController {
 
     @Autowired
     public VerifyController(ProductService productService) {
-        this.iamportClient = new IamportClient("...", "...");
+//        this.iamportClient = new IamportClient("...", "...");
+        this.iamportClient = new IamportClient("2652795188665450", "f3b763cccef4f2a152895d396dda79ffd3aaea8702885b58911ba227c305f03155dabfe7abea83b1");
+
         this.productService = productService;
     }
 

@@ -1,5 +1,9 @@
 package frontdoorprivacy.model.user;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter@Setter
 public class SubscribeEnrollReq {
 
     private int p_USID;

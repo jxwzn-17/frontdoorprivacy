@@ -9,5 +9,5 @@ public class FrontDoorPrivacyApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(FrontDoorPrivacyApplication.class, args);
 	}
-
+	//김동현 병신새끼
 }
