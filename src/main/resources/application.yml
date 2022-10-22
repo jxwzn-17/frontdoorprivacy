@@ -13,7 +13,7 @@ spring:
   mail:
     host: smtp.naver.com
     port: 465
-#    username: 니네 네이버 아이디 네이버 인증기능 구현 설정 따로 해줘야하니 하고 할것  t시팔련아 pussy
+#    username: 니네 네이버 아이디 네이버 인증기능 구현 설정 따로 해줘야하니 하고 할것
 #    password: 니네 네이버 비밀번호
     properties:
       mail.smtp.auth: true
