@@ -1,5 +1,5 @@
 server:
-  port: 9000
+  port: 8080
   servlet:
 
     context-path: /
@@ -7,9 +7,9 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://frontdoor.cuqx7qysunul.ap-northeast-2.rds.amazonaws.com/frontdoorprivacy
-    username: admin
-    password: 11yhchoa04
+    url: jdbc:mysql://localhost:3306/frontdoor?serverTimezone=Asia/Seoul
+    username: root
+    password: wldhks0107
   mail:
     host: smtp.naver.com
     port: 465
