@@ -1,7 +1,11 @@
 package frontdoorprivacy.model.product;
 
-import java.util.List;
+import lombok.Getter;
+import lombok.Setter;
+import org.springframework.core.io.Resource;
 
+import java.util.List;
+@Getter@Setter
 public class DetailedProductRes {
 
     //총 12개의 값을 넘겨줌
@@ -12,15 +16,24 @@ public class DetailedProductRes {
     private int p_Sale;
     private String p_Category;
     private String p_Detail;
-//    private String p_ImageFilePath;
-//    private String p_ImageFileName;
-//    private String p_DetailFileName;
+    private String p_ImageFilePath;
+    private String p_ImageFileName;
+    private String p_DetailFileName;
     private String p_EnterpriseName;
     private long p_PhoneNumber;
 
     private int p_Count;
 
     private List<OptionInput> p_Options;
+    private List<Resource> p_Files;
+
+    public List<Resource> getP_Files() {
+        return p_Files;
+    }
+
+    public void setP_Files(List<Resource> p_Files) {
+        this.p_Files = p_Files;
+    }
 
     public List<OptionInput> getP_Options() {
         return p_Options;
@@ -94,29 +107,29 @@ public class DetailedProductRes {
         this.p_Detail = p_Detail;
     }
 
-//    public String getP_ImageFilePath() {
-//        return p_ImageFilePath;
-//    }
-//
-//    public void setP_ImageFilePath(String p_ImageFilePath) {
-//        this.p_ImageFilePath = p_ImageFilePath;
-//    }
-//
-//    public String getP_ImageFileName() {
-//        return p_ImageFileName;
-//    }
-//
-//    public void setP_ImageFileName(String p_ImageFileName) {
-//        this.p_ImageFileName = p_ImageFileName;
-//    }
-//
-//    public String getP_DetailFileName() {
-//        return p_DetailFileName;
-//    }
-//
-//    public void setP_DetailFileName(String p_DetailFileName) {
-//        this.p_DetailFileName = p_DetailFileName;
-//    }
+    public String getP_ImageFilePath() {
+        return p_ImageFilePath;
+    }
+
+    public void setP_ImageFilePath(String p_ImageFilePath) {
+        this.p_ImageFilePath = p_ImageFilePath;
+    }
+
+    public String getP_ImageFileName() {
+        return p_ImageFileName;
+    }
+
+    public void setP_ImageFileName(String p_ImageFileName) {
+        this.p_ImageFileName = p_ImageFileName;
+    }
+
+    public String getP_DetailFileName() {
+        return p_DetailFileName;
+    }
+
+    public void setP_DetailFileName(String p_DetailFileName) {
+        this.p_DetailFileName = p_DetailFileName;
+    }
 
     public String getP_EnterpriseName() {
         return p_EnterpriseName;

@@ -5,6 +5,9 @@ import frontdoorprivacy.service.product.ProductService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +17,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
@@ -159,13 +166,29 @@ public class ProductController {
         CountInput countInput = new CountInput();
         countInput.setCount(tmp);
         countInput.setId(id);
-        for(OptionInput a : detailedProductRes.getP_Options()){
-            logger.info(a.getP_Optionname()+" "+a.getP_Price()+" "+a.getP_SaleYN());
+        //파일 통신
+        List<Resource> files = new ArrayList<>();
+        String detailname = detailedProductRes.getP_DetailFileName()+".jpg";
+        String imagename = detailedProductRes.getP_ImageFileName()+".jpg";
+        Resource main = new FileSystemResource(Path+imagename);
+        Resource detail = new FileSystemResource(Path+detailname);
+        files.add(main);
+        files.add(detail);
+        detailedProductRes.setP_Files(files);
+        if(!main.exists()||!detail.exists()){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-//        detailedProductRes.setP_Count(tmp);
+        HttpHeaders header = new HttpHeaders();
+        java.nio.file.Path filepath = null;
+        try{
+            filepath = Paths.get(Path+imagename);
+            header.add("Content-Type", Files.probeContentType(filepath));
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+
         productService.updateCountProduct(countInput);
-        logger.info("count="+tmp+"id="+id);
-        return new ResponseEntity<>(detailedProductRes, HttpStatus.OK);
+        return new ResponseEntity<>(detailedProductRes,header, HttpStatus.OK);
     }
 
 
