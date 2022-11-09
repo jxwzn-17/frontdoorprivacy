@@ -4,124 +4,126 @@
 <mapper namespace="frontdoorprivacy.mapper.user.UserMapper">
     <select id="getUserInfo" resultType="User" parameterType="Integer" statementType="CALLABLE">
         { CALL FND_sd_User_Info(
-        #{enid}
-        )
-        }
+                #{enid}
+            )
+            }
     </select>
 
     <insert id="joinUserInfo" parameterType="JoinUser" statementType="CALLABLE">
         { Call FND_in_User(
-        #{userName},
-        #{birth},
-        #{phoneNumber},
-        #{userId},
-        #{password},
-        #{email}
-        )
-        }
+                #{userName},
+                #{birth},
+                #{phoneNumber},
+                #{userId},
+                #{password},
+                #{email}
+            )
+            }
     </insert>
 
     <update id="updateUserInfo" parameterType="UpdateUser" statementType="CALLABLE">
         { CALL FND_ud_User_Info(
-        #{id},
-        #{P_PhoneNumber},
-        #{P_UserId},
-        #{P_Password},
-        #{P_Email}
-        )
-        }
+                #{id},
+                #{P_PhoneNumber},
+                #{P_UserId},
+                #{P_Password},
+                #{P_Email}
+            )
+            }
     </update>
 
     <select id="checkmultiple" parameterType="String" resultType="String" statementType="CALLABLE">
         { CALL FND_ck_userID(
-        #{inputId}
-        )
-        }
+                #{inputId}
+            )
+            }
     </select>
 
     <select id="enLogin" parameterType="LoginUser" resultType="UserLoginOutput" statementType="CALLABLE">
         { CALL FND_login_User(
-        #{inputId},
-        #{pw}
-        )
-        }
+                #{inputId},
+                #{pw}
+            )
+            }
     </select>
 
     <update id="WithdrawUser" parameterType="Withdraw" statementType="CALLABLE">
         { CALL FND_de_User(
-        #{id}
-        )
-        }
+                #{id}
+            )
+            }
     </update>
 
-    <select id="mySubscribeList" parameterType="MySubscribeListReq" resultType="MySubscribeListRes" statementType="CALLABLE">
+    <select id="mySubscribeList" parameterType="MySubscribeListReq" resultType="MySubscribeListRes"
+            statementType="CALLABLE">
         { CALL FND_myProductList_User(
-        #{p_USID}
-        )
-        }
+                #{p_USID}
+            )
+            }
     </select>
 
     <update id="SubscribeWithdraw" parameterType="SubscribeWithdrawReq" statementType="CALLABLE">
         { CALL FND_SubscribeDe_User(
-        #{p_SSID}
-        )
-        }
+                #{p_SSID}
+            )
+            }
     </update>
 
     <insert id="SubscribeEnroll" parameterType="SubscribeEnrollReq" statementType="CALLABLE">
         { CALL FND_SubscribeEN_User(
-        #{p_USID},
-        #{p_PDID},
-        #{p_SubscribeCycle}
-        )
-        }
+                #{p_Name},
+                #{p_USID},
+                #{p_PDID},
+                #{p_Price},
+                #{p_imp_uid},
+                #{p_SubscribeCycle},
+                #{p_SPeriod}
+            )
+            }
     </insert>
 
     <select id="SubscribeCheck" parameterType="SubscribeEnrollReq" resultType="String" statementType="CALLABLE">
         { CALL FND_SubscribeCK_User(
-        #{p_USID},
-        #{p_PDID},
-        #{p_SubscribeCycle}
-        )
-        }
+                #{p_USID},
+                #{p_PDID},
+                #{p_SubscribeCycle}
+            )
+            }
     </select>
 
-    <insert id = "BasketInsert" parameterType="BasketReq" statementType="CALLABLE">
+    <insert id="BasketInsert" parameterType="BasketReq" statementType="CALLABLE">
         { CALL FND_Basket_in(
-        #{p_PDID},
-        #{p_USID}
-        )
-        }
+                #{p_PDID},
+                #{p_USID}
+            )
+            }
 
     </insert>
 
     <select id="showBasketList" parameterType="BasketListReq" resultType="BasketListRes" statementType="CALLABLE">
         { CALL FND_Basket_List
-        (
-        #{p_USID}
-        )
-        }
+            (
+                #{p_USID}
+            )
+            }
     </select>
 
     <update id="BasketWithdraw" parameterType="BasketWithdrawReq" statementType="CALLABLE">
         { CALL FND_BasketDe_User
-        (
-        #{p_BSID}
-        )
-        }
+            (
+                #{p_BSID}
+            )
+            }
     </update>
 
     <select id="FindId" parameterType="FindIdReq" statementType="CALLABLE">
         { CALL FND_find_Id
             (
-            #{role},
-            #{name},
-            #{email},
-
-
-            #{exitYN, mode=OUT, jdbcType=VARCHAR, javaType=String},
-            #{id, mode=OUT, jdbcType=VARCHAR, javaType=String}
-
+                #{role},
+                #{name},
+                #{email},
+                #{exitYN, mode=OUT, jdbcType=VARCHAR, javaType=String},
+                #{id, mode=OUT, jdbcType=VARCHAR, javaType=String}
             )
             }
 
@@ -130,13 +132,11 @@
     <select id="FindPw" parameterType="FindPwReq" statementType="CALLABLE">
         {CALL FND_find_pw
             (
-            #{role},
-            #{id},
-            #{name},
-            #{email},
-
-            #{exitYN, mode=OUT, jdbcType=VARCHAR, javaType=String}
-
+                #{role},
+                #{id},
+                #{name},
+                #{email},
+                #{exitYN, mode=OUT, jdbcType=VARCHAR, javaType=String}
             )
             }
 
@@ -144,10 +144,9 @@
 
     <update id="UpdatePw" parameterType="UpdatePwReq" statementType="CALLABLE">
         {CALL FND_ud_passwd(
-            #{newpasswd},
-            #{role},
-            #{id}
-
+                #{newpasswd},
+                #{role},
+                #{id}
             )}
 
     </update>

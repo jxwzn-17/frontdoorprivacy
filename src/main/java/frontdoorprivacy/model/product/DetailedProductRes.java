@@ -16,6 +16,16 @@ public class DetailedProductRes {
     private String p_EnterpriseName;
     private long p_PhoneNumber;
 
+    private int p_Count;
+
+    public int getP_Count() {
+        return p_Count;
+    }
+
+    public void setP_Count(int p_Count) {
+        this.p_Count = p_Count;
+    }
+
     public int getP_PDID() {
         return p_PDID;
     }

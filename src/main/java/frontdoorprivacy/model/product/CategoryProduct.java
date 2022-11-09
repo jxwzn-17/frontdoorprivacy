@@ -11,7 +11,7 @@ public class CategoryProduct {
     String ImageFileName;
     String ImageFilePath;
     int Price;
-    int Sale;
+
     String Category;
     String DetailCategory;
 
@@ -77,13 +77,7 @@ public class CategoryProduct {
         Price = price;
     }
 
-    public int getSale() {
-        return Sale;
-    }
 
-    public void setSale(int sale) {
-        Sale = sale;
-    }
 
     public String getCategory() {
         return Category;

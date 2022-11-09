@@ -30,6 +30,13 @@ public class ProductService {
 
     public List<CategoryProduct> getAllProduct(){
         return productMapper.getAllProduct();}
+
+    public List<CategoryProduct> getTopProduct(){
+        return  productMapper.getTopProduct();
+    }
+    public List<CategoryProduct> getNewProduct(){
+        return productMapper.getNewProduct();
+    }
     public List<CategoryProduct> getCategoryProduct(String p_category){
         return productMapper.getCategoryProduct(p_category);
     }
@@ -61,9 +68,14 @@ public class ProductService {
     public void updatemypageProduct(UpdateMypageProduct updateMypageProduct){
         productMapper.updatemypageProduct(updateMypageProduct);
     }
-
+    public void updateCountProduct(CountInput countInput){
+        productMapper.updateCountProduct(countInput);
+    }
     public void insertPayment(PaymentDTO paymentDTO) {
         productMapper.insertPayment(paymentDTO);
     }
+
+    public void insertOption(OptionInput optionInput){productMapper.insertOption(optionInput);}
+    public int getPDID(PdidFindInput input){return productMapper.getPDID(input);}
 
 }

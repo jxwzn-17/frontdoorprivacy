@@ -55,14 +55,19 @@ public class ProductController {
         String detailStoreFileName = createStoreFileName(detailOriginalFileName);
         detailFile.transferTo(new File(getFullPath(detailStoreFileName)));
 
+
+        int min =Integer.MAX_VALUE;
+        for(OptionInput a : ProductReq.getOptionInputs()){
+            min = Integer.min(a.getP_Price(),min);
+        }
+
         //productDB 에 set으로 설정해주기
         ProductDB productDB = new ProductDB();
         productDB.setP_ENID(ProductReq.getP_ENID());
         productDB.setP_ProductName(ProductReq.getP_ProductName());
-        productDB.setP_Price(ProductReq.getP_Price());
-        productDB.setP_Sale(ProductReq.getP_Sale());
         productDB.setP_Category(ProductReq.getP_Category());
         productDB.setP_Detail(ProductReq.getP_Detail());
+        productDB.setP_Price(min);
         productDB.setP_DetailCategory(ProductReq.getP_DetailCategory());
         productDB.setP_ImageFileName(storeFileName);
         productDB.setP_ImageFilePath(Path);
@@ -72,6 +77,18 @@ public class ProductController {
 
         //프로시저 호출해서 데베에 insert 해주기
         productService.enrollProduct(productDB);
+
+        PdidFindInput pdidFindInput = new PdidFindInput();
+        pdidFindInput.setP_ENID(ProductReq.getP_ENID());
+        pdidFindInput.setP_ProductName(ProductReq.getP_ProductName());
+        pdidFindInput.setP_DetailCate(ProductReq.getP_DetailCategory());
+
+        int pdid = productService.getPDID(pdidFindInput);
+
+        for(OptionInput a: ProductReq.getOptionInputs()){
+            a.setP_PDID(pdid);
+            productService.insertOption(a);
+        }
 
         //return 은 ProductDB 해주기 or ok 메세지만 보내주면됨
         HashMap<String,String> msg = new HashMap<>();
@@ -86,6 +103,19 @@ public class ProductController {
 
         return new ResponseEntity<>(categoryProducts , HttpStatus.OK);
     }
+    //top 10
+    @GetMapping("/category/best")
+    public ResponseEntity<List<CategoryProduct>> getTopProduct(){
+        List<CategoryProduct> topProducts = productService.getTopProduct();
+
+        return new ResponseEntity<>(topProducts,HttpStatus.OK);
+    }
+    @GetMapping("/category/new")
+    public ResponseEntity<List<CategoryProduct>> getNewProduct(){
+        List<CategoryProduct> getNewProduct = productService.getNewProduct();
+        return new ResponseEntity<>(getNewProduct,HttpStatus.OK);
+    }
+
     //검색
     @PostMapping("/category/search")
     public ResponseEntity<List<CategoryProduct>> searchProduct(@RequestBody HashMap<String,String> p_target){
@@ -118,7 +148,18 @@ public class ProductController {
 
     @PostMapping("product/detail")
     public ResponseEntity<DetailedProductRes> getDetailedProduct(@RequestBody DetailedProductReq detailedProductReq){
+
         DetailedProductRes detailedProductRes = productService.detailedProduct(detailedProductReq);
+        int tmp = detailedProductRes.getP_Count();
+        int id = detailedProductReq.getP_PDID();
+        tmp++;
+        CountInput countInput = new CountInput();
+        countInput.setCount(tmp);
+        countInput.setId(id);
+
+//        detailedProductRes.setP_Count(tmp);
+        productService.updateCountProduct(countInput);
+        logger.info("count="+tmp+"id="+id);
         return new ResponseEntity<>(detailedProductRes, HttpStatus.OK);
     }
 
@@ -137,24 +178,6 @@ public class ProductController {
         return new ResponseEntity<>(mypageProduct , HttpStatus.OK);
 
     }
-//    @PostMapping("/mypage/company/edid")
-//    public ResponseEntity<?> upadateMyProduct(@RequestPart(value = "multipartFile", required = false) MultipartFile multipartFile,
-//                                           @RequestPart(value = "productReq") UpdateMypageProduct updateMypageProduct,
-//                                           @RequestPart(value = "detailFile", required = false) MultipartFile detailFile
-//
-//    ) throws IOException {
-//        int pdid = updateMypageProduct.getP_PDID();
-//        FileInfo fileInfo = productService.getfileInfo(pdid);
-//        if(!fileInfo.getImageFileName().equals(updateMypageProduct.getP_ImageFileName())){
-//
-//        }
-//
-//
-//    }
-//
-
-
-
     //" "여기안에 로컬저장소를 입력하면됨
     public String getFullPath(String filename) {
         return Path + filename;

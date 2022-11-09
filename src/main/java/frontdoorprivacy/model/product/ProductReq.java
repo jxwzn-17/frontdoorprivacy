@@ -1,6 +1,8 @@
 package frontdoorprivacy.model.product;
 
 
+import java.util.List;
+
 public class ProductReq {
 
     //이미지 파일을 제외한 나머지 값들을 받아오는 객체
@@ -8,21 +10,18 @@ public class ProductReq {
     private String p_ProductName;
     private String p_DetailCategory;
     private String p_SaleYN;
-    private int p_Price;
     private String p_Category;
     private String p_Detail;
 
-    private int p_Sale;
+    List<OptionInput> optionInputs;
 
 
-
-
-    public int getP_Sale() {
-        return p_Sale;
+    public List<OptionInput> getOptionInputs() {
+        return optionInputs;
     }
 
-    public void setP_Sale(int p_Sale) {
-        this.p_Sale = p_Sale;
+    public void setOptionInputs(List<OptionInput> optionInputs) {
+        this.optionInputs = optionInputs;
     }
 
     public String getP_DetailCategory() {
@@ -62,13 +61,6 @@ public class ProductReq {
         this.p_ProductName = p_ProductName;
     }
 
-    public int getP_Price() {
-        return p_Price;
-    }
-
-    public void setP_Price(int p_Price) {
-        this.p_Price = p_Price;
-    }
 
     public String getP_Category() {
         return p_Category;

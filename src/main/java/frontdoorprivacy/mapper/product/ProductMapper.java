@@ -14,6 +14,9 @@ public interface ProductMapper {
     void enrollProduct(ProductDB productDB);
 
     List<CategoryProduct> getAllProduct();
+    List<CategoryProduct> getNewProduct();
+
+    List<CategoryProduct> getTopProduct();
     List<CategoryProduct> getCategoryProduct(String p_category);
     List<CategoryProduct> getDetailCategory(String p_detailcategory);
     List<CategoryProduct> getSaleProduct();
@@ -26,7 +29,13 @@ public interface ProductMapper {
     List<CategoryProduct> searchProduct(String target);
 
     void updatemypageProduct(UpdateMypageProduct updateMypageProduct);
+
+    void updateCountProduct(CountInput countInput);
     FileInfo getfileInfo(int p_pdid);
 
     void insertPayment(PaymentDTO paymentDTO);
+
+
+    void insertOption(OptionInput optionInput);
+    int getPDID(PdidFindInput input);
 }

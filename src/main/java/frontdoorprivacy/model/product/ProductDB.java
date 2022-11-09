@@ -4,11 +4,10 @@ public class ProductDB {
 
     private int p_ENID;
     private String p_ProductName;
-    private int p_Price;
-    private int p_Sale;
     private String p_Category;
     private String p_DetailCategory;
     private String p_Detail;
+    private int p_Price;
     private String p_ImageFileName;
     private String p_ImageFilePath;
     private String p_DetailFileName;
@@ -34,24 +33,16 @@ public class ProductDB {
         this.p_ProductName = p_ProductName;
     }
 
+    public String getP_Category() {
+        return p_Category;
+    }
+
     public int getP_Price() {
         return p_Price;
     }
 
     public void setP_Price(int p_Price) {
         this.p_Price = p_Price;
-    }
-
-    public int getP_Sale() {
-        return p_Sale;
-    }
-
-    public void setP_Sale(int p_Sale) {
-        this.p_Sale = p_Sale;
-    }
-
-    public String getP_Category() {
-        return p_Category;
     }
 
     public void setP_Category(String p_Category) {

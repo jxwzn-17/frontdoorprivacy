@@ -5,35 +5,44 @@
 
     <insert id="enrollProduct" parameterType="ProductDB" statementType="CALLABLE">
         { CALL FND_en_Product(
-        #{p_ENID},
-        #{p_ProductName},
-        #{p_Price},
-        #{p_Sale},
-        #{p_Category},
-        #{p_DetailCategory},
-        #{p_Detail},
-        #{p_ImageFileName},
-        #{p_ImageFilePath},
-        #{p_DetailFileName},
-        #{p_SaleYN}
-        )
+                #{p_ENID},
+                #{p_ProductName},
+                #{p_Category},
+                #{p_DetailCategory},
+                #{p_Detail},
+                #{p_Price},
+                #{p_ImageFileName},
+                #{p_ImageFilePath},
+                #{p_DetailFileName},
+                #{p_SaleYN}
+            )
+            }
+    </insert>
+    <insert id="insertOption" parameterType="OptionInput" statementType="CALLABLE">
+        {CALL FND_in_Option(
+            #{p_PDID},
+            #{p_Optionname},
+            #{p_Price},
+            #{p_Sale},
+            #{p_SaleYN}
+            )
         }
     </insert>
 
     <insert id="insertPayment" parameterType="PaymentDTO" statementType="CALLABLE">
         { CALL FND_in_payment(
-        #{p_imp_uid},
-        #{p_price},
-        #{p_USID},
-        #{p_PDID},
-        #{p_SubscribeCycle}
-        )
-        }
+                #{p_imp_uid},
+                #{p_price},
+                #{p_USID},
+                #{p_PDID},
+                #{p_SubscribeCycle}
+            )
+            }
     </insert>
 
     <select id="getCategoryProduct" parameterType="String" resultType="CategoryProduct" statementType="CALLABLE">
         {CALL FND_sd_Category(
-            #{p_category}
+                #{p_category}
             )
             }
 
@@ -41,75 +50,98 @@
 
     <select id="getAllProduct" resultType="CategoryProduct" statementType="CALLABLE">
         {CALL FND_sd_AllProduct()
-        }
+            }
 
     </select>
 
     <select id="getDetailCategory" parameterType="String" resultType="CategoryProduct" statementType="CALLABLE">
         {CALL FND_sd_DetailCategory(
-            #{p_detailcategory}
+                #{p_detailcategory}
             )}
     </select>
 
     <select id="getSaleProduct" resultType="CategoryProduct" statementType="CALLABLE">
         {CALL FND_sd_SaleProduct()
-        }
+            }
 
     </select>
 
     <select id="detailedProduct" parameterType="DetailedProductReq" resultType="DetailedProductRes" statementType="CALLABLE">
         {CALL FND_sd_DetailedProduct(
-        #{p_PDID}
-        )
-        }
+                #{p_PDID}
+            )
+            }
     </select>
 
     <select id="getpersonalProduct" parameterType="Integer" resultType="CategoryProduct" statementType="CALLABLE">
         {Call FND_sd_personalProduct(
-            #{p_enid}
+                #{p_enid}
             )}
 
     </select>
 
     <select id="getmypageProduct" parameterType="Integer" resultType="MypageProduct" statementType="CALLABLE">
         {CALL FND_sd_MypageProduct(
-            #{p_pdid}
+                #{p_pdid}
             )}
 
 
     </select>
     <select id="getfileInfo" parameterType="Integer" resultType="FileInfo" statementType="CALLABLE">
         {CALL FND_sd_FileInfo(
-            #{p_pdid}
+                #{p_pdid}
             )}
 
 
     </select>
     <select id="searchProduct" parameterType="String" resultType="CategoryProduct" statementType="CALLABLE">
         {CALL FND_sd_searchProduct(
-            #{target}
+                #{target}
             )
 
-        }
+            }
 
     </select>
+    <select id="getTopProduct" resultType="CategoryProduct" statementType="CALLABLE">
+        {CALL FND_sd_TopProduct()
+            }
 
+    </select>
+    <select id="getNewProduct" resultType="CategoryProduct" statementType="CALLABLE">
+        {CALL FND_sd_NewProduct()
+            }
+
+    </select>
+    <select id="getPDID" parameterType="PdidFindInput" resultType="Integer" statementType="CALLABLE">
+        {CALL FND_sd_PDIDforOption(
+            #{p_ENID},
+            #{p_ProductName},
+            #{p_DetailCate}
+            )
+        }
+    </select>
 
     <update id="updatemypageProduct" parameterType="UpdateMypageProduct" statementType="CALLABLE">
         {CALL FND_up_MypageProduct(
-            #{p_PDID},
-            #{p_ENID},
-            #{p_ProductName},
-            #{p_Price},
-            #{p_Sale},
-            #{p_Category},
-            #{p_DetailCategory},
-            #{p_Detail},
-            #{p_ImageFileName},
-            #{p_ImageFilePath},
-            #{p_DetailFileName},
-            #{p_SaleYN}
+                #{p_PDID},
+                #{p_ENID},
+                #{p_ProductName},
+                #{p_Price},
+                #{p_Sale},
+                #{p_Category},
+                #{p_DetailCategory},
+                #{p_Detail},
+                #{p_ImageFileName},
+                #{p_ImageFilePath},
+                #{p_DetailFileName},
+                #{p_SaleYN}
+            )}
+    </update>
 
+    <update id="updateCountProduct" parameterType="CountInput" statementType="CALLABLE">
+        {CALL FND_ud_count(
+                #{id},
+                #{count}
             )}
     </update>
 </mapper>
