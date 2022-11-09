@@ -25,15 +25,7 @@ public class DetailedProductRes {
     private int p_Count;
 
     private List<OptionInput> p_Options;
-    private List<Resource> p_Files;
 
-    public List<Resource> getP_Files() {
-        return p_Files;
-    }
-
-    public void setP_Files(List<Resource> p_Files) {
-        this.p_Files = p_Files;
-    }
 
     public List<OptionInput> getP_Options() {
         return p_Options;
