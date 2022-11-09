@@ -51,6 +51,9 @@ public class ProductService {
     public DetailedProductRes detailedProduct(DetailedProductReq enrollSubscribeReq){
         return productMapper.detailedProduct(enrollSubscribeReq);
     }
+    public List<OptionInput> getProductOption(DetailedProductReq detailedProductReq){
+        return productMapper.getProductOption(detailedProductReq);
+    }
 
     public List<CategoryProduct> getpersonalProduct(int p_enid){
         return productMapper.getpersonalProduct(p_enid);

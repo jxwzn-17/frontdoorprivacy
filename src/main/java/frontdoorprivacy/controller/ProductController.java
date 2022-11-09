@@ -150,13 +150,18 @@ public class ProductController {
     public ResponseEntity<DetailedProductRes> getDetailedProduct(@RequestBody DetailedProductReq detailedProductReq){
 
         DetailedProductRes detailedProductRes = productService.detailedProduct(detailedProductReq);
+        List<OptionInput> optionInputs = productService.getProductOption(detailedProductReq);
+
+        detailedProductRes.setP_Options(optionInputs);
         int tmp = detailedProductRes.getP_Count();
         int id = detailedProductReq.getP_PDID();
         tmp++;
         CountInput countInput = new CountInput();
         countInput.setCount(tmp);
         countInput.setId(id);
-
+        for(OptionInput a : detailedProductRes.getP_Options()){
+            logger.info(a.getP_Optionname()+" "+a.getP_Price()+" "+a.getP_SaleYN());
+        }
 //        detailedProductRes.setP_Count(tmp);
         productService.updateCountProduct(countInput);
         logger.info("count="+tmp+"id="+id);

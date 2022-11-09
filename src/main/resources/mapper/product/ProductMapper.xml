@@ -73,6 +73,13 @@
             }
     </select>
 
+    <select id="getProductOption" parameterType="DetailedProductReq" resultType="OptionInput" statementType="CALLABLE">
+        {CALL FND_sd_ProductOption(
+            #{p_PDID}
+            )
+        }
+    </select>
+
     <select id="getpersonalProduct" parameterType="Integer" resultType="CategoryProduct" statementType="CALLABLE">
         {Call FND_sd_personalProduct(
                 #{p_enid}

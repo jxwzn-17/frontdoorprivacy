@@ -5,6 +5,7 @@ import frontdoorprivacy.model.user.PaymentDTO;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
+import javax.swing.text.html.Option;
 import java.util.List;
 
 @Repository
@@ -23,6 +24,8 @@ public interface ProductMapper {
 
     //제품 상세페이지
     DetailedProductRes detailedProduct(DetailedProductReq detailedProductReq);
+
+    List<OptionInput> getProductOption(DetailedProductReq detailedProductReq);
     List<CategoryProduct> getpersonalProduct(int p_enid);
     MypageProduct getmypageProduct(int p_pdid);
 

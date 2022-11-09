@@ -1,5 +1,7 @@
 package frontdoorprivacy.model.product;
 
+import java.util.List;
+
 public class DetailedProductRes {
 
     //총 12개의 값을 넘겨줌
@@ -10,13 +12,23 @@ public class DetailedProductRes {
     private int p_Sale;
     private String p_Category;
     private String p_Detail;
-    private String p_ImageFilePath;
-    private String p_ImageFileName;
-    private String p_DetailFileName;
+//    private String p_ImageFilePath;
+//    private String p_ImageFileName;
+//    private String p_DetailFileName;
     private String p_EnterpriseName;
     private long p_PhoneNumber;
 
     private int p_Count;
+
+    private List<OptionInput> p_Options;
+
+    public List<OptionInput> getP_Options() {
+        return p_Options;
+    }
+
+    public void setP_Options(List<OptionInput> p_Options) {
+        this.p_Options = p_Options;
+    }
 
     public int getP_Count() {
         return p_Count;
@@ -82,29 +94,29 @@ public class DetailedProductRes {
         this.p_Detail = p_Detail;
     }
 
-    public String getP_ImageFilePath() {
-        return p_ImageFilePath;
-    }
-
-    public void setP_ImageFilePath(String p_ImageFilePath) {
-        this.p_ImageFilePath = p_ImageFilePath;
-    }
-
-    public String getP_ImageFileName() {
-        return p_ImageFileName;
-    }
-
-    public void setP_ImageFileName(String p_ImageFileName) {
-        this.p_ImageFileName = p_ImageFileName;
-    }
-
-    public String getP_DetailFileName() {
-        return p_DetailFileName;
-    }
-
-    public void setP_DetailFileName(String p_DetailFileName) {
-        this.p_DetailFileName = p_DetailFileName;
-    }
+//    public String getP_ImageFilePath() {
+//        return p_ImageFilePath;
+//    }
+//
+//    public void setP_ImageFilePath(String p_ImageFilePath) {
+//        this.p_ImageFilePath = p_ImageFilePath;
+//    }
+//
+//    public String getP_ImageFileName() {
+//        return p_ImageFileName;
+//    }
+//
+//    public void setP_ImageFileName(String p_ImageFileName) {
+//        this.p_ImageFileName = p_ImageFileName;
+//    }
+//
+//    public String getP_DetailFileName() {
+//        return p_DetailFileName;
+//    }
+//
+//    public void setP_DetailFileName(String p_DetailFileName) {
+//        this.p_DetailFileName = p_DetailFileName;
+//    }
 
     public String getP_EnterpriseName() {
         return p_EnterpriseName;
