@@ -20,13 +20,13 @@
     </insert>
     <insert id="insertOption" parameterType="OptionInput" statementType="CALLABLE">
         {CALL FND_in_Option(
-            #{p_PDID},
-            #{p_Optionname},
-            #{p_Price},
-            #{p_Sale},
-            #{p_SaleYN}
+                #{p_PDID},
+                #{p_Optionname},
+                #{p_Price},
+                #{p_Sale},
+                #{p_SaleYN}
             )
-        }
+            }
     </insert>
 
     <insert id="insertPayment" parameterType="PaymentDTO" statementType="CALLABLE">
@@ -34,8 +34,10 @@
                 #{p_imp_uid},
                 #{p_price},
                 #{p_USID},
-                #{p_PDID},
-                #{p_SubscribeCycle}
+                #{p_POID},
+                #{p_SubscribeCycle},
+                #{p_SubscribeName},
+                #{p_Count}
             )
             }
     </insert>
@@ -66,7 +68,8 @@
 
     </select>
 
-    <select id="detailedProduct" parameterType="DetailedProductReq" resultType="DetailedProductRes" statementType="CALLABLE">
+    <select id="detailedProduct" parameterType="DetailedProductReq" resultType="DetailedProductRes"
+            statementType="CALLABLE">
         {CALL FND_sd_DetailedProduct(
                 #{p_PDID}
             )
@@ -75,9 +78,9 @@
 
     <select id="getProductOption" parameterType="DetailedProductReq" resultType="OptionInput" statementType="CALLABLE">
         {CALL FND_sd_ProductOption(
-            #{p_PDID}
+                #{p_PDID}
             )
-        }
+            }
     </select>
 
     <select id="getpersonalProduct" parameterType="Integer" resultType="CategoryProduct" statementType="CALLABLE">
@@ -121,11 +124,11 @@
     </select>
     <select id="getPDID" parameterType="PdidFindInput" resultType="Integer" statementType="CALLABLE">
         {CALL FND_sd_PDIDforOption(
-            #{p_ENID},
-            #{p_ProductName},
-            #{p_DetailCate}
+                #{p_ENID},
+                #{p_ProductName},
+                #{p_DetailCate}
             )
-        }
+            }
     </select>
 
     <update id="updatemypageProduct" parameterType="UpdateMypageProduct" statementType="CALLABLE">

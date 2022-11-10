@@ -6,7 +6,7 @@ import com.siot.IamportRestClient.request.CancelData;
 import com.siot.IamportRestClient.response.IamportResponse;
 import com.siot.IamportRestClient.response.Payment;
 import frontdoorprivacy.model.user.PaymentDTO;
-import frontdoorprivacy.model.user.PaymentReqDTO;
+//import frontdoorprivacy.model.user.PaymentReqDTO;
 import frontdoorprivacy.service.product.ProductService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,13 +58,13 @@ public class VerifyController {
 
     //상품 id, 사용자 id, 구독cycle, 가격, imp_uid 받아서 넘겨주면 됨됨
     @PostMapping("/subscribe/payment")
-    public ResponseEntity<?> savePayment(@PathVariable int id, HttpServletRequest request, @RequestBody PaymentReqDTO paymentReqDTO) throws IamportResponseException, IOException {
+    public ResponseEntity<?> savePayment(@PathVariable int id, HttpServletRequest request, @RequestBody PaymentDTO paymentDTO) throws IamportResponseException, IOException {
 
         HashMap<String, String> response = new HashMap<>();
 
         HttpSession session = request.getSession(false);
 
-        CancelData cancelData = new CancelData(paymentReqDTO.getImp_uid(), true);
+        CancelData cancelData = new CancelData(paymentDTO.getP_imp_uid(), true);
 
 
         //verifyIamport에서 세션을 만들어서 여기서 검증한 후 없애줘야함
@@ -77,12 +77,7 @@ public class VerifyController {
 
         try {
             //여기에다가 Payment 를 저장하는 로직을 작성할것 - 가격, 저기 위에서 찾아온, imp_uid 넘겨주고 저장하는 로직 작성
-            PaymentDTO paymentDTO = new PaymentDTO();
-            paymentDTO.setP_imp_uid(paymentReqDTO.getImp_uid());
-            paymentDTO.setP_price(paymentReqDTO.getP_price());
-            paymentDTO.setP_PDID(paymentReqDTO.getP_PDID());
-            paymentDTO.setP_USID(paymentReqDTO.getP_USID());
-            paymentDTO.setP_SubscribeCycle(paymentReqDTO.getP_SubscribeCycle());
+
             productService.insertPayment(paymentDTO);
 
             response.put("response","1");

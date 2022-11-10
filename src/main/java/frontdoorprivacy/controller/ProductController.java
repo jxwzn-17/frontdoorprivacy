@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -167,53 +168,48 @@ public class ProductController {
         CountInput countInput = new CountInput();
         countInput.setCount(tmp);
         countInput.setId(id);
-        //파일 통신
+
+        //파일 유무 판단
+        String detailname = detailedProductRes.getP_DetailFileName();
+        String imagename = detailedProductRes.getP_ImageFileName();
+        Resource main = new FileSystemResource(Path+imagename);
+        Resource detail = new FileSystemResource(Path+detailname);
+
+        if(!main.exists()||!detail.exists()){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        productService.updateCountProduct(countInput);
+        return new ResponseEntity<>(detailedProductRes, HttpStatus.OK);
+    }
+//    @PostMapping(value = "product/detail/image")
+//    public ResponseEntity<List<Resource>> sendImage(@RequestBody DetailedProductReq detailedProductReq){
+//        DetailedProductRes detailedProductRes = productService.detailedProduct(detailedProductReq);
+//
+//
 //        List<Resource> files = new ArrayList<>();
-//        String detailname = detailedProductRes.getP_DetailFileName()+".jpg";
-//        String imagename = detailedProductRes.getP_ImageFileName()+".jpg";
+//        String detailname = detailedProductRes.getP_DetailFileName();
+//        String imagename = detailedProductRes.getP_ImageFileName();
 //        Resource main = new FileSystemResource(Path+imagename);
 //        Resource detail = new FileSystemResource(Path+detailname);
+//        URI file  = new File(Path+imagename).toURI();
+//        logger.info("file url "+ file);
 //        files.add(main);
 //        files.add(detail);
 //        if(!main.exists()||!detail.exists()){
 //            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 //        }
 //        HttpHeaders header = new HttpHeaders();
-//        java.nio.file.Path filepath = null;
+//        Path filepath = null;
 //        try{
 //            filepath = Paths.get(Path+imagename);
 //            header.add("Content-Type", Files.probeContentType(filepath));
 //        }catch (IOException e){
 //            e.printStackTrace();
 //        }
-
-        productService.updateCountProduct(countInput);
-        return new ResponseEntity<>(detailedProductRes, HttpStatus.OK);
-    }
-    @PostMapping(value = "product/detail/image")
-    public ResponseEntity<List<Resource>> sendImage(@RequestBody DetailedProductReq detailedProductReq){
-        DetailedProductRes detailedProductRes = productService.detailedProduct(detailedProductReq);
-
-        List<Resource> files = new ArrayList<>();
-        String detailname = detailedProductRes.getP_DetailFileName()+".jpg";
-        String imagename = detailedProductRes.getP_ImageFileName()+".jpg";
-        Resource main = new FileSystemResource(Path+imagename);
-        Resource detail = new FileSystemResource(Path+detailname);
-        files.add(main);
-        files.add(detail);
-        if(!main.exists()||!detail.exists()){
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        HttpHeaders header = new HttpHeaders();
-        Path filepath = null;
-        try{
-            filepath = Paths.get(Path+imagename);
-            header.add("Content-Type", Files.probeContentType(filepath));
-        }catch (IOException e){
-            e.printStackTrace();
-        }
-        return new ResponseEntity<>(files,header, HttpStatus.OK);
-    }
+//
+//        return new ResponseEntity<>(files, header, HttpStatus.OK);
+//    }
 
     @PostMapping("/mypage/company/manage")
     public ResponseEntity<List<CategoryProduct>> getpersonalProuduct(@RequestBody HashMap<String,Integer> p_enid){
