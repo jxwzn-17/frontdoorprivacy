@@ -4,6 +4,7 @@ import frontdoorprivacy.mapper.user.UserMapper;
 import frontdoorprivacy.model.find.FindIdReq;
 import frontdoorprivacy.model.find.FindPwReq;
 import frontdoorprivacy.model.find.UpdatePwReq;
+import frontdoorprivacy.model.product.CategoryProduct;
 import frontdoorprivacy.model.product.DetailedProductReq;
 import frontdoorprivacy.model.product.DetailedProductRes;
 import frontdoorprivacy.model.user.*;
@@ -71,7 +72,7 @@ public class UserService{
     public String SubscribeCheck(SubscribeEnrollReq subscribeEnrollReq) {
         return userMapper.SubscribeCheck(subscribeEnrollReq);
     }
-    public List<Integer> showBasketList(int basketListReq){
+    public List<CategoryProduct> showBasketList(int basketListReq){
         return userMapper.showBasketList(basketListReq);
     }
 

@@ -5,6 +5,7 @@ import frontdoorprivacy.model.email.EmailRequest;
 import frontdoorprivacy.model.find.FindIdReq;
 import frontdoorprivacy.model.find.FindPwReq;
 import frontdoorprivacy.model.find.UpdatePwReq;
+import frontdoorprivacy.model.product.CategoryProduct;
 import frontdoorprivacy.model.product.MypageProduct;
 import frontdoorprivacy.model.user.*;
 import frontdoorprivacy.service.email.EmailService;
@@ -171,13 +172,9 @@ public class UserController{
     }
 
     @PostMapping("/mypage/user/basket")
-    public ResponseEntity<List<MypageProduct>> basketList(@RequestBody int basketListReq){
-        List<Integer> basketListRes = userService.showBasketList(basketListReq);
-        List<MypageProduct> myproducts = new ArrayList<>();
-        for(int a : basketListRes){
-           myproducts.add(productService.getmypageProduct(a));
-        }
-        return new ResponseEntity<>(myproducts, HttpStatus.OK);
+    public ResponseEntity<List<CategoryProduct>> basketList(@RequestBody HashMap<String,Integer> basketListReq){
+        List<CategoryProduct> basketListRes = userService.showBasketList(basketListReq.get("p_USID"));
+        return new ResponseEntity<>(basketListRes, HttpStatus.OK);
 
     }
 

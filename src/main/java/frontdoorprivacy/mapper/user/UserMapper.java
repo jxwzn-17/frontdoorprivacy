@@ -4,6 +4,7 @@ package frontdoorprivacy.mapper.user;
 import frontdoorprivacy.model.find.FindIdReq;
 import frontdoorprivacy.model.find.FindPwReq;
 import frontdoorprivacy.model.find.UpdatePwReq;
+import frontdoorprivacy.model.product.CategoryProduct;
 import frontdoorprivacy.model.product.DetailedProductReq;
 import frontdoorprivacy.model.product.DetailedProductRes;
 import frontdoorprivacy.model.user.*;
@@ -28,7 +29,7 @@ public interface UserMapper {
 
     String SubscribeCheck(SubscribeEnrollReq subscribeEnrollReq);
 
-    List<Integer> showBasketList(int basketListReq);
+    List<CategoryProduct> showBasketList(int basketListReq);
 
     void BasketInsert(BasketReq basketReq);
 
