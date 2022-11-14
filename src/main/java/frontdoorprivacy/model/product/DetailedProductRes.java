@@ -24,14 +24,14 @@ public class DetailedProductRes {
 
     private int p_Count;
 
-    private List<OptionInput> p_Options;
+    private List<OptionOutput> p_Options;
 
 
-    public List<OptionInput> getP_Options() {
+    public List<OptionOutput> getP_Options() {
         return p_Options;
     }
 
-    public void setP_Options(List<OptionInput> p_Options) {
+    public void setP_Options(List<OptionOutput> p_Options) {
         this.p_Options = p_Options;
     }
 

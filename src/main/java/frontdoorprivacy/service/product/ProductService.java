@@ -51,7 +51,7 @@ public class ProductService {
     public DetailedProductRes detailedProduct(DetailedProductReq enrollSubscribeReq){
         return productMapper.detailedProduct(enrollSubscribeReq);
     }
-    public List<OptionInput> getProductOption(DetailedProductReq detailedProductReq){
+    public List<OptionOutput> getProductOption(DetailedProductReq detailedProductReq){
         return productMapper.getProductOption(detailedProductReq);
     }
 

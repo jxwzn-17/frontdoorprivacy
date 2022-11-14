@@ -25,7 +25,7 @@ public interface ProductMapper {
     //제품 상세페이지
     DetailedProductRes detailedProduct(DetailedProductReq detailedProductReq);
 
-    List<OptionInput> getProductOption(DetailedProductReq detailedProductReq);
+    List<OptionOutput> getProductOption(DetailedProductReq detailedProductReq);
     List<CategoryProduct> getpersonalProduct(int p_enid);
     MypageProduct getmypageProduct(int p_pdid);
     List<Myproductoptionoutput> getmypageProductOption(int p_pdid);

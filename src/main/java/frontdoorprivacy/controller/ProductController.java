@@ -214,7 +214,7 @@ public class ProductController {
     public ResponseEntity<DetailedProductRes> getDetailedProduct(@RequestBody DetailedProductReq detailedProductReq){
 
         DetailedProductRes detailedProductRes = productService.detailedProduct(detailedProductReq);
-        List<OptionInput> optionInputs = productService.getProductOption(detailedProductReq);
+        List<OptionOutput> optionInputs = productService.getProductOption(detailedProductReq);
 
         detailedProductRes.setP_Options(optionInputs);
         int tmp = detailedProductRes.getP_Count();

@@ -76,7 +76,7 @@
             }
     </select>
 
-    <select id="getProductOption" parameterType="DetailedProductReq" resultType="OptionInput" statementType="CALLABLE">
+    <select id="getProductOption" parameterType="DetailedProductReq" resultType="OptionOutput" statementType="CALLABLE">
         {CALL FND_sd_ProductOption(
                 #{p_PDID}
             )
