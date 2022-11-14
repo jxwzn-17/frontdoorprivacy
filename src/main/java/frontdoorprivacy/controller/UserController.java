@@ -172,8 +172,8 @@ public class UserController{
     }
 
     @PostMapping("/mypage/user/basket")
-    public ResponseEntity<List<CategoryProduct>> basketList(@RequestBody HashMap<String,Integer> basketListReq){
-        List<CategoryProduct> basketListRes = userService.showBasketList(basketListReq.get("p_USID"));
+    public ResponseEntity<List<BasketProduct>> basketList(@RequestBody HashMap<String,Integer> basketListReq){
+        List<BasketProduct> basketListRes = userService.showBasketList(basketListReq.get("p_USID"));
         return new ResponseEntity<>(basketListRes, HttpStatus.OK);
 
     }

@@ -29,7 +29,7 @@ public interface UserMapper {
 
     String SubscribeCheck(SubscribeEnrollReq subscribeEnrollReq);
 
-    List<CategoryProduct> showBasketList(int basketListReq);
+    List<BasketProduct> showBasketList(int basketListReq);
 
     void BasketInsert(BasketReq basketReq);
 
