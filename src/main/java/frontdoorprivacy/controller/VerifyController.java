@@ -12,6 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -39,7 +40,7 @@ public class VerifyController {
 
 
     @PostMapping("/verifyIamport/{imp_uid}")
-    public ResponseEntity<?> paymentByImpUid(@PathVariable String imp_uid, HttpServletRequest request) throws IamportResponseException, IOException {
+    public ResponseEntity<?> paymentByImpUid(@PathVariable("imp_uid") String imp_uid, HttpServletRequest request) throws IamportResponseException, IOException {
         log.info("paymentByImpUid 진입");
         IamportResponse<Payment> paymentIamportResponse = iamportClient.paymentByImpUid(imp_uid);
         Payment payment = paymentIamportResponse.getResponse();

@@ -184,7 +184,7 @@ public class ProductController {
     @PostMapping("/category/search")
     public ResponseEntity<List<CategoryProduct>> searchProduct(@RequestBody HashMap<String,String> p_target){
         List<CategoryProduct> searchProduct = productService.searchProduct(p_target.get("target"));
-        logger.info(p_target.get("target"));
+//        logger.info(p_target.get("target"));
         return new ResponseEntity<>(searchProduct, HttpStatus.OK);
     }
 
@@ -192,7 +192,7 @@ public class ProductController {
     @PostMapping("/category/select")
     public ResponseEntity<List<CategoryProduct>> getCategoryProduct(@RequestBody HashMap<String,String> p_category){
         List<CategoryProduct> categoryProducts = productService.getCategoryProduct(p_category.get("category"));
-       logger.info(p_category.get("category"));
+//       logger.info(p_category.get("category"));
         return new ResponseEntity<>(categoryProducts, HttpStatus.OK);
     }
     //작은 카테고리
