@@ -83,7 +83,6 @@ public class ProductController {
         productDB.setP_DetailFileName(detailStoreFileName);
         productDB.setP_SaleYN(ProductReq.getP_SaleYN());
 
-
         //프로시저 호출해서 데베에 insert 해주기
         productService.enrollProduct(productDB);
 
