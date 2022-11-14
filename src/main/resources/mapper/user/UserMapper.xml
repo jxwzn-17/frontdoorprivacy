@@ -100,7 +100,7 @@
 
     </insert>
 
-    <select id="showBasketList" parameterType="BasketListReq" resultType="BasketListRes" statementType="CALLABLE">
+    <select id="showBasketList" parameterType="Integer" resultType="Integer" statementType="CALLABLE">
         { CALL FND_Basket_List
             (
                 #{p_USID}

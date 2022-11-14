@@ -71,7 +71,7 @@ public class UserService{
     public String SubscribeCheck(SubscribeEnrollReq subscribeEnrollReq) {
         return userMapper.SubscribeCheck(subscribeEnrollReq);
     }
-    public List<BasketListRes> showBasketList(BasketListReq basketListReq){
+    public List<Integer> showBasketList(int basketListReq){
         return userMapper.showBasketList(basketListReq);
     }
 
