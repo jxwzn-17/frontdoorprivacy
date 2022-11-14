@@ -6,15 +6,17 @@ import java.util.List;
 public class ProductReq {
 
     //이미지 파일을 제외한 나머지 값들을 받아오는 객체
-    private int p_ENID;
-    private String p_ProductName;
-    private String p_DetailCategory;
-    private String p_SaleYN;
-    private String p_Category;
-    private String p_Detail;
+    int p_ENID;
+    String p_ProductName;
+    String p_DetailCategory;
+    String p_SaleYN;
+    String p_Category;
+    String p_Detail;
 
     List<OptionInput> optionInputs;
 
+    public ProductReq() {
+    }
 
     public List<OptionInput> getOptionInputs() {
         return optionInputs;
@@ -40,10 +42,6 @@ public class ProductReq {
         this.p_SaleYN = p_SaleYN;
     }
 
-
-
-    public ProductReq() {
-    }
 
     public int getP_ENID() {
         return p_ENID;

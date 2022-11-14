@@ -66,10 +66,11 @@ public class ProductController {
 
 
         int min =Integer.MAX_VALUE;
-        for(OptionInput a : ProductReq.getOptionInputs()){
-            min = Integer.min(a.getP_Price(),min);
-        }
 
+            for (OptionInput a : ProductReq.getOptionInputs()) {
+                min = Integer.min(a.getP_Price(), min);
+
+        }
         //productDB 에 set으로 설정해주기
         ProductDB productDB = new ProductDB();
         productDB.setP_ENID(ProductReq.getP_ENID());
@@ -93,11 +94,10 @@ public class ProductController {
 
         int pdid = productService.getPDID(pdidFindInput);
 
-        for(OptionInput a: ProductReq.getOptionInputs()){
-            a.setP_PDID(pdid);
-            productService.insertOption(a);
+            for (OptionInput a : ProductReq.getOptionInputs()) {
+                a.setP_PDID(pdid);
+                productService.insertOption(a);
         }
-
         //return 은 ProductDB 해주기 or ok 메세지만 보내주면됨
         HashMap<String,String> msg = new HashMap<>();
         msg.put("message","Success");
