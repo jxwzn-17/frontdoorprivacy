@@ -117,6 +117,13 @@
             }
 
     </select>
+
+    <select id="getmypageProductOption" parameterType="Integer" resultType="Myproductoptionoutput" statementType="CALLABLE">
+        {CALL FND_sd_MypageProductOption(
+            #{p_pdid}
+            )
+        }
+    </select>
     <select id="getNewProduct" resultType="CategoryProduct" statementType="CALLABLE">
         {CALL FND_sd_NewProduct()
             }

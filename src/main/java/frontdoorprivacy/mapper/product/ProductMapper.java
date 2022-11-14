@@ -28,6 +28,7 @@ public interface ProductMapper {
     List<OptionInput> getProductOption(DetailedProductReq detailedProductReq);
     List<CategoryProduct> getpersonalProduct(int p_enid);
     MypageProduct getmypageProduct(int p_pdid);
+    List<Myproductoptionoutput> getmypageProductOption(int p_pdid);
 
     List<CategoryProduct> searchProduct(String target);
 

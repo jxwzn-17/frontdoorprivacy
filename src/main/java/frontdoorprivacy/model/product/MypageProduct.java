@@ -5,7 +5,6 @@ public class MypageProduct {
     private int ENID;
     private String ProductName;
     private int Price;
-    private int Sale;
     private String Category;
     private String DetailCategory;
     private String Detail;
@@ -39,14 +38,6 @@ public class MypageProduct {
 
     public void setPrice(int price) {
         Price = price;
-    }
-
-    public int getSale() {
-        return Sale;
-    }
-
-    public void setSale(int sale) {
-        Sale = sale;
     }
 
     public String getCategory() {

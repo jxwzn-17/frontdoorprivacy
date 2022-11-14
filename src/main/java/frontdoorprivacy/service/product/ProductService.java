@@ -64,6 +64,9 @@ public class ProductService {
     public MypageProduct getmypageProduct(int p_pdid){
         return productMapper.getmypageProduct(p_pdid);
     }
+    public List<Myproductoptionoutput> getmypageProductOption(int p_pdid){
+        return productMapper.getmypageProductOption(p_pdid);
+    }
 
     public FileInfo getfileInfo(int p_pdid){
         return productMapper.getfileInfo(p_pdid);
