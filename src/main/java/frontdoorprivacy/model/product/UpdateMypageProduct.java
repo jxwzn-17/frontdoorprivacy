@@ -1,12 +1,15 @@
 package frontdoorprivacy.model.product;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter@Setter
 public class UpdateMypageProduct {
 
     private int p_PDID;
     private int p_ENID;
     private String p_ProductName;
     private int p_Price;
-    private int p_Sale;
     private String p_Category;
     private String p_DetailCategory;
     private String p_Detail;
@@ -48,14 +51,6 @@ public class UpdateMypageProduct {
 
     public void setP_Price(int p_Price) {
         this.p_Price = p_Price;
-    }
-
-    public int getP_Sale() {
-        return p_Sale;
-    }
-
-    public void setP_Sale(int p_Sale) {
-        this.p_Sale = p_Sale;
     }
 
     public String getP_Category() {

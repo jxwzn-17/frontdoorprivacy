@@ -139,20 +139,31 @@
     </select>
 
     <update id="updatemypageProduct" parameterType="UpdateMypageProduct" statementType="CALLABLE">
-        {CALL FND_up_MypageProduct(
+        {CALL FND_up_Product(
                 #{p_PDID},
                 #{p_ENID},
                 #{p_ProductName},
-                #{p_Price},
-                #{p_Sale},
                 #{p_Category},
                 #{p_DetailCategory},
                 #{p_Detail},
+                #{p_Price},
                 #{p_ImageFileName},
                 #{p_ImageFilePath},
                 #{p_DetailFileName},
                 #{p_SaleYN}
             )}
+    </update>
+
+    <update id="updatemypageProductOption" parameterType="UpdateMypageProductOption" statementType="CALLABLE">
+        {CALL FND_up_Option(
+            #{p_POID},
+            #{p_PDID},
+            #{p_Optionname},
+            #{p_Price},
+            #{p_Sale},
+            #{p_SaleYN}
+            )
+        }
     </update>
 
     <update id="updateCountProduct" parameterType="CountInput" statementType="CALLABLE">

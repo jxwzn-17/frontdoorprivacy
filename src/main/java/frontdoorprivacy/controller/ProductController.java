@@ -103,7 +103,53 @@ public class ProductController {
         msg.put("message","Success");
         return ResponseEntity.ok(msg);
     }
+    @PostMapping("/product/edit")
+    public ResponseEntity<?> editProduct(@RequestPart(value = "multipartFile", required = false) MultipartFile multipartFile,
+                                           @RequestPart(value = "options") List<UpdateMypageProductOption> options,
+                                           @RequestPart(value = "productReq") UpdateMypageProduct updateMypageProduct,
+                                           @RequestPart(value = "detailFile", required = false) MultipartFile detailFile
 
+    ) throws IOException {
+
+        //여기는 썸네일에 쓸 이미지 파일을 uuid 로 바꿔주고 저장
+        //uuid 변경하고 저장한다음 파일명하고 파일경로 받아오기
+        String originalFilename = multipartFile.getOriginalFilename();
+
+        //uuid를 이용 파일명 변경
+        String storeFileName = createStoreFileName(originalFilename);
+
+        //로컬에 파일을 저장
+        multipartFile.transferTo(new File(getFullPath(storeFileName)));
+
+        //이곳 로직은 Detail에 쓸 이미지 파일을 uuid 로 바꿔주고 저장
+        String detailOriginalFileName = detailFile.getOriginalFilename();
+        String detailStoreFileName = createStoreFileName(detailOriginalFileName);
+        detailFile.transferTo(new File(getFullPath(detailStoreFileName)));
+
+
+        int min =Integer.MAX_VALUE;
+
+        for (UpdateMypageProductOption a : options) {
+            min = Integer.min(a.getP_Price(), min);
+        }
+        updateMypageProduct.setP_DetailFileName(detailStoreFileName);
+        updateMypageProduct.setP_ImageFileName(storeFileName);
+        updateMypageProduct.setP_ImageFilePath(Path);
+        updateMypageProduct.setP_Price(min);
+
+        //프로시저 호출해서 데베에 insert 해주기
+
+        productService.updatemypageProduct(updateMypageProduct);
+
+
+        for (UpdateMypageProductOption a : options) {
+            productService.updatemypageProductOption(a);
+        }
+        //return 은 ProductDB 해주기 or ok 메세지만 보내주면됨
+        HashMap<String,String> msg = new HashMap<>();
+        msg.put("message","Success");
+        return ResponseEntity.ok(msg);
+    }
 
     @GetMapping("/category/main")
     public ResponseEntity<List<CategoryProduct>> getAllProduct(){
@@ -181,34 +227,6 @@ public class ProductController {
         productService.updateCountProduct(countInput);
         return new ResponseEntity<>(detailedProductRes, HttpStatus.OK);
     }
-//    @PostMapping(value = "product/detail/image")
-//    public ResponseEntity<List<Resource>> sendImage(@RequestBody DetailedProductReq detailedProductReq){
-//        DetailedProductRes detailedProductRes = productService.detailedProduct(detailedProductReq);
-//
-//
-//        List<Resource> files = new ArrayList<>();
-//        String detailname = detailedProductRes.getP_DetailFileName();
-//        String imagename = detailedProductRes.getP_ImageFileName();
-//        Resource main = new FileSystemResource(Path+imagename);
-//        Resource detail = new FileSystemResource(Path+detailname);
-//        URI file  = new File(Path+imagename).toURI();
-//        logger.info("file url "+ file);
-//        files.add(main);
-//        files.add(detail);
-//        if(!main.exists()||!detail.exists()){
-//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//        }
-//        HttpHeaders header = new HttpHeaders();
-//        Path filepath = null;
-//        try{
-//            filepath = Paths.get(Path+imagename);
-//            header.add("Content-Type", Files.probeContentType(filepath));
-//        }catch (IOException e){
-//            e.printStackTrace();
-//        }
-//
-//        return new ResponseEntity<>(files, header, HttpStatus.OK);
-//    }
 
     @PostMapping("/mypage/company/manage")
     public ResponseEntity<List<CategoryProduct>> getpersonalProuduct(@RequestBody HashMap<String,Integer> p_enid){

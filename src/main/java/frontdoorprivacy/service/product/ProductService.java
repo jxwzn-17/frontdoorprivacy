@@ -74,9 +74,13 @@ public class ProductService {
     public void updatemypageProduct(UpdateMypageProduct updateMypageProduct){
         productMapper.updatemypageProduct(updateMypageProduct);
     }
+    public void updatemypageProductOption(UpdateMypageProductOption updateMypageProductOption){
+        productMapper.updatemypageProductOption(updateMypageProductOption);
+    }
     public void updateCountProduct(CountInput countInput){
         productMapper.updateCountProduct(countInput);
     }
+
     public void insertPayment(PaymentDTO paymentDTO) {
         productMapper.insertPayment(paymentDTO);
     }

@@ -33,6 +33,7 @@ public interface ProductMapper {
     List<CategoryProduct> searchProduct(String target);
 
     void updatemypageProduct(UpdateMypageProduct updateMypageProduct);
+    void updatemypageProductOption(UpdateMypageProductOption updateMypageProductOption);
 
     void updateCountProduct(CountInput countInput);
     FileInfo getfileInfo(int p_pdid);
