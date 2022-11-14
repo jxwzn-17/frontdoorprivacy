@@ -88,4 +88,10 @@ public class ProductService {
     public void insertOption(OptionInput optionInput){productMapper.insertOption(optionInput);}
     public int getPDID(PdidFindInput input){return productMapper.getPDID(input);}
 
+    public String getImageFileName(int p_PDID){
+        return productMapper.getImageFileName(p_PDID);
+    }
+    public String getDetailFileName(int p_PDID){
+        return productMapper.getDetailFileName(p_PDID);
+    }
 }

@@ -111,21 +111,31 @@ public class ProductController {
 
     ) throws IOException {
 
+        String storeFileName;
+        String detailStoreFileName;
+        int pdid = updateMypageProduct.getP_PDID();
+
         //여기는 썸네일에 쓸 이미지 파일을 uuid 로 바꿔주고 저장
         //uuid 변경하고 저장한다음 파일명하고 파일경로 받아오기
-        String originalFilename = multipartFile.getOriginalFilename();
+        if(multipartFile==null){
+            storeFileName = productService.getImageFileName(pdid);
+        }else {
+            String originalFilename = multipartFile.getOriginalFilename();
 
-        //uuid를 이용 파일명 변경
-        String storeFileName = createStoreFileName(originalFilename);
+            //uuid를 이용 파일명 변경
+            storeFileName = createStoreFileName(originalFilename);
 
-        //로컬에 파일을 저장
-        multipartFile.transferTo(new File(getFullPath(storeFileName)));
-
-        //이곳 로직은 Detail에 쓸 이미지 파일을 uuid 로 바꿔주고 저장
-        String detailOriginalFileName = detailFile.getOriginalFilename();
-        String detailStoreFileName = createStoreFileName(detailOriginalFileName);
-        detailFile.transferTo(new File(getFullPath(detailStoreFileName)));
-
+            //로컬에 파일을 저장
+            multipartFile.transferTo(new File(getFullPath(storeFileName)));
+        }
+        if(detailFile==null){
+            detailStoreFileName = productService.getDetailFileName(pdid);
+        }else {
+            //이곳 로직은 Detail에 쓸 이미지 파일을 uuid 로 바꿔주고 저장
+            String detailOriginalFileName = detailFile.getOriginalFilename();
+            detailStoreFileName = createStoreFileName(detailOriginalFileName);
+            detailFile.transferTo(new File(getFullPath(detailStoreFileName)));
+        }
 
         int min =Integer.MAX_VALUE;
 

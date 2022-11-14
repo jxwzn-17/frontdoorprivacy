@@ -32,6 +32,9 @@ public interface ProductMapper {
 
     List<CategoryProduct> searchProduct(String target);
 
+    String getImageFileName(int p_PDID);
+    String getDetailFileName(int p_PDID);
+
     void updatemypageProduct(UpdateMypageProduct updateMypageProduct);
     void updatemypageProductOption(UpdateMypageProductOption updateMypageProductOption);
 

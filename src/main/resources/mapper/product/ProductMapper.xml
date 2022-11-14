@@ -137,6 +137,20 @@
             )
             }
     </select>
+    <select id="getDetailFileName" parameterType="Integer" resultType="String" statementType="CALLABLE">
+        {CALL FND_sd_DetailFileName(
+            #{p_PDID}
+            )
+        }
+    </select>
+
+    <select id="getImageFileName" parameterType="Integer" resultType="String" statementType="CALLABLE">
+        {CALL FND_sd_ImageFileName(
+                #{p_PDID}
+            )
+            }
+    </select>
+
 
     <update id="updatemypageProduct" parameterType="UpdateMypageProduct" statementType="CALLABLE">
         {CALL FND_up_Product(
