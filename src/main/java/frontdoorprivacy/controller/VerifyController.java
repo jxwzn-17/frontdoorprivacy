@@ -40,14 +40,11 @@ public class VerifyController {
 
 
     @PostMapping("/verifyIamport/{imp_uid}")
-    public ResponseEntity<?> paymentByImpUid(@PathVariable("imp_uid") String imp_uid, HttpServletRequest request) throws IamportResponseException, IOException {
+    public ResponseEntity<?> paymentByImpUid(@PathVariable("imp_uid") String imp_uid) throws IamportResponseException, IOException {
         log.info("paymentByImpUid 진입");
         IamportResponse<Payment> paymentIamportResponse = iamportClient.paymentByImpUid(imp_uid);
         Payment payment = paymentIamportResponse.getResponse();
 
-        HttpSession session = request.getSession();
-        session.setAttribute("payment",payment);
-        session.setMaxInactiveInterval(60);
 
         BigDecimal amount = payment.getAmount();
         String str = String.valueOf(amount);
@@ -59,22 +56,12 @@ public class VerifyController {
 
     //상품 id, 사용자 id, 구독cycle, 가격, imp_uid 받아서 넘겨주면 됨됨
     @PostMapping("/subscribe/payment")
-    public ResponseEntity<?> savePayment(@PathVariable int id, HttpServletRequest request, @RequestBody PaymentDTO paymentDTO) throws IamportResponseException, IOException {
+    public ResponseEntity<?> savePayment(@RequestBody PaymentDTO paymentDTO) throws IamportResponseException, IOException {
 
         HashMap<String, String> response = new HashMap<>();
 
-        HttpSession session = request.getSession(false);
-
         CancelData cancelData = new CancelData(paymentDTO.getP_imp_uid(), true);
 
-
-        //verifyIamport에서 세션을 만들어서 여기서 검증한 후 없애줘야함
-        //여긴 결제승인을 한곳이 아니므로 잘못된 결제먼저해달라고하면됨
-        Payment payment = (Payment) session.getAttribute("payment");
-        if(payment == null) {
-            response.put("response","잘못된 접근입니다.");
-            return ResponseEntity.ok(response);
-        }
 
         try {
             //여기에다가 Payment 를 저장하는 로직을 작성할것 - 가격, 저기 위에서 찾아온, imp_uid 넘겨주고 저장하는 로직 작성
