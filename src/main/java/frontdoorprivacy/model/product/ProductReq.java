@@ -13,18 +13,18 @@ public class ProductReq {
     String p_Category;
     String p_Detail;
 
-    List<OptionInput> optionInputs;
+//    List<OptionInput> optionInputs;
 
     public ProductReq() {
     }
 
-    public List<OptionInput> getOptionInputs() {
-        return optionInputs;
-    }
-
-    public void setOptionInputs(List<OptionInput> optionInputs) {
-        this.optionInputs = optionInputs;
-    }
+//    public List<OptionInput> getOptionInputs() {
+//        return optionInputs;
+//    }
+//
+//    public void setOptionInputs(List<OptionInput> optionInputs) {
+//        this.optionInputs = optionInputs;
+//    }
 
     public String getP_DetailCategory() {
         return p_DetailCategory;

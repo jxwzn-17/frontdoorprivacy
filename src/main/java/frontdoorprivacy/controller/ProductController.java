@@ -44,6 +44,7 @@ public class ProductController {
 
     @PostMapping("/mypage/company/product")
     public ResponseEntity<?> enrollProduct(@RequestPart(value = "multipartFile", required = false) MultipartFile multipartFile,
+                                           @RequestPart(value = "options") List<OptionInput> options,
                                            @RequestPart(value = "productReq") ProductReq ProductReq,
                                            @RequestPart(value = "detailFile", required = false) MultipartFile detailFile
 
@@ -67,9 +68,8 @@ public class ProductController {
 
         int min =Integer.MAX_VALUE;
 
-            for (OptionInput a : ProductReq.getOptionInputs()) {
+            for (OptionInput a : options) {
                 min = Integer.min(a.getP_Price(), min);
-
         }
         //productDB 에 set으로 설정해주기
         ProductDB productDB = new ProductDB();
@@ -94,7 +94,7 @@ public class ProductController {
 
         int pdid = productService.getPDID(pdidFindInput);
 
-            for (OptionInput a : ProductReq.getOptionInputs()) {
+            for (OptionInput a : options) {
                 a.setP_PDID(pdid);
                 productService.insertOption(a);
         }
