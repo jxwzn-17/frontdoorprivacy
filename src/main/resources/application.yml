@@ -7,9 +7,9 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/frontdoor?serverTimezone=Asia/Seoul
+    url: jdbc:mysql://f1456e6f-446e-42cd-a559-7ab21392c3ca.external.kr1.mysql.rds.nhncloudservice.com/frontdoor
     username: root
-    password: wldhks0107
+    password: swcu1234
   mail:
     host: smtp.naver.com
     port: 465
