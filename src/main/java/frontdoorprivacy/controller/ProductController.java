@@ -34,7 +34,7 @@ public class ProductController {
     private static ProductService productService;
 
     //각자 작업 컴퓨터 C드라이브 아래에 frontdoor 경로 추가해놓을것
-    private static String Path = "C:/frontdoor/";
+    private static String Path = "/home/tester/frontdoorimages";
 
 
     @Autowired

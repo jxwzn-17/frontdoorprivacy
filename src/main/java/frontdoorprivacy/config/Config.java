@@ -7,7 +7,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 public class Config implements WebMvcConfigurer {
-    private static String  path = "C:/frontdoor/";
+    private static String  path = "/home/tester/frontdoorimages";
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**") .allowedOrigins("http://localhost:3000");
