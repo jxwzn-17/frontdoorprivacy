@@ -7,7 +7,8 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://f1456e6f-446e-42cd-a559-7ab21392c3ca.external.kr1.mysql.rds.nhncloudservice.com/frontdoor
+    url: jdbc:mysql://f1456e6f-446e-42cd-a559-7ab21392c3ca.external.kr1.mysql.rds.nhncloudservice.com:10000/frontdoor
+    # jdbc:mysql://f1456e6f-446e-42cd-a559-7ab21392c3ca.external.kr1.mysql.rds.nhncloudservice.com/frontdoor
     username: root
     password: swcu1234
   mail:
