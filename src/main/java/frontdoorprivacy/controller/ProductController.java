@@ -113,12 +113,25 @@ public class ProductController {
 
         String storeFileName;
         String detailStoreFileName;
-        int pdid = updateMypageProduct.getP_PDID();
+//        int pdid = updateMypageProduct.getP_PDID();
+        int pdid = options.get(0).getP_PDID();
+
+        logger.info("----------------");
+        logger.info(""+options.get(0).getP_PDID());
+        logger.info(""+updateMypageProduct.getP_ENID());
+        logger.info(updateMypageProduct.getP_ProductName());
+        logger.info(updateMypageProduct.getP_Category());
+        logger.info(updateMypageProduct.getP_Detail());
+        logger.info(updateMypageProduct.getP_DetailCategory());
+        logger.info(updateMypageProduct.getP_DetailFileName());
 
         //여기는 썸네일에 쓸 이미지 파일을 uuid 로 바꿔주고 저장
         //uuid 변경하고 저장한다음 파일명하고 파일경로 받아오기
         if(multipartFile==null){
             storeFileName = productService.getImageFileName(pdid);
+
+            logger.info("----------------");
+            logger.info(storeFileName);
         }else {
             String originalFilename = multipartFile.getOriginalFilename();
 
@@ -130,6 +143,8 @@ public class ProductController {
         }
         if(detailFile==null){
             detailStoreFileName = productService.getDetailFileName(pdid);
+            logger.info("----------------");
+            logger.info(detailStoreFileName);
         }else {
             //이곳 로직은 Detail에 쓸 이미지 파일을 uuid 로 바꿔주고 저장
             String detailOriginalFileName = detailFile.getOriginalFilename();
@@ -142,6 +157,7 @@ public class ProductController {
         for (UpdateMypageProductOption a : options) {
             min = Integer.min(a.getP_Price(), min);
         }
+        updateMypageProduct.setP_PDID(pdid);
         updateMypageProduct.setP_DetailFileName(detailStoreFileName);
         updateMypageProduct.setP_ImageFileName(storeFileName);
         updateMypageProduct.setP_ImageFilePath(Path);
@@ -150,7 +166,15 @@ public class ProductController {
         //프로시저 호출해서 데베에 insert 해주기
 
         productService.updatemypageProduct(updateMypageProduct);
-
+        logger.info("----------------");
+        logger.info(""+updateMypageProduct.getP_PDID());
+        logger.info(""+updateMypageProduct.getP_ENID());
+        logger.info(updateMypageProduct.getP_ProductName());
+        logger.info(updateMypageProduct.getP_Category());
+        logger.info(updateMypageProduct.getP_Detail());
+        logger.info(updateMypageProduct.getP_DetailCategory());
+        logger.info(updateMypageProduct.getP_DetailFileName());
+        logger.info(""+updateMypageProduct.getP_Price());
 
         for (UpdateMypageProductOption a : options) {
             productService.updatemypageProductOption(a);
