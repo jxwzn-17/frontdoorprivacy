@@ -14,7 +14,7 @@ import java.util.Random;
 public class EmailService {
 
     private final JavaMailSender javaMailSender;
-    private final String emailaddress = "@naver.com"; //본인 이메일 입력
+    private final String emailaddress = "g1990107@naver.com"; //본인 이메일 입력
 
     public String mailCheck(String email){
         Random random = new Random(); //난수 생성

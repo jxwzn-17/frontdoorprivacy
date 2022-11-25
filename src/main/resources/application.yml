@@ -1,5 +1,5 @@
 server:
-  port: 9000
+  port: 8080
   servlet:
 
     context-path: /
@@ -7,15 +7,15 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://f1456e6f-446e-42cd-a559-7ab21392c3ca.external.kr1.mysql.rds.nhncloudservice.com:10000/frontdoor
+    url: jdbc:mysql://localhost:3306/frontdoor?serverTimezone=Asia/Seoul
     # jdbc:mysql://f1456e6f-446e-42cd-a559-7ab21392c3ca.external.kr1.mysql.rds.nhncloudservice.com/frontdoor
     username: root
-    password: swcu1234
+    password: wldhks0107
   mail:
     host: smtp.naver.com
     port: 465
-#    username: 니네 네이버 아이디 네이버 인증기능 구현 설정 따로 해줘야하니 하고 할것
-#    password: 니네 네이버 비밀번호
+    username: g1990107@naver.com
+    password: wldhks0107
     properties:
       mail.smtp.auth: true
       mail.smtp.ssl.enable: true

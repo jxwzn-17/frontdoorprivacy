@@ -15,7 +15,7 @@ public class Enterprise {
     private String phoneNumber;
     private String email;
     private String bankName;
-    private int accountNumber;
+    private String accountNumber;
 
     public Enterprise() {
     }
@@ -92,11 +92,11 @@ public class Enterprise {
         this.bankName = bankName;
     }
 
-    public int getAccountNumber() {
+    public String getAccountNumber() {
         return accountNumber;
     }
 
-    public void setAccountNumber(int accountNumber) {
+    public void setAccountNumber(String accountNumber) {
         this.accountNumber = accountNumber;
     }
 }
