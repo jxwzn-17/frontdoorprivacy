@@ -69,18 +69,18 @@
             }
     </update>
 
-    <insert id="SubscribeEnroll" parameterType="SubscribeEnrollReq" statementType="CALLABLE">
-        { CALL FND_SubscribeEN_User(
-                #{p_Name},
-                #{p_USID},
-                #{p_PDID},
-                #{p_Price},
-                #{p_imp_uid},
-                #{p_SubscribeCycle},
-                #{p_SPeriod}
-            )
-            }
-    </insert>
+<!--    <insert id="SubscribeEnroll" parameterType="SubscribeEnrollReq" statementType="CALLABLE">-->
+<!--        { CALL FND_SubscribeEN_User(-->
+<!--                #{p_Name},-->
+<!--                #{p_USID},-->
+<!--                #{p_PDID},-->
+<!--                #{p_Price},-->
+<!--                #{p_imp_uid},-->
+<!--                #{p_SubscribeCycle},-->
+<!--                #{p_SPeriod}-->
+<!--            )-->
+<!--            }-->
+<!--    </insert>-->
 
     <select id="SubscribeCheck" parameterType="SubscribeEnrollReq" resultType="String" statementType="CALLABLE">
         { CALL FND_SubscribeCK_User(
